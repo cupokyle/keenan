@@ -1,0 +1,72 @@
+.alert {
+  border: 0;
+
+  &.flash {
+    display: inline-flex;
+    align-items: center;
+    max-width: 1140px;
+    margin-left: 1.875rem;
+    margin-right: 1.875rem;
+    padding: 0.625rem 1.25rem;
+    font-family: $font-family-monospace;
+    font-size: 1rem;
+    box-shadow: 0px 4px 4px rgba(#000, 0.15);
+    border-radius: 100px;
+    background-color: $black;
+    color: $white;
+  }
+
+  &.alert-dismissible {
+    padding-right: 3.375rem;
+  }
+
+  .close {
+    top: 50%;
+    right: 1.25rem;
+    transform: translateY(-50%);
+    padding: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z' stroke='%23808080' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M15 9L9 15' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M15 15L9 9' stroke='%23808080' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 1;
+  }
+}
+
+.alert-primary {
+  background-color: $primary;
+  color: $white;
+}
+
+.alert-secondary {
+  background-color: $secondary;
+  color: $primary;
+}
+
+.alert-success {
+  background-color: #EAFBEC;
+  color: #177826;
+}
+
+.alert-danger {
+  background-color: #FCEEEE;
+  color: #DA3E3E;
+}
+
+.alert-warning {
+  background-color: #FBFBEA;
+  color: #565610;
+}
+
+.alert-light {
+  background-color: #ffffff;
+  border: 1px solid #E3E4E6;
+  color: rgba(#000, .7);
+}
+
+.alert-dark {
+  background-color: $black;
+  color: $white;
+}

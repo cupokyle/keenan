@@ -1,0 +1,12 @@
+.custom-file {
+  &.disabled {
+    opacity: 0.4;
+  }
+}
+
+.custom-file-label {
+
+  &::after {
+    @include border-radius($custom-file-border-radius);
+  }
+}

@@ -1,0 +1,48 @@
+{% include "translation" %}
+{% include "social_share_widget" %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <header class="mb-3 header">
+          {% if page.has_author? %}
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <strong>{{ t_contact }}:</strong> {{ page.author.published_name }}
+              </li>
+              {% if page.author.has_phone? %}
+                <li class="breadcrumb-item">
+                  <a href="tel:{{ page.author.phone_number }}" class="tel">
+                    {{ page.author.phone_format }}
+                  </a>
+                </li>
+              {% endif %}
+              {% if page.author.has_email? %}
+                <li class="breadcrumb-item">
+                  {{ page.author.email | enkode_email }}
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+
+          <h2 class="mt-3 page-headline">{{ page.headline }}</h2>
+        </header>
+
+        <div class="page-content">
+          {{ page.press_release.content }}
+        </div>
+
+        {% if page.tags_count > 0 %}
+          {% include "page_tags" with page %}
+        {% endif %}
+
+        {% if page.show_stream? %}
+          {% include "page_stream" %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,57 @@
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="h3 m-0">{{ page.headline }}</h2>
+        {% endif %}
+        {% if page.page_leaderboards.intro.size > 0 %}
+          <div class="mt-3 lead">
+            {{ page.page_leaderboards.intro }}
+          </div>
+        {% endif %}
+        {% for leaderboard in page.page_leaderboards limit: 1 %}
+          {% if leaderboard.display_number_results > 0 %}
+            <div class="py-5 px-4 px-sm-5 bg-light rounded-xl{% if page.headline.size > 0 or page.page_leaderboards.intro.size > 0 %} mt-5{% endif %}">
+                <p class="mb-3 h5 text-sans-serif font-weight-semi-bold">{{ t_count_of_named_goal | replace: '$count', leaderboard.total | replace: '$goal', leaderboard.goal | replace: '$name', leaderboard.goal_name }}</p>
+                {% if leaderboard.has_goal? %}
+                  <div class="mb-4">
+                    {% include "progress"
+                      percent: leaderboard.percent_of_goal,
+                      count: leaderboard.total,
+                      goal: leaderboard.goal,
+                    %}
+                  </div>
+                {% endif %}
+
+                <p class="text-black-75">{{ t_leaderboard_top }} {{ leaderboard.display_number_results }} {{ leaderboard.display_name }}</p>
+
+                <ul class="space-y-3 space-y-sm-4 list-unstyled">
+                  {% for entry in leaderboard.entries %}
+                    {% if entry.signup.is_leaderboardable? == true %}
+                      <li>
+                        <div class="card card-leaderboard">
+                          <div class="card-body">
+                            <div class="d-flex align-items-center">
+                              {% include "avatar" signup: entry.signup, size: 50 %}
+                              <div class="d-flex align-items-center flex-wrap ml-2">
+                                <span class="mr-2">{{ entry.signup.published_name_linked }}</span>
+                                <span class="card-leaderboard-stat">{{ entry.total }} {{ leaderboard.goal_name }}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-leaderboard-position">
+                            {{ entry.position }}
+                          </div>
+                        </div>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

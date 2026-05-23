@@ -1,0 +1,68 @@
+{% include 'translation' %}
+
+<div class="blog-features">
+  <div class="page">
+    <div class="page-inner bg-light{% if page.blog.most_recent_blog_posts.size > 1 %} mb-0 rounded-bottom-0 border-bottom-0{% endif %}">
+      <div class="row">
+        <div class="col">
+          {% if page.headline.size > 0 %}
+            <h2 class="mb-3 text-bold">{{ page.headline }}</h2>
+          {% endif %}
+        </div>
+        {% if page.blog.is_posting_public? %}
+          <div class="col-auto">
+            <button class="btn btn-primary d-inline-flex align-items-center" data-toggle="modal" data-target="{% if request.logged_in? %}#postFormModal-{{ page.id }}{% else %}#signinModal{% endif %}">
+              <svg class="mr-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 28H6.99902c-.26521 0-.51957-.1054-.7071-.2929-.18754-.1875-.2929-.4419-.2929-.7071V5c0-.26522.10536-.51957.2929-.70711C6.47945 4.10536 6.73381 4 6.99902 4H19l7 7v16c0 .1313-.0259.2614-.0761.3827-.0503.1213-.1239.2316-.2168.3244-.0928.0929-.2031.1665-.3244.2168-.1213.0502-.2514.0761-.3827.0761z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M19 4v7h7.001M13 19h6M16 16v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              {{ t_blog_public_post_cta }}
+            </button>
+          </div>
+        {% endif %}
+      </div>
+      {% if first_page %}
+        {% if site.page_tags contains "featured_post" %}
+          {% tag 'featured_post' with 'featured_blog_post' %}
+        {% else %}
+          {% for post in page.blog.most_recent_blog_posts limit:1 %}
+            {% include 'featured_blog_post' post: post %}
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% if page.blog.most_recent_blog_posts.size > 1 or first_page == false %}
+  <div class="page">
+    <div class="page-inner rounded-top-0 py-0">
+      <div class="content-{{ request.template  | replace: '_', '-' }} {{ main_container_classes | strip_newlines | strip }}">
+        <div id="content" class="py-5">
+          <ul class="list-unstyled mb-0" data-masonry id="blog-page-{{ page.id }}">
+            {% for post in page.blog.most_recent_blog_posts %}
+              <li class="card mb-4{% if first_page and forloop.index == 1 %}{% unless site.page_tags contains 'featured_post' %} hide{% endunless %}{% endif %}" id="blog-post-page-{{ post.id }}">
+                {% if post.has_meta_image? %}
+                  <a href="{{ post.url }}"><img src="{{ post.meta_image_url }}" class="card-img-top" /></a>
+                {% endif %}
+                <div class="card-body">
+                  <h3 class="h4 mb-0"><a href="{{ post.url }}">{{ post.headline }}</a></h3>
+                  {% if post.blog_post.content.size > 0 %}
+                    <div class="mt-2">{{ post.blog_post.content }}</div>
+                  {% endif %}
+                </div>
+                <div class="card-footer">
+                  {% include 'page_byline' page:post, author: post.author, published_at: post.published_at %}
+                </div>
+              </li>
+            {% endfor %}
+          </ul>
+          {{ page.blog.most_recent_blog_posts | paginate prev_label: t_prev next_label: t_next }}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% include "post_form" %}
+{% include "signin_modal" %}

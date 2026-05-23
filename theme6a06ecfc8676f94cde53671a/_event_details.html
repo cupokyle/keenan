@@ -1,0 +1,64 @@
+{% assign virtual_event = false %}
+{% if page.event.venue_name contains "http://" or page.event.venue_name contains "https://"  %}
+  {% assign virtual_event = true %}
+{% endif %}
+<div class="event-details mb-4">
+  <div class="row no-gutters py-2">
+    {% if page.event.has_venue? %}
+      <div class="event-details-item col-lg-6">
+        <h4 class="event-details-heading">
+          {% if virtual_event %}
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.1875 12.75h10.625c.5868 0 1.0625-.4757 1.0625-1.0625V4.25c0-.5868-.4757-1.0625-1.0625-1.0625H3.1875c-.5868 0-1.0625.4757-1.0625 1.0625v7.4375c0 .5868.4757 1.0625 1.0625 1.0625zM10.625 14.875h-4.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ t_events_virtual_event }}
+          {% else %}
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.71875 15.4062h9.56245M8.5 9.03125c1.17361 0 2.125-.95139 2.125-2.125s-.95139-2.125-2.125-2.125-2.125.95139-2.125 2.125.95139 2.125 2.125 2.125z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.8125 6.90625c0 4.78125-5.3125 8.49995-5.3125 8.49995s-5.3125-3.7187-5.3125-8.49995c0-1.40896.55971-2.76022 1.556-3.7565.99628-.99629 2.34754-1.556 3.7565-1.556s2.7602.55971 3.7565 1.556c.9963.99628 1.556 2.34754 1.556 3.7565v0z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ t_events_location }}
+          {% endif %}
+        </h4>
+
+        {% if page.event.venue_name.size > 0 %}
+          {% if virtual_event %}
+            <a href="{{ page.event.venue_name }}" class="text-break">{{ page.event.venue_name }}</a>
+          {% else %}
+            {{ page.event.venue_name }}
+          {% endif %}
+          <br/>
+        {% endif %}
+
+        {% unless virtual_event %}
+          {% for line in page.event.venue_address.multi_line %}
+            {{ line }}<br/>
+          {% endfor %}
+
+          {% if page.event.has_venue_address? %}
+            <a href="{{ page.event.venue_address.google_map_link }}">{{ t_events_google_map_directions }}</a>
+          {% endif %}
+        {% endunless %}
+
+      </div>
+    {% endif %}
+    {% if page.event.has_contact? %}
+      <div class="event-details-item col-lg-6">
+        <h4 class="event-details-heading">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8.5 10.625c2.3472 0 4.25-1.90279 4.25-4.25s-1.9028-4.25-4.25-4.25c-2.34721 0-4.25 1.90279-4.25 4.25s1.90279 4.25 4.25 4.25z" stroke="black" stroke-width="2" stroke-miterlimit="10"/>
+            <path d="M2.05786 14.3431c.65315-1.1305 1.5923-2.0692 2.72311-2.7219 1.13081-.6526 2.41347-.9962 3.7191-.9962 1.30564 0 2.58833.3436 3.71913.9963 1.1308.6527 2.0699 1.5914 2.723 2.722" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {{ t_events_event_contact }}
+        </h4>
+        {{ page.event.contact_name }}
+        {% if page.event.has_public_contact_email? %}
+          <br>{{ page.event.contact_email | enkode_email }}
+        {% endif %}
+        {% if page.event.has_public_contact_phone_number? %}
+          <br>{{ page.event.contact_phone_number }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>

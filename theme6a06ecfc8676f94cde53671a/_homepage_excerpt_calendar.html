@@ -1,0 +1,39 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <header class="row mb-n4">
+      {% if page.headline.size > 0 %}
+        <div class="col mb-4">
+          {% if page.headline.size > 0 %}
+            <h2 class="mb-0 h1">{{ page.headline }}</h2>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if page.calendar.allow_user_submitted? %}
+        <div class="col-auto mb-4">
+          <a href="{{ page.calendar.new_event_url }}" class="btn btn-primary d-inline-flex align-items-center">
+            <svg class="mr-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M26 5H6a1 1 0 00-1 1v20a1 1 0 001 1h20a1 1 0 001-1V6a1 1 0 00-1-1zM22 3v4M10 3v4M5 11h22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {% if page.calendar.event_name == "" %}
+              {{ t_events_user_events_cta }}
+            {% else %}
+              {% capture custom_event_name %}{{ page.calendar.event_name | downcase }}{% endcapture %}
+              {{ t_events_user_events_cta_custom | replace: '$event', custom_event_name  }}
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+    </header>
+    <ul class="list-unstyled space-y-3 space-y-sm-4{% if page.headline.size > 0 or page.calendar.allow_user_submitted? %} mt-5{% endif %}">
+      {% for event in page.calendar.events_upcoming limit:3 %}
+        <li>{% include "event" %}</li>
+      {% endfor %}
+    </ul>
+    <div class="mt-5 text-center">
+      <a href="{{ page.slug }}">{{ t_excerpt_see_all_events }}</a>
+    </div>
+  </div>
+</section>

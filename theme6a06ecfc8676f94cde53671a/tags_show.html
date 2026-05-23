@@ -1,0 +1,25 @@
+{% include "translation" %}
+
+<div class="page">
+  <div class="page-inner">
+    <div class="content-{{ request.template  | replace: '_', '-' }} {{ main_container_classes | strip_newlines | strip }}">
+      <div class="row">
+        <div class="col">
+          <h2 class="page-headline">{{ t_pages_tagged | replace: '$tag', tag.name }}</h2>
+        </div>
+      </div>
+      <div class="row mt-3 mt-lg-5">
+        <div class="col">
+          <ul class="list-unstyled mb-0" data-masonry id="blog-page-{{ page.id }}">
+            {% for post in tag.most_recent_published_pages %}
+              <li id="page-{{ post.id }}">
+                {% include "page_excerpt" with post %}
+              </li>
+            {% endfor %}
+          </ul>
+          {{ tag.most_recent_published_pages | paginate prev_label: t_prev next_label: t_next }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

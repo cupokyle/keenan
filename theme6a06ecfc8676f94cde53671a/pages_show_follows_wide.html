@@ -1,0 +1,32 @@
+{% include "translation" %}
+
+<div class="page">
+  <div class="page-inner">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="page-headline">{{ page.headline }}</h2>
+        {% endif %}
+
+        {% if request.logged_in? %}
+          <div class="bg-light py-5 px-4 px-sm-5 mt-5 rounded-xl mx-n4 mx-md-auto">
+            <p class="h4">{{ t_followers_you_are_following }}</p>
+
+            <ul class="list-unstyled space-y-4 mt-4 mb-0">
+              {% for following in request.current_signup.followings %}
+                {% assign signup = following.following %}
+                <li>
+                  {% include "signup_show" %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            {{ request.current_signup.followings | paginate prev_label: t_prev next_label: t_next }}
+          </div>
+        {% else %}
+          {% include "user_session_form" %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

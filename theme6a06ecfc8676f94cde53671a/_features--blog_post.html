@@ -1,0 +1,45 @@
+{% if features %}
+  {% capture fcs_parser %}{% for feature in page.features %}{% if feature.image_url and feature.headline == "" %}1{% else %}0{% endif %}{% unless forloop.last %}, {% endunless %}{% endfor %}{% endcapture %}
+  {% assign fcs_results = fcs_parser | strip_newlines | strip | split: ", " %}
+  {% assign fcs_display = fcs_results | uniq | join: "," %}
+  {% capture fcs_image_only %}{% if fcs_display == "1" %}true{% else %}false{% endif %}{% endcapture %}
+{% endif %}
+
+<div class="row align-items-center flex-column-reverse flex-md-row">
+  <div class="col-md-6 text-light">
+    <h1 class="display-4 mb-4">{{ page.headline }}</h1>
+    {% if page.has_author? %}
+      <div class="mt-1">{% include "page_byline" author: page.author %}</div>
+    {% endif %}
+  </div>
+  <div class="col-md-6 mb-4 mb-md-0">
+    {% if features %}
+      <div id="fcs" class="carousel slide carousel-fade fcs-img-shadow" data-ride="carousel" data-interval="8000">
+        <div class="carousel-inner">
+          {% for feature in page.features %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="card border-0 shadow-none">
+                <a href="{{ feature.page.url }}" class="stretched-link">
+                  <div class="position-relative">
+                    <img class="mw-100 mh-100 h-auto" width="540" height="430" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAGuCAQAAABxHRcUAAAD+ElEQVR42u3UIQEAAAzDsM+/6WsYGkkkFDQHUIoEgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxiEBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxADsP7iABr3S8NqYAAAAASUVORK5CYII=" alt=""/>
+                    <img src="{{ feature.image_url }}" class="page-features__content-img of-cover w-100 h-100 {% if feature.headline.size > 0 %}card-img-top{% else %}rounded{% endif %}" width="540" height="430" alt="{{ feature.name }}"/>
+                  </div>
+                </a>
+                {% if feature.headline.size > 0 %}
+                  <div class="card-footer py-1">
+                    <small>{{ feature.headline }}</small>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% else %}
+      <div class="thumbnail fcs-img-shadow position-relative">
+        <img class="mw-100 mh-100 h-auto" width="540" height="430" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAGuCAQAAABxHRcUAAAD+ElEQVR42u3UIQEAAAzDsM+/6WsYGkkkFDQHUIoEgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxiEBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxADsP7iABr3S8NqYAAAAASUVORK5CYII=" alt=""/>
+        <img src="{{ page.meta_image_url }}" class="page-features__content-img of-cover w-100 h-100 rounded" width="540" height="430" alt="{{ page.headline }}"/>
+      </div>
+    {% endif %}
+  </div>
+</div>

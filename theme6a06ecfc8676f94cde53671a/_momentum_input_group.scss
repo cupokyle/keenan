@@ -1,0 +1,66 @@
+// stylelint-disable selector-no-qualifying-type
+// .input-group[data-focus-target] {
+
+//   .input-group-prepend,
+//   .input-group-append {
+
+//     & > * {
+//       @include border-radius($btn-border-radius, 0);
+//     }
+//   }
+// }
+
+// .input-group[data-focus-target] > .input-group-prepend > .btn,
+// .input-group[data-focus-target] > .input-group-prepend > .input-group-text,
+// .input-group[data-focus-target] > .input-group-append:not(:last-child) > .btn,
+// .input-group[data-focus-target] > .input-group-append:not(:last-child) > .input-group-text,
+// .input-group[data-focus-target] > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle),
+// .input-group[data-focus-target] > .input-group-append:last-child > .input-group-text:not(:last-child) {
+//   @include border-right-radius($btn-border-radius);
+// }
+
+// .input-group[data-focus-target] > .input-group-append > .btn,
+// .input-group[data-focus-target] > .input-group-append > .input-group-text,
+// .input-group[data-focus-target] > .input-group-prepend:not(:first-child) > .btn,
+// .input-group[data-focus-target] > .input-group-prepend:not(:first-child) > .input-group-text,
+// .input-group[data-focus-target] > .input-group-prepend:first-child > .btn:not(:first-child),
+// .input-group[data-focus-target] > .input-group-prepend:first-child > .input-group-text:not(:first-child) {
+//   @include border-left-radius($btn-border-radius);
+// }
+
+.input-group[data-focus-target] {
+  position: relative;
+  background-color: $input-bg;
+  @include border-radius($input-border-radius, 0);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    @include border-radius($input-border-radius, 0);
+    z-index: 10;
+    pointer-events: none;
+    @include transition($input-transition);
+  }
+
+  &.focused::before {
+    border-color: #b7bbf1;
+    outline: 0;
+    box-shadow: inset 0 0 0 2px $primary, 0 0 0 0.25rem rgba($primary, 0.25);
+  }
+
+  > .form-control:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: $input-border-color;
+  }
+
+  .input-group-append .btn,
+  .input-group-prepend .btn {
+    @include border-radius($input-border-radius, 0);
+  }
+}

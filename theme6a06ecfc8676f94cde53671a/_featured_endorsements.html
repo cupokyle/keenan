@@ -1,0 +1,38 @@
+{% if page.type_name == "Endorsement" and page.endorsement.featured_endorsements.size > 0 %}
+  <div class="mb-5">
+    <div class="mb-4 d-flex flex-wrap align-items-center justify-content-between">
+      <h3 class="my-0 mr-4 text-serif h4 font-weight-medium">{{ t_endorsement_featured_endorsements }}</h3>
+    </div>
+
+    <ul class="list-unstyled space-y-4">
+      {% for endorsement in page.endorsement.featured_endorsements %}
+        <li>
+          <div class="card card-highlight">
+            <div class="card-header">
+              <div class="media">
+                {% include "avatar" signup:endorsement.signup %}
+                <div class="media-body ml-2 mt-2">
+                  {% if endorsement.is_organization == true %}
+                    {{ endorsement.signup.employer }}
+                  {% else %}
+                    {{ endorsement.signup.published_name_linked }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="activity-content card-footer">
+              {% if endorsement.content.size > 0 or endorsement.has_image? %}
+                {% if endorsement.has_image? %}
+                  <img src="{{ endorsement.medium_image_url }}" border="0" width="73" align="left" style="padding-right: 10px;">
+                {% endif %}
+                <div class="truncate-200" data-truncate="200">
+                  {{ endorsement.content | newline_to_br }}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

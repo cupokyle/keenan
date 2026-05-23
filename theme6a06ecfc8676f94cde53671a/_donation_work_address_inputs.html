@@ -1,0 +1,561 @@
+{% include "translation" %}
+{% assign wide = wide | default: false %}
+
+<div data-address-inputs>
+  <div class="form-group">
+    <div class="float-label">
+      <label for="donation_work_address_country_code">{{ t_forms_employer }} {{ t_forms_country }}</label>
+      {% if page.type_slug == "donation" %}
+        {% select_field "work_address.country_code", page.donation.countries, "code", "name", class:"custom-select address-inputs-toggle" %}
+      {% else %}
+        {% select_field "work_address.country_code", page.donation_v2.countries, "code", "name", class:"custom-select address-inputs-toggle" %}
+      {% endif %}
+    </div>
+  </div>
+
+  <div data-address-inputs-slot></div>
+
+  {% comment %} United States {% endcomment %}
+  <div data-address-inputs-group="US">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? or page.donation.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+          {% text_field "work_address.address2", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_state}}</label>
+            {% if page.type_slug == "donation" %}
+              {% select_field "work_address.state", page.donation.us_states, "code", "name", class:"custom-select" %}
+            {% else %}
+              {% select_field "work_address.state", page.donation_v2.us_states, "code", "name", class:"custom-select" %}
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_zip_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? or page.donation.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{ t_forms_employer }} {{ t_forms_city }}</label>
+            {% text_field "work_address.city", class:"form-control", required:"required" %}
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_state">{{t_address_state}}</label>
+            {% text_field "work_address.state", class:"form-control", required:"required" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_zip_code}}</label>
+            {% text_field "work_address.zip", class:"form-control", required:"required" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Canada {% endcomment %}
+  <div data-address-inputs-group="CA">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_county">{{t_address_province}}</label>
+            {% text_field "work_address.county", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+        <div class="form-group col-md-5">
+          <div class="float-label">
+            <label for="donation_work_address_county">{{t_address_province}}</label>
+            {% text_field "work_address.county", class:"text form-control" %}
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <div class="float-label">
+            <label for="donation_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Australia {% endcomment %}
+  <div data-address-inputs-group="AU">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city_suburb}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_state_territory}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city_suburb}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+        <div class="form-group col-md-5">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_state_territory}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} New Zealand {% endcomment %}
+  <div data-address-inputs-group="NZ">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+          {% text_field "work_address.zip", class:"text form-control" %}
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} United Kingdom {% endcomment %}
+  <div data-address-inputs-group="GB">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_building_number_street_name}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_address_2}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_zip">{{t_address_postcode}}</label>
+          {% text_field "work_address.zip", class:"text form-control" %}
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_town}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postcode}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Italy {% endcomment %}
+  <div data-address-inputs-group="IT">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_building_number}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_province}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-3">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_province}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} France {% endcomment %}
+  <div data-address-inputs-group="FR">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apartment_suite_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_city">{{ t_forms_city }}</label>
+          {% text_field "work_address.city", class:"text form-control" %}
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{ t_forms_city }}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Northern European countries {% endcomment %}
+  <div data-address-inputs-group="NEC">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_building_number}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+          {% text_field "work_address.address2", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  {% comment %} Fallback {% endcomment %}
+  <div data-address-inputs-group="FALLBACK">
+    {% if page.donation_v2.merchant_account.is_employer_address_required? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="donation_work_address_address1">{{t_address_street_address}}</label>
+          {% text_field "work_address.address1", class:"text form-control" %}
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_address2">{{t_address_apt_suit_etc}}</label>
+            {% text_field "work_address.address2", class:"text form-control" %}
+          </div>
+        </div>
+        {% comment %} Only show zip code input if the country has a zip code, this only applies to this address-inputs-group {% endcomment %}
+        <div class="form-group col-md-6 hide-when-country-has-no-zip-code">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-6">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_state_region}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% elsif page.donation_v2.merchant_account.is_employer_city_required? %}
+      <div class="form-row">
+        {% comment %} Only show zip code input if the country has a zip code, this only applies to this address-inputs-group {% endcomment %}
+        <div class="form-group col-md-3 hide-when-country-has-no-zip-code">
+          <div class="float-label">
+            <label for="donation_work_address_zip">{{t_address_postal_code}}</label>
+            {% text_field "work_address.zip", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <div class="float-label">
+            <label for="donation_work_address_city">{{t_address_city}}</label>
+            {% text_field "work_address.city", class:"text form-control" %}
+          </div>
+        </div>
+
+        <div class="form-group col-md-4">
+          <div class="float-label">
+            <label for="donation_state">{{t_address_state_region}}</label>
+            {% text_field "work_address.state", class:"text form-control" %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% assign wide = false %}

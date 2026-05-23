@@ -1,0 +1,195 @@
+{% include "translation" %}
+{% include "social_share_widget" %}
+{% capture share_url %}{% if request.sorta_logged_in? %}{{ page.recruiting.featured_page.full_url_with_recruiter }}{% else %}{{ page.recruiting.featured_page.full_url }}{% endif %}{% endcapture %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="page-headline">{{ page.headline }}</h2>
+        {% endif %}
+
+        <div class="page-content">
+          {% if page.recruiting.content.size > 0 %}
+            {{ page.recruiting.content }}
+          {% endif %}
+          {% if request.sorta_logged_in? %}
+            <p>{{ t_recruiting_anyone_referred_through }}</p>
+                   {% else %}
+            <p><a href="/login">Sign in</a> to get your personal tracking link.</p>
+          {% endif %}
+        </div>
+
+
+        <div class="bg-light p-5 mt-5">
+          <form>
+            {% if request.sorta_logged_in? %}
+              <label for="tracking_link" class="text-black-75">{{ t_recruiting_personal_tracking_link }}</label>
+              <div class="input-group" data-focus-target="tracking_link">
+                <input type="text" id="tracking_link" class="form-control" onclick="this.focus();this.select();" value="{{ page.recruiting.featured_page.full_url_with_recruiter }}" aria-describedby="button-addon4" readonly="readonly">
+                <div class="input-group-append" id="button-addon4">
+                  <button class="btn btn-secondary" type="button" data-clipboard-target="#tracking_link" data-toggle="tooltip" data-trigger="manual" data-placement="top" title="{{ t_copied }}">{{ t_copy_link }}</button>
+                </div>
+              </div>
+            {% else %}
+              <label for="tracking_link" class="text-black-75">{{ t_recruiting_non_tracking_link }}</label>
+              <div class="input-group" data-focus-target="tracking_link">
+                <input type="text" id="tracking_link" class="form-control" onclick="this.focus();this.select();" value="{{ page.recruiting.featured_page.full_url_with_recruiter }}" aria-describedby="button-addon4" readonly="readonly">
+                <div class="input-group-append" id="button-addon4">
+                  <button class="btn btn-secondary" type="button" data-clipboard-target="#tracking_link" data-toggle="tooltip" data-trigger="manual" data-placement="top" title="{{ t_copied }}">{{ t_copy_link }}</button>
+                </div>
+              </div>
+            {% endif %}
+          </form>
+
+          <div class="row mx-md-n2 mb-n3 mt-4">
+            <div class="col-md-6 px-md-2 mb-3">
+              <a href="https://www.facebook.com/sharer/sharer.php?u={{ share_url }}" class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                <svg class="mr-1" width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M13.5 22.75c5.385 0 9.75-4.365 9.75-9.75s-4.365-9.75-9.75-9.75S3.75 7.615 3.75 13s4.365 9.75 9.75 9.75z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M17.563 8.938h-1.625a2.437 2.437 0 00-2.438 2.437V22.75M10.25 14.625h6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ t_social_share_on_facebook }}
+              </a>
+            </div>
+
+            <div class="col-md-6 px-md-2 mb-3">
+              <a href="http://twitter.com/share?url={{ share_url }}&text={{ page.recruiting.default_tweet_text }}" class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                <svg class="mr-1" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M24.376 6.16a12.974 12.974 0 01-3.26 3.244h0a13.005 13.005 0 01-19.29 10.908h0a12.936 12.936 0 007.112-2.25h0A13.02 13.02 0 013.72 3.832h0a12.998 12.998 0 009.363 5.828h0a4.064 4.064 0 017.52-2.825h0a13.065 13.065 0 003.772-.674" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ t_social_share_on_twitter }}
+              </a>
+            </div>
+
+            <div class="col-md-6 px-md-2 mb-3">
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ share_url | url_encode }}" class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                <svg class="mr-1" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21.125 4.0625H4.875C4.42627 4.0625 4.0625 4.42627 4.0625 4.875V21.125C4.0625 21.5737 4.42627 21.9375 4.875 21.9375H21.125C21.5737 21.9375 21.9375 21.5737 21.9375 21.125V4.875C21.9375 4.42627 21.5737 4.0625 21.125 4.0625Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12.1875 11.3751V17.8751" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.9375 11.3751V17.8751" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M8.9375 9.34387C9.6106 9.34387 10.1562 8.79822 10.1562 8.12512C10.1562 7.45202 9.6106 6.90637 8.9375 6.90637C8.2644 6.90637 7.71875 7.45202 7.71875 8.12512C7.71875 8.79822 8.2644 9.34387 8.9375 9.34387Z" fill="currentColor"/>
+                  <path d="M12.1875 14.2189C12.1875 13.4647 12.4871 12.7413 13.0204 12.208C13.5537 11.6747 14.277 11.3751 15.0312 11.3751C15.7855 11.3751 16.5088 11.6747 17.0421 12.208C17.5754 12.7413 17.875 13.4647 17.875 14.2189V17.8751" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                {{ t_social_share_on_linkedin }}
+              </a>
+            </div>
+
+            <div class="col-md-6 px-md-2 mb-3">
+              <a href="https://api.whatsapp.com/send?text={{ share_url }}" class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                <svg class="mr-1" width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M3.25 22.75L4.62723 17.7426C3.77738 16.2768 3.33082 14.6152 3.33164 12.9114C3.33409 7.58469 7.68946 3.25 13.0408 3.25C15.6377 3.25081 18.0754 4.2575 19.909 6.084C21.7418 7.9105 22.7508 10.3383 22.75 12.9204C22.7476 18.2479 18.3922 22.5826 13.0408 22.5826C11.4162 22.5818 9.81531 22.1764 8.39726 21.4061L3.25 22.75V22.75ZM8.63564 19.6568C10.0039 20.4653 11.3101 20.9495 13.0376 20.9503C17.4852 20.9503 21.1083 17.3477 21.1107 12.9187C21.1123 8.48087 17.5064 4.88312 13.0441 4.8815C8.59319 4.8815 4.97256 8.48413 4.97092 12.9123C4.97011 14.7201 5.50239 16.0737 6.39632 17.4899L5.58076 20.4539L8.63564 19.6568V19.6568ZM17.9317 15.2173C17.8713 15.1166 17.7097 15.0564 17.4664 14.9354C17.2239 14.8143 16.0312 14.2301 15.8083 14.1497C15.5863 14.0692 15.4246 14.0286 15.2622 14.2708C15.1005 14.5121 14.6352 15.0564 14.494 15.2173C14.3527 15.3782 14.2107 15.3985 13.9682 15.2774C13.7258 15.1564 12.9437 14.9021 12.0171 14.079C11.2962 13.4388 10.8088 12.6482 10.6676 12.4061C10.5264 12.1648 10.6529 12.0339 10.7737 11.9137C10.8831 11.8056 11.0162 11.6318 11.1378 11.4904C11.2611 11.3506 11.3011 11.2499 11.3828 11.0882C11.4636 10.9273 11.4236 10.7859 11.3623 10.6649C11.3011 10.5446 10.8162 9.35594 10.6145 8.8725C10.417 8.40206 10.217 8.46544 10.0684 8.45812L9.60305 8.45C9.44141 8.45 9.17854 8.51012 8.95648 8.75225C8.73443 8.99437 8.10745 9.57775 8.10745 10.7664C8.10745 11.9551 8.97689 13.1032 9.09771 13.2641C9.21935 13.4249 10.808 15.8641 13.2416 16.9098C13.8205 17.1584 14.2727 17.3071 14.6246 17.4184C15.2059 17.602 15.7349 17.576 16.1529 17.5142C16.619 17.4452 17.588 16.9301 17.7905 16.3662C17.993 15.8015 17.993 15.3181 17.9317 15.2173V15.2173Z" fill="currentColor"/>
+                </svg>
+                {{ t_social_share_on_whatsapp }}
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {% if request.sorta_logged_in? and page.recruiting.show_followers? and request.current_signup.followers_count > 0 %}
+          <div class="card mt-5">
+            <div class="mt-3 mx-3 mb-4">
+              <div class="stats">
+                <div class="stats-item">
+                  <p class="stats-count">{{ request.current_signup.followers_supporters_count }}</p>
+                  <small class="stats-label">{% if request.current_signup.followers_supporters_count == 1 %}{{ t_recruiting_supporter }}{% else %}{{ t_recruiting_supporter|pluralize }}{% endif %}</small>
+                </div>
+
+                <div class="stats-item">
+                  <p class="stats-count">{{ request.current_signup.followers_volunteers_count }}</p>
+                  <small class="stats-label">{% if request.current_signup.followers_volunteers_count == 1 %}{{ t_recruiting_volunteer }}{% else %}{{ t_recruiting_volunteer|pluralize }}{% endif %}</small>
+                </div>
+
+                <div class="stats-item">
+                  <p class="stats-count">{{ request.current_signup.followers_donors_count }}</p>
+                  <small class="stats-label">{% if request.current_signup.followers_donors_count == 1 %}{{ t_recruiting_donor }}{% else %}{{ t_recruiting_donor|pluralize }}{% endif %}</small>
+                </div>
+
+                  <div class="stats-item">
+                    <p class="stats-count">{{ request.current_signup.followers_possible_voters_count }}</p>
+                    <small class="stats-label">{{ t_recruiting_could_vote }}</small>
+                  </div>
+
+                  <div class="stats-item">
+                    <p class="stats-count">{{ request.current_signup.followers_voters_count }}</p>
+                    <small class="stats-label">{{ t_recruiting_would_vote }}</small>
+                  </div>
+                {% if settings.is_voter? %}
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-striped table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ t_forms_name }}</th>
+                    <th scope="col">{{ t_recruiting_supporter | pluralize }}</th>
+                    <th scope="col">{{ t_recruiting_volunteer | pluralize }}</th>
+                    <th scope="col">{{ t_recruiting_donor | pluralize }}</th>
+                    {% if settings.is_voter? %}
+                      <th scope="col">{{ t_recruiting_could_vote}}</th>
+                      <th scope="col">{{ t_recruiting_would_vote }}</th>
+                    {% endif %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for follower in request.current_signup.followers %}
+                    {% assign signup = follower.follower %}
+                    <tr>
+                      <td>{{ signup.published_name_linked }}</td>
+                      <td>
+                        <span class="badge badge-pill badge-black">{{ signup.support_level_pretty | on_off_button_small }}</span>
+                      </td>
+                      <td>
+                        <span class="badge badge-pill badge-black">{{ signup.is_volunteer_pretty | on_off_button_small }}</span>
+                      </td>
+                      <td>
+                        <span class="badge badge-pill badge-black">{{ signup.has_donated? | on_off_button_small }}</span>
+                      </td>
+                      {% if settings.is_voter? %}
+                        <td>
+                          {{ signup.could_vote_pretty | on_off_button_small | replace: "off-button-small", "badge badge-pill badge-black" }}
+                        </td>
+                        <td>
+                          {{ signup.will_vote_pretty | on_off_button_small | replace: "off-button-small", "badge badge-pill badge-black" }}
+                        </td>
+                      {% endif %}
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            {{ request.current_signup.followers | paginate prev_label: t_prev next_label: t_next }}
+          </div>
+        {% endif %}
+
+        {% if request.current_signup.recruiting_activities.size > 0 %}
+          <div class="page-stream bg-light rounded-xl">
+            <div id="reactions" class="p-5">
+              <ul id="page-stream" class="list-unstyled space-y-4 mb-0">
+                {% for activity in request.current_signup.recruiting_activities %}
+                  <li>
+                    <div class="card">
+                      <div class="card-header">
+                        <div class="media">
+                          {% include "avatar" signup:activity.signup %}
+                          <div class="media-body ml-2 mt-2">
+                            {{ activity.show }}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ul>
+              {{ request.current_signup.recruiting_activities | paginate prev_label: t_prev next_label: t_next }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

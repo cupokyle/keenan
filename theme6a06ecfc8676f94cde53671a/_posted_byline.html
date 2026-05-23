@@ -1,0 +1,13 @@
+{% include "translation" %}
+
+{% unless author %}
+  {% assign author = page.author %}
+{% endunless %}
+
+{% unless published_at %}
+  {% assign published_at = page.published_at %}
+{% endunless %}
+
+{% include "date_format" date:published_at %}
+
+<small class="d-block mt-3 mb-4">{{ t_posted_by | replace: '$author', author.published_name_linked | replace: '$date', mdy_date }}{% if page and page.is_editing_available? %} <a href="{{ page.edit_url }}">{{ t_edit_post }}</a>{% endif %}</small>

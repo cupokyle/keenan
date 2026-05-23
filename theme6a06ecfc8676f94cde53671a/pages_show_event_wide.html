@@ -1,0 +1,93 @@
+{% assign has_featured_img = false %}
+{% assign use_fcs = false %}
+{% if page.features_count > 0 %}
+  {% assign use_fcs = true %}
+  {% assign has_featured_img = true %}
+{% endif %}
+{% if page.has_meta_image? %}
+  {% assign has_featured_img = true %}
+{% endif %}
+
+{% if site.has_background_image? %}
+<div class="page">
+  <div class="page-inner rounded-top">
+{% endif %}
+
+<div class="bg-dark pb-5{% if site.has_background_image? %} mx-n4 rounded-top{% endif %}">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        {% include "breadcrumbs" class:"mt-2 mb-lg-0 pt-2 text-white",  link_class:'text-white' %}
+      </div>
+    </div>
+    <div class="row{% unless has_featured_img %} justify-content-center{% endunless %}">
+      <div class="{% if has_featured_img %}col-lg-6{% else %}col-lg-9{% endif %} align-self-center">
+        {% if page.headline.size > 0 %}
+          <div id="headline" class="mb-3">
+            <h2 class="h1 text-white">{{ page.headline }}</h2>
+            <div class="d-flex align-items-center">
+              <div class="cal-icon">
+                {% include "date_format" date:page.event.local_start_at %}
+                <div class="cal-icon-month">{{ month_abbr }}</div>
+                <div class="cal-icon-day">{{ day }}</div>
+              </div>
+              <div class="ml-2 text-white">
+                <span class="h5 text-sans-serif">
+                  {% capture start %}{% include "date_format" date:page.event.local_start_at %}{{full_datetime}}{% endcapture %}
+                  {% if page.event.is_multi_day? %}
+                    {% capture end %}{% include "date_format" date:page.event.local_end_at %}{{mdy_date}}{% endcapture %}
+                    {{ t_events_multi_day_date | replace: '$start', start | replace: '$end': end }}
+                  {% else %}
+                    {{ start }}
+                  {% endif %}
+                </span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+      {% if has_featured_img %}
+        <div class="col-lg-6 align-self-end">
+          {% include "features--event" features:use_fcs, sidebar:false %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<div class="position-relative">
+
+  {% include "social_share_widget" %}
+
+  <div class="{% if site.has_background_image? %}{% else %}page{% endif %}">
+    <div id="content">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 mt-3 mt-lg-5">
+          {% include "event_details" %}
+
+          {% if page.event.content.size > 0 %}
+            {{ page.event.content }}
+          {% endif %}
+
+          {% include "posted_byline" %}
+
+          {% include "event_form" sidebar:false %}
+
+          {% if page.tags_count > 0 %}
+            {% include "page_tags" with page %}
+          {% endif %}
+
+          {% if page.show_stream? %}
+            {% include "page_stream" %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% if site.has_background_image? %}
+  </div>
+</div>
+{% endif %}

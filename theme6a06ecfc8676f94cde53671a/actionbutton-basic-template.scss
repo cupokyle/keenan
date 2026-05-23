@@ -1,0 +1,88 @@
+section#actionbutton-basic-template {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  .page-headline {
+    font-size: 2.8125rem;
+    font-weight: 700;
+    margin: 0 0 24px;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.389;
+    margin: 0;
+  }
+
+  p + p {
+    margin-top: 18px;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+
+  iframe.actionbutton {
+    max-width: 100vw;
+    width: 100vw !important;
+    margin-left: -32px;
+    margin-right: -32px;
+    
+    @media (min-width: 482px) {
+      max-width: 100%;
+      width: 100% !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .brand-logo {
+    object-fit: contain;
+    min-height: 32px;
+    max-height: 70px;
+    margin-bottom: 24px;
+  }
+  
+  .page-content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    justify-content: center;
+    margin: 128px 32px;
+    max-width: 1312px;
+    min-height: 100vh;
+    width: 100%;
+
+    @media (min-width: 992px) {
+      flex-direction: row;
+      gap: 72px;
+      margin: 0 64px;
+    }
+    
+    > * {
+      width: 100%;
+
+      @media (min-width: 992px) {
+        flex-basis: 50%;
+      }
+    }
+  }
+}
+
+// Basic page
+//-------------------------------------------
+/* hide header & footer */
+.page-type-basic.has-actionbutton .header-wrapper,
+.page-type-basic.has-actionbutton footer {
+  display: none;
+}
+/* show body content once template loads */
+.page-type-basic.has-actionbutton {
+  opacity: 1;
+  transition: opacity ease-in-out 0.2s;
+}

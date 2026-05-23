@@ -1,0 +1,40 @@
+{% include "translation" %}
+
+<div id="flag-content" class="flag-content">
+
+  {% unless request.is_ajax? %}
+    {% capture page_headline %}<a href="{{ page.url }}" target="_top">{{ page.headline }}</a>{% endcapture %}
+    <h3 class="headline">{{ t_flagging_page | replace: '$page_name', page_headline }}</h3>
+  {% endunless %}
+
+  {% form_for flag %}
+    <div class="form">
+      <div class="form-errors">{% error_messages_for flag %}</div>
+      {% hidden_field_tag "flag[page_id]", page.id %}
+      {% if site.has_rule_page? %}
+        <div class="form-group">
+          <div class="float-label">
+            <label for="flag_rule_id">{{ t_forms_which_rule_was_violated }}</label>
+            {% select_field "rule_id", site.rule_page.rule.rules_collection, class:"custom-select" %}
+          </div>
+        </div>
+      {% endif %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="flag_content">{{ t_forms_explanation }}</label>
+          {% text_area "content", class:"form-control autogrow" %}
+        </div>
+      </div>
+      {% include "form_submit_tag" label:t_flag_this_page %}
+    </div>
+  {% endform_for %}
+
+</div>
+
+<script>
+	;(function() {
+		var closeBtn = $('#dialog_box button[data-dismiss="modal"]');
+		closeBtn.html('');
+		$('#dialog_box').prepend(closeBtn);
+	})();
+</script>

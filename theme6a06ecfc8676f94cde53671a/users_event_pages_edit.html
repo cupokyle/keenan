@@ -1,0 +1,234 @@
+{% include "translation" %}
+
+{% assign virtual_event = false %}
+{% if event_page.venue_name contains "http://" or event_page.venue_name contains "https://"  %}
+  {% assign virtual_event = true %}
+{% endif %}
+
+<div id="uhe" class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="card d-inline-flex my-4">
+        <div class="card-body">
+          <a class="navbar-brand" href="/">
+            {% if site.has_meta_image? %}
+              <img src="{{ site.meta_image_url }}" class="navbar-brand-img mw-100" alt="{{ site.long_name }}"/>
+            {% else %}
+              {{ site.long_name }}
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-body p-lg-5">
+
+          {% include "breadcrumbs" %}
+          <h2 class="h4 mb-4">{{ t_events_edit_your_event}}</h2>
+
+          {% form_for event_page %}
+          <div class="form-wrap">
+            <div class="form">
+
+              <div class="form-errors">{% error_messages_for event_page %}</div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="float-label">
+                    <label for="event_page_page_headline">{{ t_events_page_headline }}</label>
+                    {% text_field "page_headline", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_start_at_chronic">{{ t_events_when }}</label>
+                    {% if current_language != "en" %}
+                      {% include "date_format" date:event_page.start_at_chronic %}
+                      {% text_field "start_at_chronic", value:digit_timestamp, class:"form-control" %}
+                    {% else %}
+                      {% text_field "start_at_chronic", class:"form-control" %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_duration_chronic">{{ t_events_duration }}</label>
+                    {% text_field "duration_chronic", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_time_zone">{{ t_forms_time_zone }}</label>
+                    {% select_field "time_zone", event_page.time_zones, class:"custom-select" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_capacity_count">{{ t_events_max_capacity }}</label>
+                    {% text_field "capacity_count", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="h6 text-sans-serif font-weight-semi-bold my-3">{{ t_contact_info }}</h4>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_contact_name">{{ t_forms_full_name }}</label>
+                    {% text_field "contact_name", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-12 col-md">
+                  <div class="float-label">
+                    <label for="event_page_contact_email">{{ t_forms_email }}</label>
+                    {% text_field "contact_email", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="float-label">
+                    <label for="event_page_contact_phone_number">{{ t_forms_phone }}</label>
+                    {% text_field "contact_phone_number", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "is_contact_email_private", class: "custom-control-input" %}
+                    <label for="event_page_is_contact_email_private" class="custom-control-label">{{ t_forms_dont_publish_email }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "is_contact_phone_private", class:"custom-control-input" %}
+                    <label for="event_page_is_contact_phone_private" class="custom-control-label">{{ t_forms_dont_publish_phone }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="h6 text-sans-serif font-weight-semi-bold my-3">{{ t_events_location }}</h4>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" id="event_page_is_virtual_event" type="checkbox" {% if virtual_event %}checked="checked"{% endif %}/>
+                    <label for="event_page_is_virtual_event" class="custom-control-label">{{ t_events_is_virtual_event }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="float-label">
+                    <label for="event_page_venue_name" data-virtual-label="{{ t_events_event_url }}">{{ t_events_venue_name }}</label>
+                    {% text_field "venue_name", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              {% include "event_venue_address_inputs" virtual_event:virtual_event %}
+
+              <h4 class="h6 text-sans-serif font-weight-semi-bold my-3">{{ t_events_ticket_price }}</h4>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <div class="float-label">
+                    <label for="event_page_user_ticket_currency">{{ t_events_currency }}</label>
+                    {% select_field "user_ticket_currency", event_page.currencies_available, class:"form-control" %}
+                  </div>
+                </div>
+                <div class="form-group col-md-6">
+                  <div class="float-label">
+                    <label for="event_page_user_ticket_price">{{ t_forms_amount }}</label>
+                    {% text_field "user_ticket_price", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="float-label">
+                    <label for="event_page_user_ticket_purchase_url">{{ t_events_ticket_purchase_url }}</label>
+                    {% text_field "user_ticket_purchase_url", class:"form-control" %}
+                  </div>
+                </div>
+              </div>
+
+              <h4 class="h6 text-sans-serif font-weight-semi-bold my-3">{{ t_events_description }}</h4>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  {% text_area "content_editable", class:"textarea-tinymce" %}
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "accept_rsvps", class:"custom-control-input" %}
+                    <label for="event_page_accept_rsvps" class="custom-control-label">{{ t_events_allow_rsvp }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "allow_guests", class:"custom-control-input" %}
+                    <label for="event_page_allow_guests" class="custom-control-label">{{ t_events_allow_guests }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "show_guests", class:"custom-control-input" %}
+                    <label for="event_page_show_guests" class="custom-control-label">{{ t_events_show_who_is_coming }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col">
+                  <div class="custom-control custom-checkbox">
+                    {% check_box "is_private", class:"custom-control-input" %}
+                    <label for="event_page_is_private" class="custom-control-label">{{ t_events_hide_rsvp_page }}</label>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                {% include "form_submit_tag" label:t_forms_save %}
+              </div>
+            </div>
+          </div>
+          {% endform_for %}
+          </div>
+       </div>
+    </div>
+  </div>
+</div>

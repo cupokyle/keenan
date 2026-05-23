@@ -1,0 +1,105 @@
+.of-cover {
+  object-fit: cover;
+  object-position: center;
+}
+
+#fcs {
+  a:hover {
+    text-decoration: none;
+  }
+}
+
+.fcs-img-shadow {
+  filter: drop-shadow(0px 9px 9px rgba(0, 0, 0, 0.15));
+}
+
+.carousel-indicators {
+  li {
+    background-color: transparent;
+    width: 60px;
+    height: 6px;
+
+    span {
+      display: block;
+      height: 6px;
+      border-radius: 6px;
+      background-color: white;
+    }
+  }
+}
+
+.page-features-container {
+  @include media-breakpoint-down(sm) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.page-features {
+  body.bg-image & {
+    max-width: 100%;
+    @include media-breakpoint-up(md) {
+      max-width: 720px !important;
+    }
+    @include media-breakpoint-up(lg) {
+      max-width: 900px !important;
+    }
+    @include media-breakpoint-up(xl) {
+      max-width: 1140px !important;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__content-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &--img-only {
+    body.bg-image & {
+      @include media-breakpoint-up(lg) {
+        top: 134px;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      .carousel-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+      }
+
+      .carousel-item {
+        height: 100%;
+      }
+    }
+  }
+
+  &__img-placeholder {
+    body.bg-image & {
+      max-width: 1080px !important;
+    }
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}

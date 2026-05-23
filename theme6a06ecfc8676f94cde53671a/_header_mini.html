@@ -1,0 +1,11 @@
+<header class="card">
+  <div class="card-body">
+    <a class="navbar-brand" href="/">
+      {% if site.has_meta_image? %}
+        <img src="{{ site.meta_image_url }}" class="navbar-brand-img mw-100" alt="{{ site.long_name }}"/>
+      {% else %}
+        {{ site.long_name }}
+      {% endif %}
+    </a>
+  </div>
+</header>

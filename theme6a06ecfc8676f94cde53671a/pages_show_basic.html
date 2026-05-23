@@ -1,0 +1,67 @@
+<style>
+  /* hide body content while template loads */
+  .page-type-basic {
+    opacity: 0;
+  }
+</style>
+
+{% assign ignore_ab_template = false %}
+{% assign ignore_ab_background = false %}
+
+{% if page.tags_count > 0 %}
+  {% for tag in page.tags %}
+    {% if tag.name == "ignore ab template" %}
+      {% assign ignore_ab_template = true %}
+      {% break %}
+    {% endif %}
+    {% if tag.name == "ignore ab background" %}
+      {% assign ignore_ab_background = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% assign has_actionbutton = false %}
+{% if page.basic.content contains 'embed.actionbutton.co' %}
+	{% assign has_actionbutton = true %}
+{% endif %}
+
+{% if has_actionbutton and ignore_ab_template == false %}
+  {% include "actionbutton_basic_template", ignore_ab_background: ignore_ab_background %}
+{% else %}
+  {% include "social_share_widget" %}
+
+  <div class="page">
+    <div class="page-inner{% unless page.basic.content.size > 0 %}{% if page.is_homepage? %} pt-0{% endif %}{% endunless %}{% if page.is_homepage? == true and site.page_tags contains 'homepage' and page.show_stream? == false %} pb-0{% endif %}">
+      {% include "breadcrumbs" %}
+      <div class="row justify-content-center">
+        <div class="{% if page.is_homepage? == true and site.page_tags contains 'homepage' %}col{% else %}col-lg-9{% endif %}">
+
+          {% if page.headline.size > 0 %}
+            <h2 class="page-headline">{{ page.headline }}</h2>
+          {% endif %}
+
+          {% if page.basic.content.size > 0 %}
+            <div class="page-content">
+              {{ page.basic.content }}
+            </div>
+          {% endif %}
+
+          {% include "page_tags" with page %}
+
+          {% if page.is_homepage? == true and site.page_tags contains "homepage" %}
+            {% tag "homepage" with "homepage_widget" %}
+          {% endif %}
+
+          {% if page.show_stream? %}
+            {% include "page_stream" %}
+          {% endif %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelector('.page-type-basic').style.opacity = 1;
+  </script>
+{% endif %}

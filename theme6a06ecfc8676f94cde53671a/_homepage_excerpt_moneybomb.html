@@ -1,0 +1,42 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="m-0 h3">{{ page.headline }}</h2>
+        {% endif %}
+        <div class="card card-lg{% if page.headline.size > 0 %} mt-5{% endif %}">
+          <div class="card-body">
+            {% if page.moneybomb.has_amount_goal? or page.moneybomb.has_pledger_goal? %}
+              {% if page.moneybomb.has_amount_goal? %}
+                <p class="mb-3 h5 text-sans-serif font-weight-semi-bold">{{ t_moneybomb_amount_pledged_of_goal }}</p>
+                {% include "progress"
+                  percent: page.moneybomb.percent_of_amount_goal,
+                  amount: page.pledges_amount_format,
+                  goal: page.moneybomb.amount_goal_format,
+                %}
+              {% elsif page.moneybomb.has_pledger_goal? %}
+                <p class="mb-3 h5 text-sans-serif font-weight-semi-bold">{{ t_moneybomb_amount_pledged_of_goal }}</p>
+                {% include "progress"
+                  percent: page.moneybomb.percent_of_pledger_goal,
+                  count: page.pledges_count,
+                  goal: page.moneybomb.pledger_goal,
+                %}
+              {% endif %}
+              <hr>
+            {% endif %}
+            <div class="form-row">
+              {% for amount in page.moneybomb.amounts %}
+                <div class="form-group col-sm-6 col-lg-4">
+                  <a href="{{ page.url }}?amount={{ amount }}" class="btn btn-secondary btn-lg btn-block">{{ page.moneybomb.currency_symbol }}{{ amount }}</a>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

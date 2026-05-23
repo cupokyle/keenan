@@ -1,0 +1,18 @@
+.social-slider {
+  display: flex;
+  padding: 0 0.625rem;
+  overflow: hidden;
+
+  & > * {
+    margin: 0 0.625rem 0.5rem;
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-left: auto;
+    }
+
+    &:last-child {
+      margin-right: auto;
+    }
+  }
+}

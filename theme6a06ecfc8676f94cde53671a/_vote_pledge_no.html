@@ -1,0 +1,64 @@
+{% include "translation" %}
+
+{% form_for vote_pledge %}
+
+  <p class="font-weight-semi-bold">{{ t_pledge_no_will_not_vote_support }}</p>
+
+  {% if page.vote_pledge.no_content.size > 0 %}
+    {{ page.vote_pledge.no_content }}
+  {% endif %}
+
+  {% hidden_field_tag "vote_pledge[will_vote_status]", "-1" %}
+
+  <div class="form-errors">{% error_messages_for vote_pledge %}</div>
+
+  {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
+    <div class="form-row">
+      <div class="form-group col-12 col-md">
+        <div class="float-label">
+          <label for="vote_pledge_first_name">{{ t_forms_first_name }}</label>
+          {% text_field "first_name", class:"form-control" %}
+        </div>
+      </div>
+
+      <div class="form-group col-12 col-md">
+        <div class="float-label">
+          <label for="vote_pledge_last_name">{{ t_forms_last_name }}</label>
+          {% text_field "last_name", class:"form-control" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if request.sorta_logged_in? == false or request.current_signup.has_mobile? == false %}
+    <div class="form-group">
+      <div class="float-label">
+        <label for="vote_pledge_email">{{ t_forms_email }}</label>
+        {% email_field "email", class:"form-control" %}
+      </div>
+    </div>
+  {% endif %}
+
+  {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
+    {% if request.is_sidebar? %}
+      {% assign wide = false %}
+    {% else %}
+      {% assign wide = true %}
+    {% endif %}
+    {% include "page_address_inputs" wide: wide %}
+  {% endif %}
+
+  <div class="form-group">
+    <div class="custom-control custom-checkbox">
+      {% check_box "do_not_contact", class:"custom-control-input" %}
+      <label class="custom-control-label" for="vote_pledge_do_not_contact">{{ t_forms_do_not_contact_me }}</label>
+    </div>
+  </div>
+
+  {% if page.show_consent_form? %}
+    {% include "consent_form" %}
+  {% endif %}
+
+  {% include "form_submit_tag", label: t_forms_save %}
+
+{% endform_for %}

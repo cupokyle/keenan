@@ -1,0 +1,107 @@
+{% assign tags_list = "" %}
+{% for tag in page.tags %}
+  {% assign tags_list = tag.name | downcase | append: ", " | append: tags_list %}
+{% endfor %}
+
+{% assign homepage_tags_list = "" %}
+{% for tag in site.homepage.tags %}
+  {% assign homepage_tags_list = tag.name | downcase | append: ", " | append: homepage_tags_list %}
+{% endfor %}
+
+{% unless tags_list contains "hide share widget" or homepage_tags_list contains "site: hide share widget" or page.is_homepage? %}
+  {% include 'translation' %}
+  {% capture share_url %}{% if request.sorta_logged_in? %}{{ page.full_url_with_recruiter }}{% else %}{{ page.full_url }}{% endif %}{% endcapture %}
+  <div class="social-share-widget-wrap">
+    <div class="social-share-widget">
+      <ul class="social-share-widget__menu-list list-unstyled" aria-hidden="false">
+        <li>
+          <a class="social-share-widget__copy-link" href="#" aria-label="{{ t_copy_link }}" data-copied-msg="{{ t_social_link_copied }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15.75 15.7493h4.5V3.74927h-12v4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.75 8.24951h-12V20.2495h12V8.24951z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <input id="shareLinkInput" type="text" value="{{ share_url }}" style="position:absolute;left:-99999px;"/>
+        </li>
+        <li>
+          <a href="mailto:?body={{ share_url }}" aria-label="{{ t_social_email }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M21 5.25l-9 8.25-9-8.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3 5.25h18V18c0 .1989-.079.3897-.2197.5303-.1406.1407-.3314.2197-.5303.2197H3.75c-.19891 0-.38968-.079-.53033-.2197C3.07902 18.3897 3 18.1989 3 18V5.25zM10.3638 12l-7.13235 6.538M20.7687 18.5381L13.6362 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="{{ page.tweet_url }}" aria-label="{{ t_social_tweet }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22.5006 5.68701c-.8165 1.16893-1.8351 2.18264-3.008 2.9934V8.6804c-.0743 2.0504-.6728 4.0475-1.7385 5.8008-1.0657 1.7533-2.563 3.2041-4.3489 4.214-1.786 1.0099-3.80102 1.5452-5.85273 1.5548-2.05171.0095-4.07163-.507-5.86692-1.5002l.00061-.0011c2.34435-.0325 4.62727-.7544 6.56408-2.0757l-.00008.0001c-2.07327-1.4131-3.65234-3.4396-4.51583-5.7953-.86349-2.35579-.9681-4.92272-.29916-7.34093l-.00004.00002c.9581 1.47549 2.22894 2.72224 3.72249 3.65193 1.49355.9297 3.17328 1.51958 4.92018 1.72786l-.0003.00006c-.1839-.87693-.0479-1.79075.3835-2.57607s1.1297-1.39025 1.9685-1.70532c.8388-.31507 1.7627-.31946 2.6045-.01238.8417.30709 1.5457.90536 1.9846 1.68655v.00041c1.185-.03536 2.3583-.24526 3.482-.62292" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="http://www.facebook.com/share.php?u={{ share_url }}" aria-label="{{ t_social_share_on_facebook }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21c4.9706 0 9-4.0294 9-9 0-4.97056-4.0294-9-9-9-4.97056 0-9 4.02944-9 9 0 4.9706 4.02944 9 9 9z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M15.75 8.25h-1.5c-.5967 0-1.169.23705-1.591.65901C12.2371 9.33097 12 9.90326 12 10.5V21M9 13.5h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://api.whatsapp.com/send?text={{ share_url }}" aria-label="{{ t_social_share_on_whatsapp }}">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16.552 14.047c-.055-.093-.204-.149-.43-.26-.223-.112-1.324-.652-1.53-.726-.205-.074-.354-.112-.504.112-.149.223-.579.725-.709.874-.13.148-.261.167-.485.055-.224-.112-.946-.346-1.801-1.106-.666-.591-1.116-1.32-1.246-1.544-.13-.223-.013-.344.098-.455.101-.1.224-.26.336-.39.114-.13.15-.223.226-.372.075-.148.038-.279-.019-.39-.056-.112-.504-1.209-.69-1.655-.182-.434-.367-.376-.504-.383l-.43-.007a.822.822 0 00-.596.279c-.205.223-.784.762-.784 1.859s.802 2.157.914 2.306c.112.148 1.579 2.4 3.825 3.365.534.23.952.367 1.277.47.536.169 1.025.145 1.41.088.43-.064 1.325-.54 1.512-1.06.187-.521.187-.967.13-1.06z" fill="currentColor"/><path d="M4.26 16.592a9 9 0 113.148 3.149h0l-3.11.888a.75.75 0 01-.927-.928l.889-3.11h0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </li>
+      </ul>
+      <button class="social-share-widget__menu-toggle" aria-label="{{ t_social_share }}">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16.5 14.25l4.5-4.5-4.5-4.5M18 20.25H3.75c-.19891 0-.38968-.079-.53033-.2197C3.07902 19.8897 3 19.6989 3 19.5V8.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M7.03369 16.5c.49951-1.932 1.62665-3.6433 3.20441-4.865 1.5777-1.2218 3.5166-1.88485 5.512-1.885h5.25" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 21c4.9706 0 9-4.0294 9-9 0-4.97056-4.0294-9-9-9-4.97056 0-9 4.02944-9 9 0 4.9706 4.02944 9 9 9z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10"/>
+          <path d="M15 9l-6 6M15 15L9 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    $(function(){
+      var copyText = document.getElementById("shareLinkInput");
+      var $copyLink = $('.social-share-widget__copy-link');
+      var $shareWidget = $('.social-share-widget');
+      var $shareWidgetList = $('.social-share-widget__menu-list');
+      var shareWidgetClosed = true;
+      function resizeShareWidget() {
+        var $vw = $(window).width();
+        if ($vw < 1130) {
+          $shareWidget.remove('opened').addClass('closed');
+          $shareWidgetList.attr('aria-hidden',true);
+        } else {
+          $shareWidget.removeClass('opened closed');
+          $shareWidgetList.attr('aria-hidden',false);
+        }
+      }
+      $('.social-share-widget__menu-toggle').on('click', function() {
+        shareWidgetClosed = !shareWidgetClosed;
+        $shareWidget.toggleClass('opened closed');
+        $shareWidgetList.attr('aria-hidden',shareWidgetClosed);
+      })
+      $copyLink.on('mouseleave', function(e){
+        $copyLink.removeClass('copied');
+      });
+      $copyLink.on('click',function(e) {
+        e.preventDefault();
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        $copyLink.addClass('copied');
+        setTimeout(function() { $copyLink.removeClass('copied'); }, 3000);
+      });
+      $(window).resize(resizeShareWidget);
+      resizeShareWidget();
+    });
+  </script>
+{% endunless %}

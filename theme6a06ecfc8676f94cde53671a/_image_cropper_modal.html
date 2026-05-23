@@ -1,0 +1,20 @@
+{% include "translation" %}
+<div id="imgCropperModal" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="{{ modal_id }}-label" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ t_close }}"></button>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="imgCropperModal-label">{{ t_forms_crop_your_image }}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="img-container mb-3">
+          <img id="image" class="img-cropper__placeholder invisible" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" width="640" height="480" />
+        </div>
+      </div>
+      <div class="modal-footer justify-content-start">
+        <button type="button" class="btn btn-primary img-cropper__submit-btn">{{ t_forms_crop }}</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ t_forms_cancel }}</button>
+      </div>
+    </div>
+  </div>
+</div>

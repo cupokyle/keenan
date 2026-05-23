@@ -1,0 +1,29 @@
+{% if tag %}
+  {% for item in tag.most_recent_updated_pages_no_pagination limit:1 %}
+    <article class="row align-items-center mt-5 flex-column-reverse flex-md-row">
+      <div class="col-12{% if item.has_meta_image? %} col-md-6 pr-3{% else %} col-lg-10 mx-auto{% endif %}">
+        <h2 class="h2 mb-3"><a href="{{ item.url }}">{{ item.headline }}</a></h2>
+        {{ item.blog_post.content }}
+        {% include 'page_byline' author: item.author, published_at: item.published_at %}
+      </div>
+      {% if item.has_meta_image? %}
+        <div class="col col-md-6 mb-4 mb-md-0">
+          <a href="{{ item.url }}"><img src="{{ item.meta_image_url }}" class="rounded mw-100 h-auto shadow" /></a>
+        </div>
+      {% endif %}
+    </article>
+  {% endfor %}
+{% else %}
+  <article class="row align-items-center mt-5">
+    <div class="col-12{% if post.has_meta_image? %} col-md-6 pr-3{% else %} col-lg-10 mx-auto{% endif %}">
+      <h2 class="h2 mb-3"><a href="{{ post.url }}">{{ post.headline }}</a></h2>
+      {{ post.blog_post.content }}
+      {% include 'page_byline' author: post.author, published_at: post.published_at %}
+    </div>
+    {% if post.has_meta_image? %}
+      <div class="col col-md-6 mb-4 mb-md-0">
+        <a href="{{ post.url }}"><img src="{{ post.meta_image_url }}" class="rounded mw-100 h-auto shadow" /></a>
+      </div>
+    {% endif %}
+  </article>
+{% endif %}

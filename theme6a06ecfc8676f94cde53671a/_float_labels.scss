@@ -1,0 +1,127 @@
+%float-label-style,
+.text-float-label {
+  font-weight: 700;
+  font-size: 0.933333333rem;
+  font-size: $font-size-base * .7;
+}
+
+.float-label {
+  position: relative;
+
+  &.disabled {
+    opacity: 0.4;
+  }
+
+  label {
+    @include text-truncate;
+    max-width: calc(100% - (#{$input-padding-x} * 2));
+    position: absolute;
+    margin-bottom: 0;
+    padding: 0 0.3125rem;
+    top: $input-padding-y;
+    left: calc(#{$input-padding-x} - 0.2rem);
+    border-radius: 100px;
+    pointer-events: none;
+    color: #474849;
+    transition: all 100ms;
+    z-index: 1;
+  }
+
+  &.float-label-sm label {
+    top: $input-padding-y-sm;
+    left: calc(#{$input-padding-x-sm} - 0.2rem);
+  }
+
+  &.float-label-lg label {
+    top: $input-padding-y-lg;
+    left: calc(#{$input-padding-x-lg} - 0.2rem);
+    font-size: $font-size-lg;
+  }
+
+  input {
+
+    &::placeholder {
+      color: transparent;
+    }
+
+    &:focus {
+      background-color: #ffffff;
+    }
+  }
+
+  &.float-label-active {
+
+    label {
+      @extend %float-label-style;
+      top: 0;
+      transform: translateY(-50%);
+      background-color: #ffffff;
+    }
+
+    &:focus-within label {
+      color: $primary
+    }
+
+    select {
+      color: $custom-select-color;
+    }
+  }
+}
+
+.form-group.is-invalid {
+  .float-label.float-label-active label {
+    color: #DD4C4C;
+  }
+}
+
+.custom-file {
+
+  &::before {
+    content: attr(data-label);
+    display: block;
+    font-family: $input-font-family;
+    @include font-size($input-font-size);
+    font-weight: $input-font-weight;
+    line-height: $input-line-height;
+    position: absolute;
+    margin-bottom: 0;
+    max-width: calc(calc(100% - 100px) - calc((#{$input-padding-x} - 0.2rem) * 2));
+    padding: 0 0.3125rem;
+    top: $input-padding-y;
+    left: calc(#{$input-padding-x} - 0.2rem);
+    border-radius: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    color: #474849;
+    transition: all 100ms;
+    z-index: 100;
+
+    html[lang="es"] & {
+      max-width: calc(calc(100% - 106px) - calc((#{$input-padding-x} - 0.2rem) * 2));
+    }
+
+    html[lang="fr"] & {
+      max-width: calc(calc(100% - 132px) - calc((#{$input-padding-x} - 0.2rem) * 2));
+    }
+  }
+
+
+  &.custom-file-active::before {
+    top: 0;
+    transform: translateY(-50%);
+    font-weight: 700;
+    font-size: 0.933333333rem;
+    font-size: $font-size-base * .7; // 14px
+    background-color: #ffffff;
+  }
+
+  &.custom-file-active:focus-within::before {
+    color: $primary
+  }
+
+  &:not(.custom-file-active) .custom-file-label {
+    color: transparent;
+  }
+}

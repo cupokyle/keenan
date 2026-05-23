@@ -1,0 +1,17 @@
+{% include "translation" %}
+{% assign label = label | default: t_forms_submit %}
+{% assign full_width = full_width | default: false %}
+{% assign size = size | default: false %}
+{% capture loader_classes %}
+btn-loader{% if full_width == true %} w-100{% endif %}
+{% endcapture %}
+{% capture submit_classes %}
+btn btn-primary btn-submit{% if full_width == true %} btn-block{% endif %}{% if size %} btn-{{ size }}{% endif %}
+{% endcapture %}
+<div class="{{ loader_classes | strip_newlines | strip }}">
+  <div class="form-submit"></div>
+  {% assign submit_disabled = page.donation_v2.submit_disabled_attribute %}
+  {% submit_tag label, class: submit_classes, disabled:submit_disabled %}
+</div>
+
+{% assign full_width = false %}

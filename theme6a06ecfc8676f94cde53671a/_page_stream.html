@@ -1,0 +1,81 @@
+{% include "translation" %}
+
+{% if page.public_activities_count > 0 or page.is_commentable? %}
+  <div class="page-stream bg-light rounded-xl mx-n4 mx-md-auto">
+    {% if page.is_commentable? and page.type_name != 'Petition' %}
+      <div class="px-4 px-md-5 py-5 bg-info rounded-xl">
+        {% unless request.logged_in? %}
+          <h3 class="mt-0 mb-4 text-serif h4 font-weight-medium">{{ t_activity_sigin_in_to_comment }}</h3>
+          <div class="user-session-form-container">
+            {% include "user_session_form" wide: true %}
+          </div>
+        {% else %}
+          <h3 class="mt-0 mb-4 text-serif h4 font-weight-medium">
+            {% if page.public_activities_count < 1 %}
+              {{ t_activity_be_first_comment }}
+            {% else %}
+              {{ t_activity_leave_comment }}
+            {% endif %}
+          </h3>
+          <button class="comment-trigger" data-toggle="collapse" data-target="#commentForm" aria-expanded="false" aria-controls="commentForm">
+            {{ t_activity_write_response }}
+          </button>
+          {% form_for comment %}
+            <input type="hidden" class="text" id="pending_object_id" name="pending_object_id" value="{{ request.pending_object_id }}"/>
+            <div class="form-errors">{% error_messages_for comment %}</div>
+            <div class="comment collapse" id="commentForm">
+              <div class="auto-grow">
+                {% text_area "content", class:"form-control textarea" %}
+              </div>
+              <div class="comment-footer">
+                {% if page.type_name == 'Suggestion' %}
+                  {% if page.suggestion.suggestion_box_tag_names.size > 0 %}
+                    <div class="mb-2 tag-page">
+                      <strong class="mb-1 d-block">{{ t_how_would_you_tag_this_suggestion }}</strong>
+                      {% include "suggestion_tag_list" %}
+                    </div>
+                  {% endif %}
+                {% endif %}
+                <div class="d-md-flex align-items-center">
+                  {% if request.logged_in? %}
+                    {% include "form_submit_tag" label:t_forms_post_your_comment %}
+                  {% else %}
+                    {% submit_tag t_forms_post_your_comment, class:"btn btn-primary submit-button", disabled: "disabled" %}
+                  {% endif %}
+                  {% if request.logged_in? %}
+                    <div class="comment-user">
+                      <div class="media">
+                        {% include "avatar" signup: request.current_signup, size: 30, class: "mr-2" %}
+                        <div class="media-body">
+                          {{ t_account_not_you_sign_out }}
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endform_for %}
+        {% endunless %}
+      </div>
+    {% endif %}
+
+    {% if page.public_activities_count > 0 %}
+      <div id="reactions" class="px-4 px-md-5 py-5">
+        {% include "featured_endorsements" %}
+        <div class="flex-wrap mb-4 d-flex align-items-center justify-content-between">
+          <h3 class="my-0 mr-4 text-serif h4 font-weight-medium">{{ t_activity_recent_responses }}</h3>
+          <div class="page-follow" id="page_follow_{{ page.id }}">
+            {% include "page_follow" %}
+          </div>
+        </div>
+        <ul id="page-stream" class="space-y-4 list-unstyled">
+          {% for activity in page.activities %}
+            {% include "activity_show" i18n:current_language %}
+          {% endfor %}
+        </ul>
+        {{ page.activities | paginate prev_label: t_prev next_label: t_next }}
+      </div>
+    {% endif %}
+  </div>
+{% endif %}

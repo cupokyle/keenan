@@ -1,0 +1,77 @@
+{% case homepage_excerpt.type_name %}
+  {% comment %} Activity stream page {% endcomment %}
+  {% when "Activity Stream" %}
+    {% include "homepage_excerpt_activity_stream" page: homepage_excerpt %}
+  {% comment %} Basic page {% endcomment %}
+  {% when "Basic" %}
+    {% include "homepage_excerpt_basic" page: homepage_excerpt %}
+  {% comment %} Blog page {% endcomment %}
+  {% when "Blog" %}
+    {% include "homepage_excerpt_blog" page: homepage_excerpt %}
+  {% comment %} Blog post page {% endcomment %}
+  {% when "Blog Post" %}
+    {% include "homepage_excerpt_blog_post" page: homepage_excerpt %}
+  {% comment %} Calendar page {% endcomment %}
+  {% when "Calendar" %}
+    {% include "homepage_excerpt_calendar" page: homepage_excerpt %}
+  {% comment %} Directory page {% endcomment %}
+  {% when "Directory" %}
+    {% include "homepage_excerpt_directory" page: homepage_excerpt %}
+  {% comment %} Donation page {% endcomment %}
+  {% when "Donation" %}
+    {% include "homepage_excerpt_donation" page: homepage_excerpt %}
+  {% comment %} Donation page v2 {% endcomment %}
+  {% when "Donation (v2)" %}
+    {% include "homepage_excerpt_donation_v2" page: homepage_excerpt %}
+  {% comment %} Endorsement page {% endcomment %}
+  {% when "Endorsement" %}
+    {% include "homepage_excerpt_endorsement" page: homepage_excerpt %}
+  {% comment %} Event page {% endcomment %}
+  {% when "Event" %}
+    {% include "homepage_excerpt_event" page: homepage_excerpt %}
+  {% comment %} FAQ page {% endcomment %}
+  {% when "FAQ" %}
+    {% include "homepage_excerpt_faq" page: homepage_excerpt %}
+  {% comment %} Feedback page {% endcomment %}
+  {% when "Feedback" %}
+    {% include "homepage_excerpt_feedback" page: homepage_excerpt %}
+  {% comment %} Leaderboard page {% endcomment %}
+  {% when "Leaderboard" %}
+    {% include "homepage_excerpt_leaderboard" page: homepage_excerpt %}
+  {% comment %} Moneybomb page {% endcomment %}
+  {% when "Moneybomb" %}
+    {% include "homepage_excerpt_moneybomb" page: homepage_excerpt %}
+  {% comment %} Petition page {% endcomment %}
+  {% when "Petition" %}
+    {% include "homepage_excerpt_petition" page: homepage_excerpt %}
+  {% comment %} Press release page {% endcomment %}
+  {% when "Press Release" %}
+    {% include "homepage_excerpt_press_release" page: homepage_excerpt %}
+  {% comment %} Question page {% endcomment %}
+  {% when "Question" %}
+    {% include "homepage_excerpt_question" page: homepage_excerpt %}
+  {% comment %} Recruiting page {% endcomment %}
+  {% when "Recruiting" %}
+    {% include "homepage_excerpt_recruiting" page: homepage_excerpt %}
+  {% comment %} Rules page {% endcomment %}
+  {% when "Rules" %}
+    {% include "homepage_excerpt_rules" page: homepage_excerpt %}
+  {% comment %} Signup page {% endcomment %}
+  {% when "Signup" %}
+    {% include "homepage_excerpt_signup" page: homepage_excerpt %}
+  {% comment %} Suggestion box page {% endcomment %}
+  {% when "Suggestion Box" %}
+    {% include "homepage_excerpt_suggestion_box" page: homepage_excerpt %}
+  {% comment %} Suggestion page {% endcomment %}
+  {% when "Suggestion" %}
+    {% include "homepage_excerpt_suggestion" page: homepage_excerpt %}
+  {% comment %} Survey page {% endcomment %}
+  {% when "Survey" %}
+    {% include "homepage_excerpt_survey" page: homepage_excerpt %}
+  {% comment %} Volunteer signup page {% endcomment %}
+  {% when "Volunteer Signup" %}
+    {% include "homepage_excerpt_volunteer_signup" page: homepage_excerpt %}
+  {% comment %} Vote pledge page {% endcomment %}
+  {% when "Vote Pledge" %}
+    {% include "homepage_excerpt_vote_pledge" page: homepage_excerpt %}
+  {% endcase %}

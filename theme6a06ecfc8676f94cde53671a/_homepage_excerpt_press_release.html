@@ -1,0 +1,38 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <header class="mb-3 header">
+          {% if page.has_author? %}
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <strong>{{ t_contact }}:</strong> {{ page.author.published_name }}
+              </li>
+              {% if page.author.has_phone? %}
+                <li class="breadcrumb-item">
+                  <a href="tel:{{ page.author.phone_number }}" class="tel">
+                    {{ page.author.phone_format }}
+                  </a>
+                </li>
+              {% endif %}
+              {% if page.author.has_email? %}
+                <li class="breadcrumb-item">
+                  {{ page.author.email | enkode_email }}
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
+          {% if page.headline.size > 0 %}
+            <h2 class="mt-3 mb-0 h3">{{ page.headline }}</h2>
+          {% endif %}
+        </header>
+        {{ page.press_release.content | truncatewords: 80 }}
+        <div class="mt-4">
+          <a href="{{ page.url }}">{{ t_excerpt_read_more }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

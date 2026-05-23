@@ -1,0 +1,25 @@
+#breadcrumb {
+  margin-top: 1.875rem;
+  margin-bottom: 3.75rem;
+
+  .featured-content &,
+  .has-header-image & {
+    margin-top: 3.125rem;
+  }
+}
+
+.breadcrumb {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
+.breadcrumb-item {
+  font-size: 0.875rem;
+  font-family: $font-family-monospace;
+  font-weight: $font-weight-normal;
+
+  a {
+    color: $breadcrumb-divider-color;
+  }
+}

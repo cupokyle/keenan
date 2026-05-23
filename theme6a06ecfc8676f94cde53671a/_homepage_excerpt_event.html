@@ -1,0 +1,39 @@
+<div class="bg-dark py-3 py-lg-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h2 class="h1 mb-4">
+          <a href="{{ homepage_excerpt.url }}" class="text-white">
+            {% unless homepage_excerpt.headline %}
+              {{ t_events_featured_event }}
+            {% else %}
+              {{ homepage_excerpt.headline }}
+            {% endunless %}
+          </a>
+        </h2>
+        <div class="d-flex align-items-center text-white mb-3 mb-lg-5">
+          <div class="cal-icon">
+            {% include "date_format" date:homepage_excerpt.event.local_start_at %}
+            <div class="cal-icon-month">{{ month_abbr }}</div>
+            <div class="cal-icon-day">{{ day }}</div>
+          </div>
+          <div class="ml-2">
+            <span class="h5 text-sans-serif">
+              {% capture start %}{% include "date_format" date:homepage_excerpt.event.local_start_at %}{{full_datetime}}{% endcapture %}
+              {% if homepage_excerpt.event.is_multi_day? %}
+                {% capture end %}{% include "date_format" date:homepage_excerpt.event.local_end_at %}{{mdy_date}}{% endcapture %}
+                {{ t_events_multi_day_date | replace: '$start', start | replace: '$end': end }}
+              {% else %}
+                {{ start }}
+              {% endif %}
+            </span>
+          </div>
+        </div>
+        {% include "event_details" page:homepage_excerpt %}
+      </div>
+      <div class="col-lg-6">
+        {% include "event_form" page:homepage_excerpt %}
+      </div>
+    </div>
+  </div>
+</div>

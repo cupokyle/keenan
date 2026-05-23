@@ -1,0 +1,88 @@
+{% include "translation" %}
+
+{% if request.sorta_logged_in? and request.current_signup.has_a_login? == true %}
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h4 mb-4">{{ t_forms_verify_password }}</h2>
+      {% form_for user_session %}
+        <div class="form-errors">{% error_messages_for user_session %}</div>
+        {% hidden_field_tag "user_session[email]", request.current_signup.email %}
+        {% include "form_submit_tag" label:t_forms_sign_in_with_password %}
+      {% endform_for %}
+    </div>
+  </div>
+{% elsif request.sorta_logged_in? and request.current_signup.has_a_login? == false and settings.allow_account_creation? %}
+  <div class="card">
+    <div class="card-body">
+      <h2 class="h4 mb-4">{{ t_forms_activate_account }}</h2>
+      {% form_for account %}
+        {% hidden_field_tag "account[email]", request.current_signup.email %}
+        {% include "form_submit_tag" label:t_forms_email_account_activation_instructions %}
+      {% endform_for %}
+    </div>
+  </div>
+{% elsif settings.allow_account_creation? %}
+  <div class="tabs">
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-signin-tab" data-toggle="tab" href="#nav-signin" role="tab" aria-controls="nav-signin" aria-selected="true"><span>{{t_forms_sign_in}}</span></a>
+        <a class="nav-link" id="nav-signup-tab" data-toggle="tab" href="#nav-signup" role="tab" aria-controls="nav-signup" aria-selected="false"><span>{{ t_forms_sign_up}}</span></a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-signin" role="tabpanel" aria-labelledby="nav-signin-tab">
+        {% form_for user_session %}
+          <div class="form-errors" id="session-errors">{% error_messages_for user_session %}</div>
+          <div class="form-group">
+            <div class="float-label">
+              <label for="user_session_email">{{ t_forms_email_address }}</label>
+              {% email_field "email", class:"form-control", aria: { describedby: "session-errors" } %}
+            </div>
+          </div>
+
+          {% include "form_submit_tag" label:t_forms_sign_in full_width:true %}
+
+          <div class="text-center mt-3">
+            <small><a href="{{ request.new_password_reset_url }}">{{ t_forms_forgot_your_password }}</a></small>
+          </div>
+        {% endform_for %}
+      </div>
+
+      <div class="tab-pane fade" id="nav-signup" role="tabpanel" aria-labelledby="nav-signup-tab">
+        {% form_for account %}
+          <div class="form-errors" id="account-errors">{% error_messages_for account %}</div>
+          <div class="form-group">
+            <div class="float-label">
+              <label for="account_email">{{ t_forms_email_address }}</label>
+              {% email_field "email", class:"form-control", aria: { describedby: "account-errors" } %}
+            </div>
+          </div>
+
+          {% include "form_submit_tag" label:t_forms_send_account_activation_link %}
+
+        {% endform_for %}
+      </div>
+    </div>
+  </div>
+{% else %}
+  <div class="card">
+    <div class="card-body">
+      <a href="{{ request.new_user_session_url }}">{{t_forms_sign_in}}</a>
+    </div>
+  </div>
+{% endif %}
+
+<script>
+$(function () {
+  function getUrlParameter(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  };
+
+  if (getUrlParameter('tab') && getUrlParameter('tab') === 'signup') {
+    $('#nav-signup-tab').tab('show');
+  }
+});
+</script>

@@ -1,0 +1,43 @@
+{% include "translations" %}
+<article class="card">
+  <div class="card-header">
+    <div class="d-md-flex justify-content-between">
+      <div class="media media-signup">
+        {% include "avatar" signup: signup, size: 48 %}
+        <div class="media-body d-flex flex-wrap align-items-center">
+          <span class="font-weight-semi-bold mr-1">{{ signup.published_name_linked }}</span>
+          <span class="badge badge-pill badge-black">{{ signup.capital_amount_format }}</span>
+        </div>
+      </div>
+      {% if request.logged_in? %}
+        <div class="mt-3 mt-md-0 text-md-right" id="signup_follow_{{ signup.id }}">
+          {% include "signup_follow" with signup %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if signup.has_bio? or signup.has_facebook_info? or signup.has_twitter_info? or signup.is_profile_published? %}
+  <div class="card-body">
+    {% if signup.has_bio? %}
+      <p>{{ signup.bio }}</p>
+    {% endif %}
+    <ul class="breadcrumb">
+      {% if signup.is_profile_published? %}
+        <li class="breadcrumb-item">
+          <a href="{{ signup.profile_url }}">{{ t_profile }}</a>
+        </li>
+      {% endif %}
+      {% if signup.has_facebook_info? %}
+        <li class="breadcrumb-item">
+          <a href="{{ signup.facebook_profile_url }}">Facebook</a>
+        </li>
+      {% endif %}
+      {% if signup.has_twitter_info? %}
+        <li class="breadcrumb-item">
+          <a href="{{ signup.twitter_profile_url }}">Twitter</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+  {% endif %}
+</article>

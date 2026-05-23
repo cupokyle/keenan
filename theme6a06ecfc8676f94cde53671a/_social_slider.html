@@ -1,0 +1,154 @@
+{% include "translation" %}
+
+{% if page.public_activities_count > 0 %}
+  {% assign activity_count = 0 %}
+  {% case page.type_name %}
+    {% when "Donation" %}
+      {% assign activity_type = "Donation" %}
+      {% assign ignore_types = "Donation Cancel|Donation Deleted" | split: "|" %}
+      {% capture activity_icon %}
+        <path d="M14.344 5.313H2.656a.531.531 0 00-.531.53V7.97c0 .293.238.531.531.531h11.688a.531.531 0 00.531-.531V5.844a.531.531 0 00-.531-.532z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.813 8.5v4.781a.531.531 0 01-.532.531H3.72a.531.531 0 01-.531-.53V8.5M8.5 5.313v8.5M11.505 4.561c-.751.752-3.005.752-3.005.752s0-2.254.751-3.006a1.594 1.594 0 012.254 2.254v0zM5.495 4.561c.751.752 3.005.752 3.005.752s0-2.254-.751-3.006a1.594 1.594 0 00-2.254 2.254v0z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Donation (v2)" %}
+      {% assign activity_type = "Donation" %}
+      {% assign ignore_types = "Donation Cancel|Donation Deleted" | split: "|" %}
+      {% capture activity_icon %}
+        <path d="M14.344 5.313H2.656a.531.531 0 00-.531.53V7.97c0 .293.238.531.531.531h11.688a.531.531 0 00.531-.531V5.844a.531.531 0 00-.531-.532z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M13.813 8.5v4.781a.531.531 0 01-.532.531H3.72a.531.531 0 01-.531-.53V8.5M8.5 5.313v8.5M11.505 4.561c-.751.752-3.005.752-3.005.752s0-2.254.751-3.006a1.594 1.594 0 012.254 2.254v0zM5.495 4.561c.751.752 3.005.752 3.005.752s0-2.254-.751-3.006a1.594 1.594 0 00-2.254 2.254v0z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Endorsement" %}
+      {% assign activity_type = "Endorsement" %}
+      {% assign ignore_types = "" %}
+      {% capture activity_icon %}
+        <path d="M11.422 6.906l-3.896 3.719-1.948-1.86" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.5 14.875a6.375 6.375 0 100-12.75 6.375 6.375 0 000 12.75z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Event" %}
+      {% assign activity_type = "Event RSVP" %}
+      {% assign ignore_types = "Event RSVP Cancel" %}
+      {% capture activity_icon %}
+        <path d="M6.375 3.719v9.562M1.594 11.102a.53.53 0 01.425-.52 2.126 2.126 0 000-4.165.53.53 0 01-.425-.52V4.25a.531.531 0 01.531-.531h12.75a.531.531 0 01.531.531v1.648a.53.53 0 01-.425.52 2.126 2.126 0 000 4.164.53.53 0 01.425.52v1.648a.532.532 0 01-.531.531H2.125a.531.531 0 01-.531-.531v-1.648z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Moneybomb" %}
+      {% assign activity_type = "Pledge" %}
+      {% assign ignore_types = "Pledge Cancel" %}
+      {% capture activity_icon %}
+        <path d="M8.5 6.906V3.453a1.328 1.328 0 012.656 0v5.313M5.844 7.438V2.39a1.328 1.328 0 012.656 0v4.515" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.5 11.422a2.656 2.656 0 012.656-2.656V7.437a1.328 1.328 0 012.656 0v2.657a5.313 5.313 0 01-10.624 0V5.047a1.328 1.328 0 112.656 0v2.39" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Petition" %}
+      {% assign activity_type = "Petition Signature" %}
+      {% assign ignore_types = "" %}
+      {% capture activity_icon %}
+        <path d="M8.5 10.625H6.375V8.5l6.375-6.375 2.125 2.125L8.5 10.625zM11.156 3.719l2.125 2.125" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M14.344 7.969v5.843a.532.532 0 01-.531.532H3.187a.531.531 0 01-.53-.531V3.187a.531.531 0 01.53-.53h5.844" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Signup" %}
+      {% assign activity_type = "Signup" %}
+      {% assign ignore_types = "" %}
+      {% capture activity_icon %}
+        <path d="M11.688 3.719h3.187M13.281 2.125v3.188M2.058 14.343a7.44 7.44 0 0112.884 0M12.488 7.848a4.248 4.248 0 11-3.007-5.61" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Volunteer Signup" %}
+      {% assign activity_type = "Volunteer Signup" %}
+      {% assign ignore_types = "Volunteer Quit" %}
+      {% capture activity_icon %}
+        <path d="M8.5 6.906V3.453a1.328 1.328 0 012.656 0v5.313M5.844 7.438V2.39a1.328 1.328 0 012.656 0v4.515" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.5 11.422a2.656 2.656 0 012.656-2.656V7.437a1.328 1.328 0 012.656 0v2.657a5.313 5.313 0 01-10.624 0V5.047a1.328 1.328 0 112.656 0v2.39" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% when "Vote Pledge" %}
+      {% assign activity_type = "Supporter Pledge Yes" %}
+      {% assign ignore_types = "Supporter Pledge Yes Cancel" %}
+      {% capture activity_icon %}
+        <path d="M8.5 6.906V3.453a1.328 1.328 0 012.656 0v5.313M5.844 7.438V2.39a1.328 1.328 0 012.656 0v4.515" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M8.5 11.422a2.656 2.656 0 012.656-2.656V7.437a1.328 1.328 0 012.656 0v2.657a5.313 5.313 0 01-10.624 0V5.047a1.328 1.328 0 112.656 0v2.39" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      {% endcapture %}
+    {% else %}
+  {% endcase %}
+
+  {% if activity_type %}
+    {% assign ignore_list = "" %}
+    {% unless hide_social_slider %}
+    <div id="slider-cards" class="social-slider">
+      {% for activity in page.activities %}
+        {% for ignore_type in ignore_types %}
+          {% if ignore_type == activity.type_name %}
+            {% capture ignore_list %}{{ ignore_list }}{{ activity.signup.id | append: "|" }}{% endcapture %}
+          {% endif %}
+        {% endfor %}
+        {% capture current_signup %}{{ activity.signup.id | append: "|" }}{% endcapture %}
+        {% unless ignore_list contains current_signup %}
+          {% if activity_type == activity.type_name %}
+            {% assign activity_count = activity_count | plus: 1 %}
+            <div data-toggle="tooltip" data-placement="top" title="{% if activity.data.is_organization == true %}{{ activity.signup.employer }}{% else %}{{ activity.signup.published_name }}{% endif %}">
+              {% include "avatar", signup: activity.signup, size: 40 %}
+            </div>
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    </div>
+    {% endunless %}
+    <div class="d-flex justify-content-center align-items-center px-2">
+      <svg class="mr-2" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {{ activity_icon }}
+      </svg>
+      {% case page.type_name %}
+        {% when "Donation" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_donated_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_donated_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Donation (v2)" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_donated_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_donated_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Endorsement" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_endorsed_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_endorsed_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Event" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_rsvpd_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_rsvpd_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Moneybomb" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_pledged_so_far_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_pledged_so_far_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Petition" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_signed_the_petition_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_signed_the_petition_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Signup" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_signed_up_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_signed_up_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Volunteer Signup" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_signed_up_to_volunteer_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_signed_up_to_volunteer_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+        {% when "Vote Pledge" %}
+          {% if activity_count == 1 %}
+            <small>{{ t_social_slider_pledged_singular }}</small>
+          {% else %}
+            <small>{{ t_social_slider_pledged_plural | replace: '$count', activity_count }}</small>
+          {% endif %}
+      {% endcase %}
+    </div>
+  {% endif %}
+{% endif %}

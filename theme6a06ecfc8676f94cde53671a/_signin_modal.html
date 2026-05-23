@@ -1,0 +1,23 @@
+{% include "translation" %}
+{% case page.type_slug %}
+  {% when 'suggestion_box' %}
+    {% assign heading = t_forms_sign_in_suggestion %}
+  {% when 'blog' %}
+    {% assign heading = t_forms_sign_in_blog %}
+  {% else %}
+    {% assign heading = t_forms_sign_in %}
+{% endcase %}
+
+<div class="modal fade" id="signinModal" tabindex="-1" aria-labelledby="signinModalLabel" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ t_close }}"></button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="signinModalLabel">{{ heading }}</h5>
+      </div>
+      <div class="modal-body">
+        {% include "user_session_form" %}
+      </div>
+    </div>
+  </div>
+</div>

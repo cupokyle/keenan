@@ -1,0 +1,33 @@
+//
+// Button loader
+//
+// <div class="btn-loader">
+//   <div class="form-submit"></div>
+//   {% submit_tag "Post your comment", class:"btn btn-primary submit-button" %}
+// </div>
+//
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.btn-loader {
+  position: relative;
+  display: inline-block;
+
+  .form-submit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    > * {
+      animation: spin 2.5s linear infinite;
+      width: 1.2em;
+      height: 1.2em;
+    }
+  }
+
+  .ajaxForm-submitting & .btn {
+    color: transparent !important;
+  }
+}

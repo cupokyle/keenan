@@ -1,0 +1,39 @@
+{% include "translation" %}
+
+<div class="consent-form-container">
+
+  {% if page.consent_form.headline != "" %}
+    <h3 class="h5 text-sans-serif font-weight-semi-bold">{{page.consent_form.headline}}</h3>
+  {% endif %}
+
+  {% if page.consent_form.content != "" %}
+    <div class="consent-form__content">
+      {{page.consent_form.content}}
+    </div>
+  {% endif %}
+
+  {% for consent_option in page.consent_form.consent_options %}
+    <div class="consent-form__option">
+      <div class="form-group">
+        {% if consent_option.description != "" %}
+          <p class="mb-1 option-heading font-weight-semi-bold">{{consent_option.description}}</p>
+        {% endif %}
+        <div class="custom-control custom-radio custom-control-inline">
+          {% capture yes_option_id %}{{ consent_option.yes_radio_name }}_{{ page.slug}}{% endcapture %}
+          {{ consent_option.yes_radio_button | replace: consent_option.yes_radio_name, yes_option_id  }}
+          <label class="custom-control-label radio" for="{{yes_option_id}}">
+            {{ t_yes }}
+          </label>
+        </div>
+        <div class="custom-control custom-radio custom-control-inline">
+          {% capture no_option_id %}{{ consent_option.no_radio_name }}_{{ page.slug}}{% endcapture %}
+          {{ consent_option.no_radio_button | replace: consent_option.no_radio_name, no_option_id }}
+          <label class="custom-control-label radio" for="{{no_option_id}}">
+            {{ t_no }}
+          </label>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+
+</div>

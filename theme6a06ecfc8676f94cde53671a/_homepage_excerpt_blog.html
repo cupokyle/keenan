@@ -1,0 +1,45 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <header class="row mb-n4">
+      {% if page.headline.size > 0 %}
+        <div class="col mb-4">
+          <h2 class="m-0 h1">{{ page.headline }}</h2>
+        </div>
+      {% endif %}
+      {% if page.blog.is_posting_public? %}
+        <div class="col-auto mb-4">
+          <a class="btn btn-primary d-inline-flex align-items-center" href="{{ page.url }}">
+            <svg class="mr-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M25 28H6.99902c-.26521 0-.51957-.1054-.7071-.2929-.18754-.1875-.2929-.4419-.2929-.7071V5c0-.26522.10536-.51957.2929-.70711C6.47945 4.10536 6.73381 4 6.99902 4H19l7 7v16c0 .1313-.0259.2614-.0761.3827-.0503.1213-.1239.2316-.2168.3244-.0928.0929-.2031.1665-.3244.2168-.1213.0502-.2514.0761-.3827.0761z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19 4v7h7.001M13 19h6M16 16v6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {{ t_blog_public_post_cta }}
+          </a>
+        </div>
+      {% endif %}
+    </header>
+
+    <div class="mt-5" data-masonry>
+      {% for post in page.blog.most_recent_blog_posts limit: 2 %}
+        <div class="card" id="blog-post-page-{{ post.id }}">
+          {% if post.has_meta_image? %}
+            <img src="{{ post.meta_image_url }}" class="card-img-top" />
+          {% endif %}
+          <div class="card-body">
+            <h3 class="h4"><a href="{{ post.url }}" class="stretched-link">{{ post.headline }}</a></h3>
+            {{ post.blog_post.content }}
+          </div>
+          <div class="card-footer">
+            {% include 'page_byline' author: post.author, published_at: post.published_at %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center">
+      <a href="{{ page.url }}">{{ t_blog_show_all_posts }}</a>
+    </div>
+  </div>
+</section>

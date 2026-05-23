@@ -1,0 +1,33 @@
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: calc(#{map-get($map: $spacers, $key: 3)} * -1);
+  margin-bottom: calc(#{map-get($map: $spacers, $key: 3)} * -1);
+
+  @include media-breakpoint-up(md) {
+    flex-wrap: nowrap;
+  }
+}
+
+.stats-item {
+  flex-grow: 1;
+  flex-basis: 200px;
+  margin-left: map-get($map: $spacers, $key: 3);
+  margin-bottom: map-get($map: $spacers, $key: 3);
+  padding: map-get($map: $spacers, $key: 3);
+  background-color: $black;
+  color: $white;
+  text-align: center;
+  line-height: 1;
+  border-radius: $border-radius-xl;
+}
+
+.stats-count {
+  margin: 0;
+  font-size: $h3-font-size;
+  font-family: $font-family-serif;
+}
+
+.stats-label {
+  font-family: $font-family-monospace;
+}

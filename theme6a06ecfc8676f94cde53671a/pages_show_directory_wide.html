@@ -1,0 +1,32 @@
+{% include "translation" %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="page-headline">{{ page.headline }}</h2>
+        {% endif %}
+
+        {% if page.directory.content.size > 0 %}
+          <div class="page-content">
+            {{ page.directory.content }}
+          </div>
+        {% endif %}
+
+        {% if site.show_public_profiles? %}
+          <div class="bg-light py-5 px-4 px-sm-5 mt-5 rounded-xl mx-n4 mx-md-auto">
+            <p class="h4 mb-4">{{ t_directory_listings | replace: '$count', page.directory.listings_count }}</p>
+            <ul class="list-unstyled mb-0 space-y-4">
+              {% for signup in page.directory.listings %}
+                <li>{% include "signup_show" %}</li>
+              {% endfor %}
+            </ul>
+            {{ page.directory.listings | paginate prev_label: t_prev next_label: t_next }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

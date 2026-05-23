@@ -1,0 +1,33 @@
+#t7_timer {
+  margin-left: -1rem;
+}
+
+#t7_vals,
+#t7_labels {
+  display: flex;
+  justify-content: center;
+
+  & > * {
+    margin-left: 1rem;
+    flex: 1;
+    background-color: $black;
+    color: $white;
+    text-align: center;
+  }
+}
+
+#t7_vals > * {
+  @include border-top-radius($card-border-radius);
+  padding-top: 1.25rem;
+  font-family: $font-family-serif;
+  font-size: 2.1875rem;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+}
+
+#t7_labels > * {
+  @include border-bottom-radius($card-border-radius);
+  padding-bottom: 1.25rem;
+  font-family: $font-family-monospace;
+  font-size: .75rem;
+}

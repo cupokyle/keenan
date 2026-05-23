@@ -1,0 +1,22 @@
+{% include "translation" %}
+{% if request.logged_in? %}
+  {% if signup_follow.id != request.current_signup.id %}
+    {% if request.current_signup.following_ids contains signup_follow.id %}
+    <a href="{{ signup_follow.unfollow_url }}" data-signup="follow" class="btn btn-secondary btn-sm delete">{{ t_unfollow }}</a>
+    {% else %}
+    <a href="{{ signup_follow.follow_url }}" data-signup="unfollow" class="btn btn-secondary btn-sm post">{{ t_follow }}</a>
+    {% endif %}
+  {% endif %}
+{% endif %}
+<script>
+!(function() {
+  $('[data-signup]').each(function() {
+    var type = $(this).data('signup');
+    if (type === 'follow') {
+      $(this).text(NB.translate.follow);
+    } else if (type === 'unfollow') {
+      $(this).text(NB.translate.unfollow);
+    }
+  });
+})();
+</script>

@@ -1,0 +1,15 @@
+.table {
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+    font-family: $font-family-monospace;
+    font-size: 1rem;
+    font-weight: $font-weight-semi-bold;
+    color: $gray-700;
+  }
+
+  &.table-striped thead th {
+    border-bottom: 0;
+  }
+}

@@ -1,0 +1,26 @@
+{% include "translation" %}
+
+{% if request.logged_in? %}
+  <section class="homepage-excerpt-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          {% if page.headline.size > 0 %}
+            <h2 class="m-0 h3">{{ page.headline }}</h2>
+          {% endif %}
+          <div class="py-5 px-4 px-sm-5 bg-light rounded-xl{% if page.headline.size > 0 %} mt-5{% endif %}">
+            <h3 class="mt-0 mb-4 h4 font-weight-medium">{{ t_activity_recent_responses }}</h3>
+            <ul id="page-stream" class="space-y-3 space-y-sm-4 list-unstyled">
+              {% for activity in page.activity_stream.activities_following limit:4 %}
+                {% include "activity_show" i18n:current_language, activity_stream:true %}
+              {% endfor %}
+            </ul>
+            <div class="mt-4 text-center">
+              <a href="{{ page.url }}">{{ t_excerpt_see_all_activity }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endif %}

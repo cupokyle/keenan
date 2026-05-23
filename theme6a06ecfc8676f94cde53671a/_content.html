@@ -1,0 +1,18 @@
+{% capture main_classes %}
+{% if request.template == 'users_blog_post_pages_edit' %} bg-light
+{% else %}
+{% case page.type_slug %}
+{% when "calendar" %}bg-light
+{% else %}bg-white
+{% endcase %}
+{% endif %}
+{% endcapture %}
+
+{% capture main_container_classes %}
+{{ main_classes | strip_newlines | strip }}
+{% if site.has_background_image? %} {% if page.features_count > 0 %}rounded-bottom{% else %}rounded{% endif %}{% endif %}
+{% endcapture %}
+
+<main id="content" role="main" class="{% unless site.has_background_image? %}{{ main_classes | strip_newlines | strip }}{% endunless %}">
+  {% yield %}
+</main>

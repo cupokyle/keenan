@@ -1,0 +1,101 @@
+{% include "translation" %}
+{% assign virtual_event = false %}
+{% if event.event.venue_name contains "http://" or event.event.venue_name contains "https://"  %}
+  {% assign virtual_event = true %}
+{% endif %}
+
+<div class="event-list-item card">
+  <div class="card-header">
+    <div class="row d-flex align-items-center">
+      <div class="d-none d-md-block col-auto pr-0">
+        <div class="cal-icon cal-icon-sm">
+          {% include "date_format" date:event.event.local_start_at %}
+          <div class="cal-icon-month">{{ month_abbr }}</div>
+          <div class="cal-icon-day">{{ day }}</div>
+        </div>
+      </div>
+      <div class="col pl-md-3">
+        <h3 class="h4 mb-0"><a href="{{ event.url }}">{{ event.name }}</a></h3>
+      </div>
+      <div class="col-auto d-none d-md-block">
+        {% if event.event.is_maximum_capacity? %}
+          <a class="btn btn-secondary" href="{{ event.url }}">{{ t_events_sold_out }}</a>
+        {% elsif event.event.is_past? == false %}
+          {% if event.event.is_ticket_required? %}
+            <a class="btn btn-secondary" href="{{ event.url }}">{{ t_events_buy_tickets }}</a>
+          {% elsif event.event.accept_rsvps? %}
+            <a class="btn btn-secondary" href="{{ event.url }}">{{ t_events_rsvp }}</a>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <p>
+      {% capture start %}{% include "date_format" date:event.event.local_start_at %}{{full_datetime}}{% endcapture %}
+      {% if event.event.is_multi_day? %}
+        {% capture end %}{% include "date_format" date:event.event.local_end_at %}{{mdy_date}}{% endcapture %}
+        {{ t_events_multi_day_date | replace: '$start', start | replace: '$end': end }}
+      {% else %}
+        {{ start }}
+      {% endif %}
+    </p>
+
+    <div class="small">
+      <span class="mr-2">
+        {% if virtual_event %}
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3.1875 12.75h10.625c.5868 0 1.0625-.4757 1.0625-1.0625V4.25c0-.5868-.4757-1.0625-1.0625-1.0625H3.1875c-.5868 0-1.0625.4757-1.0625 1.0625v7.4375c0 .5868.4757 1.0625 1.0625 1.0625zM10.625 14.875h-4.25" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <a href="{{ page.event.venue_name }}">{{ t_events_virtual_event }}</a>
+        {% else %}
+          {% if event.event.has_venue? %}
+            <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.71875 15.4062h9.56245M8.5 9.03125c1.17361 0 2.125-.95139 2.125-2.125s-.95139-2.125-2.125-2.125-2.125.95139-2.125 2.125.95139 2.125 2.125 2.125z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.8125 6.90625c0 4.78125-5.3125 8.49995-5.3125 8.49995s-5.3125-3.7187-5.3125-8.49995c0-1.40896.55971-2.76022 1.556-3.7565.99628-.99629 2.34754-1.556 3.7565-1.556s2.7602.55971 3.7565 1.556c.9963.99628 1.556 2.34754 1.556 3.7565v0z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            {% if event.event.has_venue_address? %}
+              {{ t_events_venue_in | replace: '$link', event.event.venue_address.google_map_link | replace: '$venue', event.event.venue_name | replace: '$location', event.event.venue_address.location }}
+            {% else %}
+              {{ event.event.venue_name }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      </span>
+
+      {% if event.event.is_ticket_required? or event.event.is_user_ticket_required? %}
+        <span class="mr-2">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.875 3.71875H2.125c-.2934 0-.53125.23785-.53125.53125v8.5c0 .2934.23785.5312.53125.5312h12.75c.2934 0 .5312-.2378.5312-.5312v-8.5c0-.2934-.2378-.53125-.5312-.53125zM11.1559 11.1562h2.125M7.96836 11.1562h1.0625M1.59336 6.43161H15.4059" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          {% if event.event.is_ticket_required? %}
+            {{ event.event.ticket_price_with_currency }}
+          {% elsif event.event.is_user_ticket_required? %}
+            {{ event.event.user_ticket_price_with_currency }}
+          {% endif %}
+        </span>
+      {% endif %}
+
+      {% if event.event.show_guests? and event.event.rsvps_count > 0 %}
+        <span class="mr-2">
+          <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6.375 3.71875V13.2812" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M1.59375 11.1025C1.59373 10.9801 1.63602 10.8615 1.71347 10.7667C1.79092 10.6719 1.89875 10.6069 2.01869 10.5825C2.49864 10.4844 2.92999 10.2236 3.23977 9.84416C3.54955 9.46468 3.71875 8.98986 3.71875 8.5C3.71875 8.01014 3.54955 7.53532 3.23977 7.15584C2.92999 6.77637 2.49864 6.51555 2.01869 6.4175C1.89875 6.39315 1.79092 6.32808 1.71347 6.23331C1.63602 6.13854 1.59373 6.01991 1.59375 5.89752V4.25C1.59375 4.1091 1.64972 3.97398 1.74935 3.87435C1.84898 3.77472 1.9841 3.71875 2.125 3.71875H14.875C15.0159 3.71875 15.151 3.77472 15.2507 3.87435C15.3503 3.97398 15.4062 4.1091 15.4062 4.25V5.89752C15.4063 6.01991 15.364 6.13854 15.2865 6.23331C15.2091 6.32808 15.1012 6.39315 14.9813 6.4175C14.5014 6.51556 14.07 6.77638 13.7602 7.15585C13.4505 7.53532 13.2812 8.01014 13.2812 8.5C13.2812 8.98986 13.4505 9.46469 13.7602 9.84416C14.07 10.2236 14.5014 10.4845 14.9813 10.5825C15.1012 10.6069 15.2091 10.6719 15.2865 10.7667C15.364 10.8615 15.4063 10.9801 15.4062 11.1025V12.75C15.4062 12.8909 15.3503 13.026 15.2507 13.1257C15.151 13.2253 15.0159 13.2812 14.875 13.2812H2.125C1.9841 13.2812 1.84898 13.2253 1.74935 13.1257C1.64972 13.026 1.59375 12.8909 1.59375 12.75V11.1025Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <a href="{{ event.url }}">
+          {% if event.event.rsvps_count > 1 %}
+            {{ t_events_rsvp_count_singular }}
+          {% else %}
+            {{ t_events_rsvp_count_plural | replace: '$count', event.event.rsvps_count }}
+          {% endif %}
+          </a>
+        </span>
+      {% endif %}
+
+    </div>
+  </div>
+</div>
+
+
+

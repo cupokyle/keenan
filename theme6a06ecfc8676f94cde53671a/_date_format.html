@@ -1,0 +1,24 @@
+{% include "translation" %}
+
+{% comment %}
+  Pass in a date string like: 2021-01-02 04:00:00 -0400
+  Momentum essentially formats the date like this: '%A, %B %d, %Y at %I:%M %p'
+{% endcomment %}
+
+{% capture original_full_month %}{{ date | date: '%B' }}{% endcapture %}
+{% capture original_month_abbr %}{{ date | date: '%b' }}{% endcapture %}
+{% capture original_day_of_week %}{{ date | date: '%A' }}{% endcapture %}
+
+{% capture day %}{{ date | date: '%d' }}{% endcapture %}
+{% capture year %}{{ date | date: '%Y' }}{% endcapture %}
+{% capture time_12 %}{{ date | date: '%I:%M %p' }}{% endcapture %}
+{% capture time_24 %}{{ date | date: '%Hh%M' }}{% endcapture %}
+{% capture full_month %}{{ original_full_month | replace: 'January', t_date_january | replace: 'February', t_date_february | replace: 'March', t_date_march | replace: 'April', t_date_april | replace: 'May', t_date_may | replace: 'June', t_date_june | replace: 'July', t_date_july | replace: 'August', t_date_august | replace: 'September', t_date_september | replace: 'October', t_date_october | replace: 'November', t_date_november | replace: 'December', t_date_december}}{% endcapture %}
+{% capture month_abbr %}{{ original_month_abbr | replace: 'Jan', t_date_jan | replace: 'Feb', t_date_feb | replace: 'Mar', t_date_mar | replace: 'Apr', t_date_apr | replace: 'May', t_date_may | replace: 'Jun', t_date_jun | replace: 'Jul', t_date_jul | replace: 'Aug', t_date_aug | replace: 'Sep', t_date_sep | replace: 'Oct', t_date_oct | replace: 'Nov', t_date_nov | replace: 'Dec', t_date_dec }}{% endcapture %}
+{% capture day_of_week %}{{ original_day_of_week | replace: 'Sunday', t_date_sunday | replace: 'Monday', t_date_monday | replace: 'Tuesday', t_date_tuesday | replace: 'Wednesday', t_date_wednesday | replace: 'Thursday', t_date_thursday | replace: 'Friday', t_date_friday | replace: 'Saturday', t_date_saturday }}{% endcapture %}
+{% capture full_date %}{{ day_of_week }}, {{ full_month }} {{ day }}, {{ year }}{% endcapture %}
+{% capture mdy_date %}{{ full_month }} {{ day }}, {{ year }}{% endcapture %}
+{% capture mdy_abbr_date %}{{ month_abbr }} {{ day }}, {{ year }}{% endcapture %}
+{% capture full_datetime %}{{ t_date_string | replace: '$date', full_date | replace: '$time', time_12 }}{% endcapture %}
+{% capture timestamp %}{{month_abbr}} {{date | date: '%e'}}, {{year}} @ {{time_12}}{% endcapture %}
+{% capture digit_timestamp %}{{date | date: '%F'}} @ {{time_12}}{% endcapture %}

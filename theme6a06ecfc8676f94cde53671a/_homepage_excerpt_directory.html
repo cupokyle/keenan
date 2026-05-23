@@ -1,0 +1,26 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="m-0 h3">{{ page.headline }}</h2>
+        {% endif %}
+        {% if site.show_public_profiles? %}
+          <div class="py-5 px-4 px-sm-5 bg-light rounded-xl{% if page.headline.size > 0 %} mt-5{% endif %}">
+            <p class="mb-4 h4">{{ t_directory_listings | replace: '$count', page.directory.listings_count }}</p>
+            <ul class="space-y-3 space-y-sm-4 list-unstyled">
+              {% for signup in page.directory.listings limit: 3 %}
+                <li>{% include "signup_show" %}</li>
+              {% endfor %}
+            </ul>
+            <div class="mt-4 text-center">
+              <a href="{{ page.url }}">{{ t_excerpt_see_all_profiles }}</a>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

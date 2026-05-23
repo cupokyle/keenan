@@ -1,0 +1,177 @@
+$primary: #4C56DD !default; // hsl(236, 68, 58)
+$primary-lighten: lighten($primary, 38%) !default;
+$primary-lighten-more: lighten($primary, 40%) !default;
+$primary-darken: darken($primary, 10%) !default;
+$primary-dark: darken(desaturate($primary, 28%), 41%) !default; // hsl(236, 27, 30)
+$primary-darken-more: darken(desaturate($primary, 20%), 45%) !default; // hsl(236, 48, 13)
+
+$secondary: lighten($primary, 39%) !default;
+
+$dark: $primary-dark !default;
+$light: $primary-lighten-more !default;
+$gray-700: #474849 !default;
+$info: $primary-lighten !default;
+$red: #DD4C4C !default;
+
+$theme-colors: (
+  "black": #000,
+);
+
+$spacer: 0.9375rem;
+$spacers: (
+  0: 0,
+  1: ($spacer * 0.333333333),
+  2: ($spacer * 0.666666667),
+  3: $spacer,
+  4: ($spacer * 2),
+  5: ($spacer * 4)
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px
+) !default;
+
+$font-family-sans-serif: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-family-serif: 'Lora', serif;
+$font-family-monospace: 'Source Code Pro', monospace;
+$headings-font-family: $font-family-serif;
+$font-size-base: 1.25rem; // 20px
+$font-size-lg: $font-size-base * 1.1; // 22px
+$h1-font-size: $font-size-base * 2.8; // 56px
+$h2-font-size: $font-size-base * 2.4; // 48px
+$h3-font-size: $font-size-base * 1.9; // 38px
+$h4-font-size: $font-size-base * 1.4; // 28px
+$h5-font-size: $font-size-base * 1.2; // 24px
+$h6-font-size: $font-size-base; // 20px
+$lead-font-size: $font-size-base * 1.2; // 24px
+
+$small-font-size: 70%;
+
+$border-radius-xl: .375rem;
+
+$grid-gutter-width: 60px;
+
+// Options
+$enable-caret: false;
+
+// Shadows
+$box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.07);
+
+// Alerts
+$alert-padding-x: 1.875rem;
+$alert-padding-y: 1.25rem;
+
+// Badges
+$badge-font-family: $font-family-monospace;
+$badge-font-size: 0.75rem;
+$badge-font-weight: 600;
+$badge-padding-y: 0.3125rem;
+$badge-padding-x: 0.5rem;
+
+// Navbar
+$navbar-nav-link-padding-x: 0.9375rem;
+$navbar-light-color: #000000;
+$navbar-light-toggler-border-color: transparent;
+$navbar-toggler-font-size: 18px;
+$navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 8h11M2.5 4h11M2.5 12h11' stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), "#", "%23");
+
+// Forms
+$form-feedback-invalid-color: #DD4C4C;
+$form-grid-gutter-width: 1rem;
+$enable-validation-icons: false;
+
+// Inputs
+$input-btn-font-size: $font-size-base * .9; // 18px
+$input-btn-font-size-lg: $font-size-base * 1.1; // 20px
+$input-btn-focus-width: .25rem;
+$input-btn-padding-y: 1rem;
+$input-btn-padding-x: 1.25rem;
+$input-btn-padding-y-lg: 1.375rem;
+$input-btn-padding-x-lg: 1.5625rem;
+$input-btn-padding-y-sm: 0.75rem;
+$input-btn-padding-x-sm: 0.9375rem;
+$input-bg: #EEEFF4;
+$input-disabled-bg: $input-bg;
+$input-focus-bg: #FFFFFF;
+$input-border-color: $input-bg;
+$input-group-addon-bg: $secondary;
+$input-group-addon-font-weight: 700;
+
+// Buttons
+$btn-font-weight: 700;
+$btn-disabled-opacity: 0.4;
+
+// Breadcrumbs
+$breadcrumb-divider-color: inherit;
+$breadcrumb-active-color: inherit;
+$breadcrumb-item-padding: 0.625rem;
+
+// Dropdowns
+$dropdown-box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+$dropdown-border-color: rgba(#000, .06);
+$dropdown-padding-y: 0;
+$dropdown-item-padding-y: 0.625rem;
+$dropdown-item-padding-x: 1.5rem;
+$dropdown-divider-margin-y: 0;
+$dropdown-font-size: 1rem;
+$dropdown-font-weight: 600;
+$dropdown-link-color: #4B4B4B;
+
+// Custom forms
+$custom-control-indicator-size: 1.25rem;
+$custom-control-indicator-border-color: #CBCCD3;
+$custom-control-indicator-bg: #FFFFFF;
+$custom-control-indicator-disabled-bg: $custom-control-indicator-border-color;
+$custom-control-label-disabled-color: #ABABAB;
+$custom-control-indicator-focus-border-color: $primary;
+$custom-control-indicator-bg-size: 1rem;
+$custom-radio-indicator-bg-size: 0.625rem;
+$custom-checkbox-indicator-bg-size-indeterminate: 0.75rem;
+$custom-checkbox-indicator-icon-checked: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15.1875 5.06287L7.3125 12.9375L3.375 9.00037' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$custom-checkbox-indicator-icon-indeterminate: url("data:image/svg+xml,%3Csvg width='12' height='2' viewBox='0 0 12 2' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='12' height='2' rx='1' fill='white'/%3E%3C/svg%3E%0A");
+$custom-radio-indicator-icon-checked: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='5' fill='white'/%3E%3C/svg%3E%0A");
+$custom-select-indicator: url("data:image/svg+xml,%3Csvg width='14' height='28' viewBox='0 0 14 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.625 8.75L7 4.375L11.375 8.75' stroke='%23474849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.375 19.25L7 23.625L2.625 19.25' stroke='%23474849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+$custom-select-bg-size: 0.875rem 1.75rem;
+$custom-select-focus-bg: #FFFFFF;
+$custom-select-indicator-padding: 1.75rem;
+$custom-file-button-color: $primary;
+$custom-file-button-font-weight: 700;
+$custom-file-focus-bg: #FFFFFF;
+$custom-select-disabled-color: $gray-700;
+$custom-select-disabled-bg: $input-bg;
+
+// Cards
+$card-bg: #FFFFFF;
+$card-border-color: rgba(#000, 0.05);
+$card-spacer-x: 1.5625rem;
+$card-spacer-y: 1.5625rem;
+$card-border-radius: 6px;
+
+// Modals
+$modal-content-bg: transparent;
+$modal-backdrop-bg: $primary-darken-more;
+$modal-backdrop-opacity: .95;
+$modal-content-border-width: 0;
+$modal-content-color: $light;
+$modal-md: 570px;
+
+// Progress bars
+$progress-height: 1.625rem;
+$progress-border-radius: 9999px;
+
+// Nav
+$nav-tabs-border-width: 0px;
+$nav-tabs-border-radius: 0px;
+$nav-tabs-link-active-color: $primary;
+
+// Tables
+$table-accent-bg: $primary-lighten;
+$table-cell-padding: map-get($map: $spacers, $key: 3);
+
+// Tooltips
+$tooltip-border-radius: 100px;
+$tooltip-padding-x: .75rem;
+$tooltip-font-size: 0.875rem;

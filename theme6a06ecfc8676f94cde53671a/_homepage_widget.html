@@ -1,0 +1,11 @@
+<div class="{% if page.basic.content.size > 0 %}mt-5 {% endif %}homepage-excerpt-list{% unless site.has_background_image? %} full-width{% else %} mx-n4{% endunless %}">
+  {% for post in tag.most_recent_published_pages %}
+    <div class="homepage-excerpt-item{% if site.has_background_image? and forloop.last == true %} rounded-bottom overflow-hidden{% endif %}">
+      {% include "homepage_excerpt" with post %}
+    </div>
+  {% endfor %}
+</div>
+{% unless request.logged_in? %}
+  {% include "signin_modal" %}
+{% endunless %}
+{% include "image_cropper_modal" %}

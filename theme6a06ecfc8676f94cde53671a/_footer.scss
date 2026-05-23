@@ -1,0 +1,22 @@
+/* Footer
+-----------------------------------------------*/
+footer {
+  a {
+    @extend .text-white;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+
+.footer-nav {
+  background-color: $primary-darken-more;
+  li {
+    font-size: 1rem;
+  }
+}
+
+#created-with-nb {
+  @extend .small;
+  opacity: 0.6;
+}

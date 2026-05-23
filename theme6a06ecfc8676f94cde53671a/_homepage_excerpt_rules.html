@@ -1,0 +1,20 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <h2 class="m-0 h3">{% unless page.headline %}{{ t_rules }}{% else %}{{ page.headline }}{% endunless %}</h2>
+        {% for rule in page.rule.rules %}
+          <div class="mt-4">
+            <h3 class="h5 text-sans-serif font-weight-semi-bold">{{ forloop.index }}. {{ rule.name }}</h3>
+            {{ rule.content }}
+          </div>
+        {% endfor %}
+        <div class="mt-4">
+          <a href="{{ page.url }}">{{ t_excerpt_read_all_rules }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

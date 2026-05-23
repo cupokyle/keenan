@@ -1,0 +1,32 @@
+{% include "social_share_widget" %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="page-headline">{{ page.headline }}</h2>
+        {% endif %}
+
+
+        {% if page.rule.content.size > 0 %}
+          <div class="page-content">
+            {{ page.rule.content }}
+          </div>
+        {% endif %}
+
+        {% for rule in page.rule.rules %}
+          <div class="mt-4">
+            <h3 class="h5 text-sans-serif font-weight-semi-bold">{{ forloop.index }}. {{ rule.name }}</h3>
+            {{ rule.content }}
+          </div>
+        {% endfor %}
+
+        {% if page.tags_count > 0 %}
+          {% include "page_tags" with page %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

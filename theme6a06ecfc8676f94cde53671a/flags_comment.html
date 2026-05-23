@@ -1,0 +1,50 @@
+{% include "translation" %}
+
+{% unless request.is_ajax? %}
+  <h3 class="headline">{{ t_flagging_comment_from | replace: '$user', comment.signup.published_name_linked }}</h3>
+{% endunless %}
+
+<div class="card text-dark mb-3">
+  <div class="card-header">
+    <div class="media">
+      {% include "avatar" signup:comment.signup %}
+      <div class="media-body ml-2 mt-2">
+        {{ comment.signup.published_name_linked }}
+      </div>
+    </div>
+  </div>
+  <div class="activity-content card-footer">
+    {{ comment.content_html }}
+  </div>
+</div>
+
+{% form_for flag %}
+  <div class="form">
+    <div class="form_errors">{% error_messages_for flag %}</div>
+    {% hidden_field_tag "flag[comment_id]", comment.id %}
+    {% hidden_field_tag "flag[page_id]", page.id %}
+    {% if site.has_rule_page? %}
+      <div class="form-group">
+        <div class="float-label">
+          <label for="flag_rule_id">{{ t_forms_which_rule_was_violated }}</label>
+          {% select_field "rule_id", site.rule_page.rule.rules_collection, class:"custom-select" %}
+        </div>
+      </div>
+    {% endif %}
+    <div class="form-group">
+      <div class="float-label">
+        <label for="flag_content">{{ t_forms_explanation }}</label>
+        {% text_area "content", class:"form-control autogrow" %}
+      </div>
+    </div>
+    {% include "form_submit_tag" label:t_flag_this_comment %}
+  </div>
+{% endform_for %}
+
+<script>
+  ;(function() {
+    var closeBtn = $('#dialog_box button[data-dismiss="modal"]');
+    closeBtn.html('');
+    $('#dialog_box').prepend(closeBtn);
+  })();
+</script>

@@ -1,0 +1,43 @@
+{% include "translation" %}
+
+<div id="uhe" class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-9">
+      <div class="card d-inline-flex my-4">
+        <div class="card-body">
+          <a class="navbar-brand" href="/">
+            {% if site.has_meta_image? %}
+              <img src="{{ site.meta_image_url }}" class="navbar-brand-img mw-100" alt="{{ site.long_name }}"/>
+            {% else %}
+              {{ site.long_name }}
+            {% endif %}
+          </a>
+        </div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-body p-lg-5">
+
+            <nav aria-label="breadcrumb" id="breadcrumb" class="mt-0">
+              <ol class="breadcrumb border-0 bg-transparent pl-0">
+                <li class="breadcrumb-item"><a href="/">{{ t_home }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ blog_post_page.page.parent.url }}">{{ blog_post_page.page.parent.name }}</a></li>
+              </ol>
+            </nav>
+          <h2 class="h4 mb-4">{{ blog_post_page.page.headline }}</h2>
+
+          {% form_for blog_post_page %}
+            <div class="form">
+              <div class="form-errors">{% error_messages_for blog_post_page %}</div>
+
+              <div class="form-group">
+                {% text_area "content_editable", class:"form-control textarea-tinymce" %}
+              </div>
+
+              {% include "form_submit_tag" label:t_forms_save_and_update %}
+
+            </div>
+          {% endform_for %}
+       </div>
+    </div>
+  </div>
+</div>

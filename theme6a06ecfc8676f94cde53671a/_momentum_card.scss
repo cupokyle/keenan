@@ -1,0 +1,127 @@
+.card-md {
+
+  @include media-breakpoint-up(md) {
+    .card-header,
+    .card-body {
+      padding: 1.875rem 2.5rem;
+    }
+  }
+}
+
+.card-lg {
+
+  @include media-breakpoint-up(md) {
+    .card-header,
+    .card-body {
+      padding: 1.875rem 2.5rem;
+    }
+  }
+
+  @include media-breakpoint-up(lg) {
+    .card-header,
+    .card-body {
+      padding: 3.125rem 3.75rem;
+    }
+  }
+}
+
+.card-header {
+  border-bottom: 0;
+}
+
+.card-header,
+.card-body {
+
+  .card-header + &,
+  .collapse &,
+  .collapsing & {
+    border-top: $card-border-width solid $card-border-color;
+  }
+
+  & + &,
+  hr {
+    border-top: $card-border-width solid $card-border-color;
+  }
+
+  hr {
+    margin: $card-spacer-x calc(#{$card-spacer-x} * -1);
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .card-md & hr {
+    @include media-breakpoint-up(md) {
+      margin: 1.875rem -2.5rem;
+    }
+  }
+
+  .card-lg & hr {
+    @include media-breakpoint-up(md) {
+      margin: 1.875rem -2.5rem;
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin: 3.125rem -3.75rem;
+    }
+  }
+}
+
+.card-leaderboard {
+  flex-direction: row;
+}
+
+.card-leaderboard-inner {
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+  }
+
+  @include media-breakpoint-up(md) {
+    align-items: center;
+  }
+}
+
+.card-leaderboard-position {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  margin: -1px -1px -1px 0;
+  min-width: 4.25rem;
+  flex-shrink: 0;
+  background-color: $black;
+  color: $white;
+  font-size: 1.5rem;
+  font-family: $font-family-serif;
+  text-align: center;
+  @include border-right-radius($card-border-radius);
+
+  @include media-breakpoint-up(sm) {
+    display: flex;
+    min-width: 6.25rem;
+    font-size: 2.1875rem;
+  }
+}
+
+.card-footer {
+  border-top: $card-border-width solid $card-border-color;
+}
+
+.card-social-slider {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+  background-color: $primary-lighten-more;
+}
+
+.card-answer {
+  background-color: $light;
+  color: color-yiq($light);
+  margin: 0 calc(#{$card-spacer-x} * -1) calc(#{$card-spacer-y} * -1);
+  padding: $card-spacer-y $card-spacer-x;
+  @include border-bottom-radius($card-border-radius);
+}
+
+.card-highlight {
+  box-shadow: inset 0 0 0 2px $primary;
+}

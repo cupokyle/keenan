@@ -1,0 +1,230 @@
+@keyframes copiedCheck {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(-53%);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(-53%);
+  }
+}
+
+$share-menu-breakpoint: 1130px;
+$share-menu-items-count: 5;
+$share-menu-items-spacing: $spacer;
+$share-menu-link-size: 42px;
+
+%share-btn {
+  display: block;
+  height: 42px;
+  position: relative;
+  width: 42px;
+  border-radius: $card-border-radius;
+  transition-property: border, box-shadow, background-color, color;
+  transition-timing-function: ease-out;
+  transition-duration: 0.125s;
+
+  >* {
+    position: absolute;
+  }
+
+  svg {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.social-share-widget-wrap {
+  position: fixed;
+  bottom: $spacer * 1.333333;
+  left: 0;
+  pointer-events: none;
+  z-index: $zindex-fixed;
+
+  @media screen and (min-width: $share-menu-breakpoint) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    padding-top: calc(6.875rem - (#{map-get($map: $spacers, $key: 4)}));
+    padding-bottom: 6.875rem;
+  }
+}
+
+.social-share-widget {
+  margin-left: $spacer * 1.333333;
+  pointer-events: auto;
+
+  @media screen and (min-width: $share-menu-breakpoint) {
+    position: sticky;
+    top: $spacer * 1.333333;
+    height: calc(calc(#{$share-menu-items-count} * #{$spacer}) + calc(#{$share-menu-items-count} * #{$share-menu-link-size}));
+    width: $share-menu-link-size;
+  }
+
+  &__menu-list {
+    position: absolute;
+
+    @media screen and (max-width: ($share-menu-breakpoint - 1)) {
+      bottom: 27px;
+    }
+
+    li {
+      margin-bottom: $share-menu-items-spacing;
+    }
+  }
+
+  &__menu-toggle {
+    @extend %share-btn;
+    border: 1px solid $primary;
+    background-color: $primary;
+    color: $white;
+    z-index: 10;
+
+    &:hover {
+      border: 1px solid $primary-darken;
+      background-color: $primary-darken;
+      color: $white;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0px 0px 0px 2px $primary;
+    }
+
+    >svg:last-child {
+      display: none;
+    }
+
+    @media screen and (min-width: 1130px) {
+      display: none;
+    }
+  }
+
+  &.opened,
+  &.closed {
+    .social-share-widget__menu-list {
+      @for $i from 1 through $share-menu-items-count {
+        li:nth-child(#{$i}n) {
+          transition-duration: .125s;
+          transition-timing-function: ease-out;
+          transition-property: opacity, transform;
+        }
+      }
+    }
+  }
+
+  &.opened {
+    .social-share-widget__menu-list {
+      @for $i from 1 through $share-menu-items-count {
+        li:nth-child(#{$i}n) {
+          transition-delay: #{($share-menu-items-count - $i) * 0.05}s;
+          transform: translateY(0px);
+          opacity: 1;
+        }
+      }
+    }
+
+    .social-share-widget__menu-toggle {
+      >svg:first-child {
+        display: none;
+      }
+
+      >svg:last-child {
+        display: block;
+      }
+    }
+  }
+
+  &.closed {
+    .social-share-widget__menu-list {
+      @for $i from 1 through $share-menu-items-count {
+        li:nth-child(#{$i}n) {
+          transition-delay: #{$i * 0.05}s;
+          transform: translateY(10px);
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  a {
+    @extend %share-btn;
+    background-color: $white;
+    color: $black;
+    display: block;
+    height: $share-menu-link-size;
+    width: $share-menu-link-size;
+    position: relative;
+    border: 1px solid #E3E4E6;
+
+    &:after {
+      background-color: $black;
+      border-radius: 16px;
+      color: white;
+      content: attr(aria-label);
+      font-family: $font-family-monospace;
+      font-size: 14px;
+      left: 100%;
+      margin-left: 10px;
+      opacity: 0;
+      padding: 2px 7px;
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      transform-origin: left;
+      transform: perspective(100px) translate3d(0, -50%, 0) rotateY(30deg);
+      transition-duration: 0.125s;
+      transition-property: transform, opacity, padding-left;
+      transition-timing-function: ease-out;
+      white-space: nowrap;
+    }
+
+    &:hover,
+    &:focus {
+      color: $primary;
+      border: 1px solid $white;
+      box-shadow: 0px 0px 0px 2px $primary;
+
+      &:after {
+        transform: perspective(0) translate3d(0, -50%, 0) rotateY(0deg);
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      border: 1px solid $primary;
+      background-color: $primary;
+      color: $white;
+    }
+
+    &.copied {
+      color: $white;
+      border: 1px solid $primary;
+      background-color: $primary;
+
+      &:before {
+        animation-delay: .125s;
+        animation-duration: .125s;
+        animation-fill-mode: both;
+        animation-name: copiedCheck;
+        animation-timing-function: ease-out;
+        content: url("data:image/svg+xml,%3Csvg width='16' height='12' viewBox='0 0 16 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.1875 2.06274l-7.875 7.87465L2.375 6.00024' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+        left: 100%;
+        margin-left: 17px;
+        position: absolute;
+        top: 50%;
+        transform-origin: center;
+        z-index: ($zindex-fixed + 1);
+      }
+
+      &:after {
+        content: attr(data-copied-msg);
+        background-color: $primary;
+        padding-left: 27px;
+      }
+    }
+  }
+}

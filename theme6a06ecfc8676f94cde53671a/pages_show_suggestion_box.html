@@ -1,0 +1,118 @@
+{% include "translation" %}
+{% include "social_share_widget" %}
+
+<div class="page">
+  <div class="page-inner{% unless site.has_background_image? %} pt-0{% endunless %}">
+    {% unless site.has_background_image? %}
+    <div class="full-width bg-light {% if page.is_homepage? or page.level == 0 or page.level == nil %}py-5{% else %}pb-5{% endif %}">
+      <div class="container">
+    {% endunless %}
+        {% include "breadcrumbs" %}
+        <header class="row mb-n4">
+          {% if page.headline.size > 0 or page.suggestion_box.content.size > 0 %}
+            <div class="col mb-4">
+              {% if page.headline.size > 0 %}
+                <h2 class="page-headline h1">{{ page.headline }}</h2>
+              {% endif %}
+              {% if page.suggestion_box.content.size > 0 %}
+                <div class="page-content">
+                  {{ page.suggestion_box.content }}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+
+          <div class="col-auto mb-4">
+            <button type="button" class="btn btn-primary d-inline-flex align-items-center" data-toggle="modal" data-target="{% if request.logged_in? %}#addSuggestionModal-{{ page.id }}{% else %}#signinModal{% endif %}">
+              <svg class="mr-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5.679 22.125a11.995 11.995 0 114.196 4.196h0l-4.144 1.184a1 1 0 01-1.237-1.236l1.185-4.144h0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M17.438 16a1.438 1.438 0 11-2.876 0 1.438 1.438 0 012.876 0zM11.438 16a1.438 1.438 0 11-2.876 0 1.438 1.438 0 012.876 0z" fill="currentColor" stroke="currentColor" stroke-width=".125"/>
+                <path d="M22 17.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="currentColor"/>
+              </svg>
+              {{ t_add_your_suggestion }}
+            </button>
+          </div>
+        </header>
+    {% unless site.has_background_image? %}
+      </div>
+    </div>
+    {% endunless %}
+    <div class="my-5">
+      <ul class="list-inline tag-list">
+        <li class="list-inline-item">
+          <a class="text-uppercase badge badge-pill {% if request.url_path == page.url or request.url_path == '/' + page.slug %}badge-primary{% else %}badge-transparent{% endif %}" href="{{ page.url }}">{{ t_most_recent }}</a>
+        </li>
+        {% capture alphabetical_url %}/{{ page.slug }}/alphabetical{% endcapture %}
+        <li class="list-inline-item">
+          <a class="text-uppercase badge badge-pill {% if request.url_path == alphabetical_url %}badge-primary{% else %}badge-transparent{% endif %}" href="{{ alphabetical_url }}">{{ t_alphabetical }}</a>
+        </li>
+        {% for tag_name in page.suggestion_box.tag_names %}
+          {% capture tag_url %}/{{ page.slug }}/tags/{{ tag_name }}{% endcapture %}
+          <li class="list-inline-item">
+            <a class="text-uppercase badge badge-pill {% if request.url_path == tag_url %}badge-primary{% else %}badge-transparent{% endif %}" href="{{ tag_url }}">
+              {{ tag_name | replace: 'Good', t_good | replace: 'Bad', t_bad | replace: 'Important', t_important | replace: 'Easy', t_easy | replace: 'Impractical', t_impractical | capitalize }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="suggestion-box content-list" id="suggestion-box-page-{{ page.id }}">
+      {% if request.url_path == page.url or request.url_path == '/' + page.slug %}
+        {% assign suggestions = page.suggestion_box.most_recent_suggestions %}
+      {% elsif request.url_path == alphabetical_url %}
+        {% assign suggestions = page.suggestion_box.alphabetical_suggestions %}
+      {% else %}
+        {% assign suggestions = page.suggestion_box.tagged_suggestion_pages %}
+      {% endif %}
+
+      <div data-masonry>
+        {% for post in suggestions %}
+          <div class="card" id="suggestion-page-{{ post.id }}">
+            <div class="card-body">
+              <h3 class="mt-0 mb-2 h4"><a href="{{ post.url }}">{{ post.headline }}</a></h3>
+
+              {% if post.suggestion.content.size > 0 %}
+                <div class="excerpt truncate-500" data-truncate="500">
+                  {{ post.suggestion.content }}
+                </div>
+              {% endif %}
+
+              {% if post.suggestion.is_answered? %}
+                <div class="card-answer">
+                  <strong class="d-block mb-2">
+                    {{ t_official_response | replace: '$official', post.suggestion.answer_author.published_name_linked }}
+                    {% if post.suggestion.is_answer_type? %}
+                      <span class="badge badge-pill badge-black text-uppercase">{{ post.suggestion.answer_type_html }}</span>
+                    {% endif %}
+                  </strong>
+                  {% if post.suggestion.answer.size > 0 %}
+                    <div class="answer-wrap truncate-500" data-truncate="500">{{ post.suggestion.answer }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {% if request.url_path == page.url %}
+        {{ page.suggestion_box.most_recent_suggestions | paginate prev_label: t_previous next_label: t_next }}
+      {% elsif request.url_path == alphabetical_url %}
+        {{ page.suggestion_box.alphabetical_suggestions | paginate prev_label: t_previous next_label: t_next }}
+      {% else %}
+        {{ page.suggestion_box.tagged_suggestions | paginate prev_label: t_previous next_label: t_next }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% include "suggestion_modal" %}
+{% include "signin_modal" %}
+
+<script src="/assets/liquid/suggestions.js"></script>
+<script type="text/javascript">
+  $(function(){
+    new NB.Liquid.Suggestions();
+  });
+</script>

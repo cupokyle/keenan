@@ -1,0 +1,47 @@
+{% include "translation" %}
+
+{% if page.survey.is_next_question? %}
+
+  {% form_for survey_question_response %}
+
+  <div class="form-errors">{% error_messages_for survey_question_response %}</div>
+
+  {% hidden_field_tag 'survey_question_response[survey_question_id]', page.survey.next_question.id %}
+
+  <div class="mb-4">
+    <h3 class="mb-0 h4">{{ page.survey.next_question.content }}</h3>
+
+    {% if page.survey.next_question.intro.size > 0 %}
+      <div class="mt-2">
+        <div class="form-group">{{ page.survey.next_question.intro | new_line_to_br }}</div>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="form-group">
+    {% if page.survey.next_question.is_multiple_choice? %}
+      {% for possible_response in page.survey.next_question.possible_responses %}
+        <div class="custom-control custom-radio">
+          <input type="radio" name="survey_question_response[survey_question_possible_response_id]" class="custom-control-input" id="survey-choice-{{ possible_response.id }}" value="{{ possible_response.id }}"/>
+          <label for="survey-choice-{{ possible_response.id }}" class="custom-control-label">{{ possible_response.name }}</label>
+        </div>
+      {% endfor %}
+    {% elsif page.survey.next_question.is_yes_no? %}
+      <div class="radio-inline">
+        <div class="radio-inline form-group">{{ page.survey.next_question.yes_radio_button }}<label for="radio-btn-yes" class="radio">Yes</label></div>
+        <div class="radio-inline form-group">{{ page.survey.next_question.no_radio_button }}<label for="radio-btn-no" class="radio">No</label></div>
+      </div>
+    {% elsif page.survey.next_question.is_text? %}
+      <div class="auto-grow">
+        {% text_area "content", class:"form-control" %}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="form-group">
+    {% include "form_submit_tag" label:t_next %}
+  </div>
+  {% endform_for %}
+{% else %}
+  <h3 class="h4">{{ t_survey_thanks_for_answering }}</h3>
+{% endif %}

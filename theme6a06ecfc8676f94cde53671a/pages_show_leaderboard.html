@@ -1,0 +1,115 @@
+{% include "translation" %}
+{% include "social_share_widget" %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="page-headline">{{ page.headline }}</h2>
+        {% endif %}
+
+
+        {% if page.leaderboard.content.size > 0 %}
+          <div id="intro" class="page-intro">
+            {{ page.leaderboard.content }}
+          </div>
+        {% endif %}
+
+        {% for leaderboard in page.page_leaderboards %}
+          {% capture goal_name %}
+            {% case leaderboard.goal_name %}
+              {% when "comments" %}
+                {{ t_leaderboard_comments }}
+              {% when "contacts" %}
+                {{ t_leaderboard_contacts }}
+              {% when "donations" %}
+                {{ t_leaderboard_donations }}
+              {% when "earned social capital" %}
+                {{ t_leaderboard_earned_social_capital }}
+              {% when "emails sent" %}
+                {{ t_leaderboard_emails_sent }}
+              {% when "followers" %}
+                {{ t_leaderboard_followers }}
+              {% when "recruited donations" %}
+                {{ t_leaderboard_recruited_donations }}
+              {% when "recruited donations" %}
+                {{ t_leaderboard_recruited_donors }}
+              {% when "recruited endorsements" %}
+                {{ t_leaderboard_recruited_endorsements }}
+              {% when "recruited feedback" %}
+                {{ t_leaderboard_recruited_feedback }}
+              {% when "recruited pledgers" %}
+                {{ t_leaderboard_recruited_pledgers }}
+              {% when "recruited pledges" %}
+                {{ t_leaderboard_recruited_pledges }}
+              {% when "recruited RSVPs" %}
+                {{ t_leaderboard_recruited_rsvps }}
+              {% when "recruited signatures" %}
+                {{ t_leaderboard_recruited_signatures }}
+              {% when "recruited signups" %}
+                {{ t_leaderboard_recruited_signups }}
+              {% when "recruited suggestions" %}
+                {{ t_leaderboard_recruited_suggestions }}
+              {% when "recruited survey responses" %}
+                {{ t_leaderboard_recruited_survey_responses }}
+              {% when "recruited recruited volunteers" %}
+                {{ t_leaderboard_recruited_volunteers }}
+              {% when "recruited social captial" %}
+                {{ t_leaderboard_social_capital }}
+              {% when "tweets" %}
+                {{ t_leaderboard_tweets }}
+              {% else %}
+            {% endcase %}
+          {% endcapture %}
+
+          {% if leaderboard.display_number_results > 0 %}
+            <div class="bg-light rounded-xl mt-5 py-5 px-4 px-sm-5">
+                {% if leaderboard.has_goal? %}
+                  <p class="mb-3 h5 text-sans-serif font-weight-semi-bold">{{ t_count_of_named_goal | replace: '$count', leaderboard.total | replace: '$goal', leaderboard.goal | replace: '$name', goal_name }}</p>
+                  <div class="mb-4">
+                    {% include "progress"
+                      percent: leaderboard.percent_of_goal,
+                      count: leaderboard.total,
+                      goal: leaderboard.goal,
+                    %}
+                  </div>
+                {% endif %}
+
+                <p class="text-black-75">{{ t_leaderboard_top }} {{ leaderboard.display_number_results }} {{ leaderboard.display_name }}</p>
+
+                <ul class="space-y-3 space-y-sm-4 list-unstyled">
+                  {% for entry in leaderboard.entries %}
+                    {% if entry.signup.is_leaderboardable? == true %}
+                      <li>
+                        <div class="card card-leaderboard">
+                          <div class="card-body">
+                            <div class="card-leaderboard-inner">
+                              <div class="float-right mt-1 d-inline-block d-sm-none">
+                                <span class="badge badge-dark">{{ entry.position }}</span>
+                              </div>
+                              <div class="flex-shrink-0">
+                                {% include "avatar" signup: entry.signup, size: 50, class: "mr-2 mb-2 mb-md-0" %}
+                              </div>
+                              <div class="card-leaderboard-info">
+                                <span class="mr-2">{{ entry.signup.published_name_linked }}</span>
+                                <small class="d-inline-block text-black-75">{{ entry.total }} {{ goal_name }}</small>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-leaderboard-position">
+                            {{ entry.position }}
+                          </div>
+                        </div>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

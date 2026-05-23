@@ -1,0 +1,16 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="h3 m-0">{{ page.headline }}</h2>
+        {% endif %}
+        <div class="{% if page.headline.size > 0 %}mt-4{% endif %}">{{ page.basic.content | truncatewords: 80 }}</div>
+        <div class="mt-4"><a href="{{ page.url }}">{{ t_excerpt_read_more }}</a></div>
+        {% include "page_tags" with homepage_excerpt %}
+      </div>
+    </div>
+  </div>
+</section>

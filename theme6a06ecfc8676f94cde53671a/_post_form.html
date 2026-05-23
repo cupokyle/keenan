@@ -1,0 +1,41 @@
+{% include "translation" %}
+<div id="postFormModal-{{ page.id }}" class="modal fade" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ t_close }}"></button>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">{{ page.blog.public_posting_prompt }}</h5>
+      </div>
+      <div class="modal-body">
+        {% form_for blog_post_page %}
+
+          <div class="form-errors">{% error_messages_for blog_post_page %}</div>
+
+          <div id="blog-post-page-page-headline-input" class="mb-0 blog-post-page-page-headline-input form-group">
+            <div class="form-group">
+              <div class="float-label">
+                <label for="page_headline">{{ t_blog_post_headline }}</label>
+                {% text_field "page_headline", class:"form-control text" %}
+              </div>
+            </div>
+          </div>
+
+          <div id="blog-post-page-form-expanded" class="mt-4 blog-post-page-form-expanded">
+            <div class="form-group">
+              {% text_area "content_editable", class:"form-control textarea-tinymce" %}
+            </div>
+
+            {% if page.show_consent_form? %}
+              {% include "consent_form" %}
+            {% endif %}
+
+            <div class="form-group">
+              {% include "form_submit_tag" label: t_forms_post %}
+            </div>
+
+          </div>
+        {% endform_for %}
+      </div>
+    </div>
+  </div>
+</div>

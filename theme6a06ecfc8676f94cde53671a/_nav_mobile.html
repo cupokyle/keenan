@@ -1,0 +1,54 @@
+{% include 'translation' %}
+<div class="collapse navbar-collapse" id="mobileNav">
+  <ul class="navbar-nav">
+    {% for child in site.root_nav_pages %}
+      {% unless child.id == site.donation_page.id %}
+        {% if child.leaf? or child.nav_children.size == 0 %}
+          <li class="nav-item">
+            <a href="{{ child.url }}" class="nav-link">{{ child.name }}</a>
+          </li>
+        {% else %}
+          <li class="nav-item dropdown">
+            <a href="{{ child.url }}" class="nav-link dropdown-toggle" id="{{child.slug}}{{child.id}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ child.name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="{{child.slug}}{{child.id}}">
+              <a class="dropdown-item" href="{{ child.url }}">{{ child.name }}</a>
+              {% for child2 in child.nav_children %}
+                <a class="dropdown-item" href="{{ child2.url }}">{{ child2.name }}</a>
+              {% endfor %}
+            </div>
+          </li>
+        {% endif %}
+      {% endunless %}
+    {% endfor %}
+    <li class="nav-item nav-item-bordered">
+      {% if request.sorta_logged_in? or request.logged_in? %}
+        <a href="" class="nav-link dropdown-toggle" id="signup-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {% include "avatar" signup: request.current_signup, size: 32, class: "mr-2" %}
+          <span>{{ request.current_signup.first_name_or_friend }}</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="signup-dropdown">
+          {% for child in site.supporter_pages %}
+	          <a class="dropdown-item" href="{{ child.url }}">{{ child.name }}</a>
+          {% endfor %}
+          <a class="dropdown-item" href="{{ site.edit_pages_url }}">{{ t_nav_your_pages }}</a>
+          <a class="dropdown-item" href="{{ request.current_signup.settings_url }}">{{ t_nav_settings }}</a>
+          <div class="dropdown-divider"></div>
+          {% if site.show_public_profiles? == false %}
+          {% elsif request.current_signup.is_profile_published? %}
+            <a class="dropdown-item" href="{{ request.current_signup.profile_url }}">{{ t_nav_public_profile }}</a>
+          {% endif %}
+          <a class="dropdown-item" href="{{ request.current_signup.logout_url }}">{{ t_nav_sign_out }}</a>
+        </div>
+      {% else %}
+        <a href="/login" class="nav-link text-nowrap">{{ t_forms_sign_in }}</a>
+      {% endif %}
+    </li>
+    {% if site.has_donation_page? and site.donation_page.is_nav? %}
+      <li class="nav-item nav-item-bordered nav-item-padded">
+        <a href="{{ site.donation_page.url }}" class="btn btn-primary btn-block">{{ site.donation_page.name }}</a>
+      </li>
+    {% endif %}
+  </ul>
+</div>

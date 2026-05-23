@@ -1,0 +1,45 @@
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-body {
+  flex: 1;
+}
+
+.media-signup {
+  @media (max-width: 480px) {
+    flex-direction: column;
+  }
+
+  @include media-breakpoint-up(sm) {
+    align-items: center;
+  }
+
+  img,
+  svg {
+    margin-right: 0.625rem;
+    @include media-breakpoint-down(xs) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .linked-signup-name {
+    margin-top: .35rem;
+
+    @media (min-width: 480px) {
+      margin-top: .25rem;
+    }
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+    }
+  }
+
+  .activity-time {
+    @include media-breakpoint-down(xs) {
+      display: block;
+    }
+  }
+}

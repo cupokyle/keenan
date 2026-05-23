@@ -1,0 +1,74 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <header class="row mb-n4">
+      {% if page.headline.size > 0 %}
+        <div class="col mb-4">
+          <h2 class="m-0 h1">{{ page.headline }}</h2>
+        </div>
+      {% endif %}
+      <div class="col-auto mb-4">
+        <a class="btn btn-primary d-inline-flex align-items-center" href="{{ page.slug }}">
+          <svg class="mr-1" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.679 22.125a11.995 11.995 0 114.196 4.196h0l-4.144 1.184a1 1 0 01-1.237-1.236l1.185-4.144h0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M17.438 16a1.438 1.438 0 11-2.876 0 1.438 1.438 0 012.876 0zM11.438 16a1.438 1.438 0 11-2.876 0 1.438 1.438 0 012.876 0z" fill="currentColor" stroke="currentColor" stroke-width=".125"/>
+            <path d="M22 17.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" fill="currentColor"/>
+          </svg>
+          {{ t_add_your_suggestion }}
+        </a>
+      </div>
+    </header>
+
+    {% if page.suggestion_box.most_recent_suggestions.size > 0%}
+      <ul class="mt-5 list-inline tag-list">
+        <li class="list-inline-item">
+          <a class="text-uppercase badge badge-pill badge-primary" href="{{ page.url }}">{{ t_most_recent }}</a>
+        </li>
+        <li class="list-inline-item">
+          <a class="text-uppercase badge badge-pill badge-transparent" href="/{{ page.slug }}/alphabetical">{{ t_alphabetical }}</a>
+        </li>
+        {% for tag_name in page.suggestion_box.tag_names %}
+          <li class="list-inline-item">
+            <a class="text-uppercase badge badge-pill badge-transparent" href="/{{ page.slug }}/tags/{{ tag_name }}">
+              {{ tag_name | replace: 'Good', t_good | replace: 'Bad', t_bad | replace: 'Important', t_important | replace: 'Easy', t_easy | replace: 'Impractical', t_impractical | capitalize }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+
+      <div class="mt-5" data-masonry>
+        {% for post in page.suggestion_box.most_recent_suggestions limit: 4 %}
+          <div class="card" id="suggestion-page-{{ post.id }}">
+            <div class="card-body">
+              <h3 class="mt-0 mb-2 h4"><a href="{{ post.url }}">{{ post.headline }}</a></h3>
+
+              {% if post.suggestion.content.size > 0 %}
+                <div class="excerpt truncate-500" data-truncate="500">
+                  {{ post.suggestion.content }}
+                </div>
+              {% endif %}
+
+              {% if post.suggestion.is_answered? %}
+                <div class="card-answer">
+                  <strong class="mb-2 d-block">
+                    {{ t_official_response | replace: '$official', post.suggestion.answer_author.published_name_linked }}
+                    {% if post.suggestion.is_answer_type? %}
+                      <span class="badge badge-pill badge-black text-uppercase">{{ post.suggestion.answer_type_html }}</span>
+                    {% endif %}
+                  </strong>
+                  {% if post.suggestion.answer.size > 0 %}
+                    <div class="answer-wrap truncate-500" data-truncate="500">{{ post.suggestion.answer }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="text-center">
+        <a href="{{ page.slug }}">{{ t_excerpt_see_all_suggestions }}</a>
+      </div>
+    {% endif %}
+  </div>
+</section>

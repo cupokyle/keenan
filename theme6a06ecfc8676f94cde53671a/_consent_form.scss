@@ -1,0 +1,7 @@
+.consent-form__content {
+  color: rgba(#000, .75);
+
+  .modal & {
+    color: rgba($light, .75);
+  }
+}

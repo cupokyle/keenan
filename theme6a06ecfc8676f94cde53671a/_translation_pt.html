@@ -1,0 +1,567 @@
+{% comment %} Forms {% endcomment %}
+{% capture t_forms_activate_account %}Ativar conta{% endcapture %}
+{% capture t_forms_activate_your_account %}Ative a sua conta{% endcapture %}
+{% capture t_forms_address %}Morada{% endcapture %}
+{% capture t_forms_address_1 %}Morada 1{% endcapture %}
+{% capture t_forms_address_2 %}Morada 2{% endcapture %}
+{% capture t_forms_address_3 %}Morada 3{% endcapture %}
+{% capture t_forms_agress_to_nb_tos %}Concordo com <a href="http://nationbuilder.com/tos" target="_blank">os termos e condições do NationBuilder</a>{% endcapture %}
+{% capture t_forms_allow_search_engines_to_find_profile %}Permitir que os motores de busca encontrem <a href="{{ signup.profile_url }}">o meu perfil</a>{% endcapture %}
+{% capture t_forms_amount %}Quantidade{% endcapture %}
+{% capture t_forms_any_questions_we_can_answer %}Alguma dúvida que possamos esclarecer?{% endcapture %}
+{% capture t_forms_apple_pay_notice %}Se utilizar o Apple Pay, o seu pedido de confirmação pode referir-se ao nosso processador de pagamento, "NationBuilder"{% endcapture %}
+{% capture t_forms_billing_address %}Morada de fatura{% endcapture %}
+{% capture t_forms_browse %}Pesquisar{% endcapture %}
+{% capture t_forms_business %}Negócio{% endcapture %}
+{% capture t_forms_cancel %}Cancelar{% endcapture %}
+{% capture t_forms_change_password %}Alterar palavra-passe{% endcapture %}
+{% capture t_forms_change_payment_method %}Modificação do método de pagamento{% endcapture %}
+{% capture t_forms_change_your_comment %}Alterar o seu comentário{% endcapture %}
+{% capture t_forms_change_your_password %}Alterar a sua palavra-passe{% endcapture %}
+{% capture t_forms_choose_a_file %}Escolha um ficheiro{% endcapture %}
+{% capture t_forms_choose_your_password %}Escolha sua palavra-passe{% endcapture %}
+{% capture t_forms_choose_your_url %}Escolha o seu endereço web (URL){% endcapture %}
+{% capture t_forms_city %}Cidade{% endcapture %}
+{% capture t_forms_clear_order %}Limpar pedido{% endcapture %}
+{% capture t_forms_clear_search %}Limpar pesquisa{% endcapture %}
+{% capture t_forms_click_here_to_create_one %}Não tem conta? Clica aqui para criar uma{% endcapture %}
+{% capture t_forms_comments %}Comentários {% endcapture %}
+{% capture t_forms_comments_other_ideas %}Comentários, sugestões, etc.{% endcapture %}
+{% capture t_forms_commitment_to_fundraising %}Comprometo-me a angariar fundos{% endcapture %}
+{% capture t_forms_confirm_true_and_accurate %}Confirmo que as afirmações acima são verdadeiras e precisas.{% endcapture %}
+{% capture t_forms_contribution_from_business %}Esta é uma contribuição de uma empresa{% endcapture %}
+{% capture t_forms_contribution_rules %}Regras de contribuição{% endcapture %}
+{% capture t_forms_contributions_not_tax_deductible %}As contribuições não são dedutíveis de impostos{% endcapture %}
+{% capture t_forms_contributions_tax_deductible %}Contribuições são dedutíveis.{% endcapture %}
+{% capture t_forms_country %}País{% endcapture %}
+{% capture t_forms_cover_the_processing_fee %}Eu cobrirei a taxa de processamento - adicione-a à minha doação.{% endcapture %}
+{% capture t_forms_create_site_account %}Crie conta no {{ site.name }}{% endcapture %}
+{% capture t_forms_credit_card %}Cartão de crédito{% endcapture%}
+{% capture t_forms_credit_card_billed_monthly %}O seu cartão de crédito será cobrado automaticamente a cada mês{% endcapture %}
+{% capture t_forms_crop %}Cortar imagem{% endcapture %}
+{% capture t_forms_crop_your_image %}Corte a sua imagem{% endcapture %}
+{% capture t_forms_default_time_zone %}Fuso horário predefinido{% endcapture %}
+{% capture t_forms_democracy_engine %}Compreendo que o meu pagamento está a ser feito à Democracy Engine, que aceita a responsabilidade de distribuir os fundos aos meus destinatário designados. O meu cartão ou extrato bancário irá apresentar o pagamento à "Democracy Engine" e se houver algum problema ou discrepância com o pagamento, ou se desejar anular o mesmo, posso contactar a Democracy Engine em <a href="mailto:support@democracyengine.com">support@democracyengine.com</a>.{% endcapture %}
+{% capture t_forms_do_not_contact_me %}Não me contacte{% endcapture %}
+{% capture t_forms_do_not_have_employer %}Eu não tenho um empregador{% endcapture %}
+{% capture t_forms_donate %}Doar{% endcapture %}
+{% capture t_forms_donate_now %}Doar agora{% endcapture %}
+{% capture t_forms_dont_post_publicly %}Não divulgar isto publicamente {% endcapture %}
+{% capture t_forms_dont_publish_donation %}Não publiquem a minha doação no website.{% endcapture %}
+{% capture t_forms_dont_publish_email %}Não publiquem o meu endereço de email{% endcapture %}
+{% capture t_forms_dont_publish_my_profile %}Não publiquem <a href="{{ signup.profile_url }}">o meu perfil</a> no website{% endcapture %}
+{% capture t_forms_dont_publish_phone %}Não publiquem o meu contacto telefónico{% endcapture %}
+{% capture t_forms_dont_publish_survey_question_answers %}Não publiquem as minhas respostas ao questionário neste website{% endcapture %}
+{% capture t_forms_dont_publish_this %}Não publiquem isto no website{% endcapture %}
+{% capture t_forms_edit %}Editar{% endcapture %}
+{% capture t_forms_edition %}Edição{% endcapture %}
+{% capture t_forms_email %}E-mail{% endcapture %}
+{% capture t_forms_email_hint %}To change your login email, please visit <a href="{{ settings.supporter_portal_url }}/security">Login and security</a>.{% endcapture %}
+{% capture t_forms_email_account_activation_instructions %}Instruções de ativação da conta email{% endcapture %}
+{% capture t_forms_email_address %}Endereço eletrónico{% endcapture %}
+{% capture t_forms_employer %}Empregador{% endcapture %}
+{% capture t_forms_enter_billing_information %}Insira suas informações de pagamento{% endcapture %}
+{% capture t_forms_explanation %}Explicação{% endcapture %}
+{% capture t_forms_first_name %}Primeiro nome{% endcapture %}
+{% capture t_forms_forgot_your_password %}Esqueceu-se da sua palavra-passe?{% endcapture %}
+{% capture t_forms_full_address %}Morada <small class="text-muted">(Rua, Cidade, Região, Código Postal)</small>{% endcapture %}
+{% capture t_forms_full_name %}Nome completo{% endcapture %}
+{% capture t_forms_good_time_to_call %}Quando é uma boa altura para o contactarmos?{% endcapture %}
+{% capture t_forms_government %}Governo{% endcapture %}
+{% capture t_forms_headline %}Título{% endcapture %}
+{% capture t_forms_home_phone %}Telefone de casa{% endcapture %}
+{% capture t_forms_im_not_sure %}Não tenho a certeza.{% endcapture %}
+{% capture t_forms_include_in_leaderboards %}Incluir-me em leaderboards{% endcapture %}
+{% capture t_forms_language %}Idioma{% endcapture %}
+{% capture t_forms_last_name %}Apelido{% endcapture %}
+{% capture t_forms_law_requires_employer_occupation %}A lei exige que perguntemos sobre seu empregador e ocupação. Se você não tem empregador ou é aposentado, marque "Não tenho empregador". Se você é autônomo, coloque "autônomo" em "empregador" e descreva sua ocupação.{% endcapture %}
+{% capture t_forms_mobile_phone %}Telemóvel{% endcapture %}
+{% capture t_forms_monthly %}Mensal{% endcapture %}
+{% capture t_forms_annual %}Anual{% endcapture %}
+{% capture t_forms_monthly_recurring_contribution %}Tornar esta contribuição recorrente, mensal{% endcapture %}
+{% capture t_forms_name %}Nome{% endcapture %}
+{% capture t_forms_new_password %}Nova palavra-passe{% endcapture %}
+{% capture t_forms_no %}Não{% endcapture %}
+{% capture t_forms_no_payment_processor %}Processador de pagamento não encontrado. Esta página não funcionará enquanto não adicionar um processador de pagamento{% endcapture %}
+{% capture t_forms_nonprofit %}Sem fins lucrativos{% endcapture %}
+{% capture t_forms_occupation %}Ocupação{% endcapture %}
+{% capture t_forms_one_time %}Vez única{% endcapture %}
+{% capture t_forms_orangiazation_or_company %}Organização / Companhia{% endcapture %}
+{% capture t_forms_other %}Outro{% endcapture %}
+{% capture t_forms_paid_annually %}Pago anualmente{% endcapture %}
+{% capture t_forms_paid_monthly %}Pago mensalmente{% endcapture %}
+{% capture t_forms_password %}Palavra-passe{% endcapture %}
+{% capture t_forms_pay_with %}Pague com{% endcapture %}
+{% capture t_forms_payment_details %}Detalhes do pagamento{% endcapture %}
+{% capture t_forms_payment_installments %}Pagamento em prestações{% endcapture %}
+{% capture t_forms_phone %}Telefone{% endcapture %}
+{% capture t_forms_phone_country_code %}Indicativo telefónico{% endcapture %}
+{% capture t_forms_plan %}Plano{% endcapture %}
+{% capture t_forms_political %}Político{% endcapture %}
+{% capture t_forms_post %}Publicar{% endcapture %}
+{% capture t_forms_post_in %}Publicar em{% endcapture %}
+{% capture t_forms_post_your_comment %}Publicar comentário{% endcapture %}
+{% capture t_forms_postal_code %}Código Postal{% endcapture %}
+{% capture t_forms_process_payment %}Processo de pagamento{% endcapture %}
+{% capture t_forms_profile_headline %}Nome do perfil{% endcapture %}
+{% capture t_forms_profile_image %}Imagem de perfil{% endcapture %}
+{% capture t_forms_remember_me %}Lembra-te de mim{% endcapture %}
+{% capture t_forms_repeat_password %}Repita a palavra-passe{% endcapture %}
+{% capture t_forms_reset_my_password %}Redefinir a minha palavra-passe{% endcapture %}
+{% capture t_forms_reset_password %}Redefinir a palavra-passe{% endcapture %}
+{% capture t_forms_save %}Guardar{% endcapture %}
+{% capture t_forms_save_and_update %}Guardar e atualizar{% endcapture %}
+{% capture t_forms_save_settings %}Guardar configurações{% endcapture %}
+{% capture t_forms_select_an_amount %}Selecione um montante{% endcapture %}
+{% capture t_forms_please_select_or_enter_amount %}Por favor selecione ou insira um montante{% endcapture %}
+{% capture t_forms_send_account_activation_link %}Enviar link de ativação de conta{% endcapture %}
+{% capture t_forms_send_activation_instructions %}Enviar instruções de ativação{% endcapture %}
+{% capture t_forms_send_email_updates %}Envia-me atualizações por email{% endcapture %}
+{% capture t_forms_send_password_reset_instructions %}Enviar instruções de redefinição de palavra-passe{% endcapture %}
+{% capture t_forms_send_text_updates %}Envia-me atualizações por mensagem{% endcapture %}
+{% capture t_forms_settings %}Configurações{% endcapture %}
+{% capture t_forms_short_bio %}Pequena biografia{% endcapture %}
+{% capture t_forms_sign_in %}Entrar{% endcapture %}
+{% capture t_forms_sign_in_blog %}Inicie sessão para fazer publicações{% endcapture %}
+{% capture t_forms_sign_in_suggestion %}Inicie sessão para fazer a sua sugestão{% endcapture %}
+{% capture t_forms_sign_in_with_password %}Entrar{% endcapture %}
+{% capture t_forms_sign_up %}Inscreva-se{% endcapture %}
+{% capture t_forms_start_your_nation %}Comece o seu nation{% endcapture %}
+{% capture t_forms_state %}Estado{% endcapture %}
+{% capture t_forms_state_us_only %}Estado (exclusivo aos EUA){% endcapture %}
+{% capture t_forms_submit %}Enviar{% endcapture %}
+{% capture t_forms_testing_mode %}<strong>Modo de Teste:</strong> As transações não serão processadas. Use exclusivamente <a href="https://stripe.com/docs/testing#cards">testing cards</a>{% endcapture %}
+{% capture t_forms_thanks_for_signing %}Obrigado pela sua inscrição!{% endcapture %}
+{% capture t_forms_time_zone %}Fuso horário{% endcapture %}
+{% capture t_forms_update_info %}Atualizar informação{% endcapture %}
+{% capture t_forms_upload_picture_140 %}Carregar uma fotografia (140x140){% endcapture %}
+{% capture t_forms_use_case %}Usar exemplo{% endcapture %}
+{% capture t_forms_username %}Nome de utilizador{% endcapture %}
+{% capture t_forms_payment_method_saved %}A informação sobre o método de pagamento foi guardada.{% endcapture %}
+{% capture t_forms_verify_password %}Por favor, verifica a tua palavra-passe{% endcapture %}
+{% capture t_forms_want_to_volunteer %}Quero ser voluntário{% endcapture %}
+{% capture t_forms_when_are_you_available %}Quando é que está disponível?{% endcapture %}
+{% capture t_forms_which_rule_was_violated %}Qual regra foi violada?{% endcapture %}
+{% capture t_forms_why_do_you_support %}Porque é que apoia {{ site.name }}?{% endcapture %}
+{% capture t_forms_wont_be_billed_unless_open_past_free_trial %}Não será cobrado a não ser que mantenha a sua conta ativa após os 14 dias de demonstração gratuita. Precisamos dos seus dados de pagamento para evitar fraudes e verificar se tem um cartão de crédito válido, no caso de querer manter o seu nation. Isto previne qualquer interrupção do serviço. Poderá alterar o seu plano ou cancelar a qualquer momento.{% endcapture %}
+{% capture t_forms_work_phone %}Telefone de Trabalho{% endcapture %}
+{% capture t_forms_youre_almost_done %}Está quase a acabar! Submeter {% if request.current_order %}pagamento {% else %}doação {% endif %}abaixo.{% endcapture %}
+{% capture t_forms_your_information %}Sua informação{% endcapture %}
+{% capture t_forms_your_order %}O seu pedido{% endcapture %}
+{% capture t_forms_your_profile_url %}O seu perfil público esta disponível em <a href="{{ signup.profile_url }}" class="text-muted">{{ signup.full_profile_url }}</a>{% endcapture %}
+{% capture t_forms_your_profile_url_preactivation %}O seu perfil público esta disponível em {{ site.full_url }}{% if request.current_signup.has_username? %}{{ request.current_signup.username }}{% else %}nome do usuário{% endif %}{% endcapture %}
+{% capture t_forms_your_title %}O seu título{% endcapture %}
+{% capture t_forms_zip_code_us_only %}Código postal (exclusivo aos EUA){% endcapture %}
+
+{% comment %} Donation {% endcomment %}
+{% capture t_donation_amount_billed_automatically_every_period %}$amount - cobrado automaticamente cada $time $time_period{% endcapture %}
+{% capture t_donation_amount_raised_of_goal %}{{ page.donations_amount_format }} angariados do objetivo de {{ page.donation_v2.amount_goal_format }}{% endcapture %}
+{% capture t_donation_amount_raised_so_far %}$amount agariados no total. Ajude-nos a chegar aos $goal!{% endcapture %}
+{% capture t_donation_count_donated_of_goal %}{{ page.donors_count }} doados do objetivo de {{ page.donation_v2.donor_goal }}{% endcapture %}
+{% capture t_donation_donors_so_far %}Até ao momento existem $amount doadores. Ajude-nos a atingir os $goal!{% endcapture %}
+
+{% comment %} Leaderboard {% endcomment %}
+{% capture t_leaderboard_top %}Top{% endcapture %}
+{% capture t_leaderboard_comments %}Comentários{% endcapture %}
+{% capture t_leaderboard_contacts %}Contactos{% endcapture %}
+{% capture t_leaderboard_donations %}Doações{% endcapture %}
+{% capture t_leaderboard_earned_social_capital %}Capital social ganho{% endcapture %}
+{% capture t_leaderboard_emails_sent %}Emails enviados{% endcapture %}
+{% capture t_leaderboard_followers %}Seguidores{% endcapture %}
+{% capture t_leaderboard_recruited_donations %}Doações recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_donors %}Doadores recrutados{% endcapture %}
+{% capture t_leaderboard_recruited_endorsements %}Apoios recrutados{% endcapture %}
+{% capture t_leaderboard_recruited_feedback %}Opiniões recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_pledgers %}Compromissos recrutados{% endcapture %}
+{% capture t_leaderboard_recruited_pledges %}Compromissos recrutados{% endcapture %}
+{% capture t_leaderboard_recruited_rsvps %}Inscrições recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_signatures %}Assinaturas recrutada{% endcapture %}
+{% capture t_leaderboard_recruited_signups %}Inscrições recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_suggestions %}Sugestões recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_survey_responses %}Respostas ao questionário recrutadas{% endcapture %}
+{% capture t_leaderboard_recruited_volunteers %}Voluntários recrutados{% endcapture %}
+{% capture t_leaderboard_social_capital %}Capital social gasto{% endcapture %}
+{% capture t_leaderboard_tweets %}Tweets{% endcapture %}
+
+{% comment %} Activity Feed {% endcomment %}
+{% capture t_activity_be_first_comment %}Seja o primeiro a comentar{% endcapture %}
+{% capture t_activity_leave_comment %}Deixe um comentário{% endcapture %}
+{% capture t_activity_recent_responses %}Respostas recentes{% endcapture %}
+{% capture t_activity_sigin_in_to_comment %}Inicie sessão para comentar{% endcapture %}
+{% capture t_activity_write_response %}Escreva a sua resposta{% endcapture %}
+
+{% comment %} CP Nav {% endcomment %}
+{% capture t_cp_nav_control_panel %}Painel de controlo{% endcapture %}
+{% capture t_cp_nav_edit_blog_post %}Editar esta publicação{% endcapture %}
+{% capture t_cp_nav_edit_event %}Editar este evento{% endcapture %}
+{% capture t_cp_nav_edit_page %}Editar esta página{% endcapture %}
+{% capture t_cp_nav_edit_person %}Editar esta pessoa{% endcapture %}
+{% capture t_cp_nav_edit_question %}Editar esta pergunta{% endcapture %}
+{% capture t_cp_nav_edit_questions %}Editar perguntas{% endcapture %}
+{% capture t_cp_nav_edit_suggestion %}Editar esta sugestão{% endcapture %}
+{% capture t_cp_nav_live_page %}Página ativa{% endcapture %}
+{% capture t_cp_nav_new_blog_post %}Nova publicação{% endcapture %}
+{% capture t_cp_nav_new_event %}Novo evento{% endcapture %}
+{% capture t_cp_nav_new_suggestion %}Nova sugestão{% endcapture %}
+{% capture t_cp_nav_preview_page %}Pré-visualizar esta página{% endcapture %}
+{% capture t_cp_nav_preview_post %}Pré-visualizar esta publicação{% endcapture %}
+
+{% comment %} Recruiting {% endcomment %}
+{% capture t_recruiting_anyone_referred_through %}Qualquer pessoa referida através do teu link de rastreamento pessoal ou através dos botões abaixo ser-te-ão creditados.{% endcapture %}
+{% capture t_recruiting_could_vote %}Poderia Votar{% endcapture %}
+{% capture t_recruiting_donor %}Doador{% endcapture %}
+{% capture t_recruiting_non_tracking_link %}Página não encontrada{% endcapture %}
+{% capture t_recruiting_personal_tracking_link %}Link de rastreamento pessoal{% endcapture %}
+{% capture t_recruiting_supporter %}Apoiante{% endcapture %}
+{% capture t_recruiting_volunteer %}Voluntário{% endcapture %}
+{% capture t_recruiting_would_vote %}Vou Votar{% endcapture %}
+
+{% comment %} Social {% endcomment %}
+{% capture t_social_add_to_calendar %}Adicione este evento ao seu calendário{% endcapture %}
+{% capture t_social_checking_facebook_joined %}Procurando no Facebook por pessoas que tenham aderido...{% endcapture %}
+{% capture t_social_checking_twitter_joined %}Procurando no Twitter por pessoas que tenham aderido...{% endcapture %}
+{% capture t_social_connected_your_facebook_account  %}A sua conta de Facebook foi associada{% endcapture %}
+{% capture t_social_connected_your_facebook_permission %}A sua conta de Facebook foi associada, mas precisamos da <a href="/users/facebook/connect?scope=user_friends">sua permissão</a> para encontrar os seus amigos de Facebook que aderiram.{% endcapture %}
+{% capture t_social_connected_your_twitter_account  %}A sua conta de Twitter foi associada{% endcapture %}
+{% capture t_social_email %}E-mail{% endcapture %}
+{% capture t_social_facebook_friends_have_joined %}<strong>{{ request.current_signup.followings_count_from_facebook }}</strong> dos seus amigos no Facebook aderiram.<br/>Começará a segui-los automaticamente e vice-versa.{% endcapture %}
+{% capture t_social_including %}Incluíndo...{% endcapture %}
+{% capture t_social_link_copied %}Link copiado!{% endcapture %}
+{% capture t_social_message %}Partilhe com outros para aumentar o seu impacto! Será incluido um link.{% endcapture %}
+{% capture t_social_no_thanks %}Não, obrigado{% endcapture %}
+{% capture t_social_none_facebook_friends_have_joined_yet %}Nenhum dos seus amigos no Facebook aderiu.{% endcapture %}
+{% capture t_social_none_twitter_friends_have_joined_yet %}Nenhuma das pessoas que segue no Twitter aderiu.{% endcapture %}
+{% capture t_social_not_connected_your_facebook_account  %}A sua conta de Facebook não está associada.{% endcapture %}
+{% capture t_social_not_connected_your_twitter_account  %}A sua conta de Twitter não está associada.{% endcapture %}
+{% capture t_social_post_to_facebook %}Publique no Facebook{% endcapture %}
+{% capture t_social_recruit_your_friends %}Recrute os seus amigos{% endcapture %}
+{% capture t_social_share_on_facebook %}Partilhar no Facebook{% endcapture %}
+{% capture t_social_share_on_linkedin %}Partilhar no LinkedIn{% endcapture %}
+{% capture t_social_share_on_twitter %}Partilhar no Twitter{% endcapture %}
+{% capture t_social_share_on_whatsapp %}Partilhar no Whatsapp{% endcapture %}
+{% capture t_social_sign_in_with_facebook %}Iniciar sessão com Facebook{% endcapture %}
+{% capture t_social_sign_in_with_twitter %}Iniciar sessão com Twitter{% endcapture %}
+{% capture t_social_sign_up_with_facebook %}Registar-me através do Facebook{% endcapture %}
+{% capture t_social_sign_up_with_twitter %}Registar-me através do Twitter{% endcapture %}
+{% capture t_social_tweet %}Tweet{% endcapture %}
+{% capture t_social_twitter_friends_have_joined %}<strong>{{ request.current_signup.followings_count_from_twitter }}</strong> of your Twitter friends have joined.<br/>You are automatically following them, and vice versa.{% endcapture %}
+
+{% comment %} Navigation {% endcomment %}
+{% capture t_nav_followers %}Seguidores{% endcapture %}
+{% capture t_nav_following %}Segue{% endcapture %}
+{% capture t_nav_menu %}Menu{% endcapture %}
+{% capture t_nav_more %}Mais{% endcapture %}
+{% capture t_nav_public_profile %}Perfil público{% endcapture %}
+{% capture t_nav_settings %}Configurações{% endcapture %}
+{% capture t_nav_sign_out %}Sair{% endcapture %}
+{% capture t_nav_toggle_nav %}Alternar navegação{% endcapture %}
+{% capture t_nav_your_pages %}Suas páginas{% endcapture %}
+
+{% comment %} Blog {% endcomment %}
+{% capture t_blog_byline %}Escrito por $author{% endcapture %}
+{% capture t_blog_post_headline %}Título do artigo{% endcapture %}
+{% capture t_blog_public_post_cta %}Crie a sua própria publicação{% endcapture %}
+{% capture t_blog_show_all_posts %}Veja todas as suas publicações{% endcapture %}
+
+{% comment %} Calendar & Events {% endcomment %}
+{% capture t_event_distance_plural %}milhas{% endcapture %}
+{% capture t_event_distance_singlular %}milha{% endcapture %}
+{% capture t_events_address_or_postal_code %}Endereço ou código postal{% endcapture %}
+{% capture t_events_after_rsvp_purchase_ticket %}Depois de se inscrever, precisará de comprar um bilhete.{% endcapture %}
+{% capture t_events_allow_guests %}Permitir que as pessoas tragam convidados (+1){% endcapture %}
+{% capture t_events_allow_rsvp %}Permitir que as pessoas confirmem inscrição{% endcapture %}
+{% capture t_events_attendees %}Participantes{% endcapture %}
+{% capture t_events_buy_tickets %}Comprar bilhetes{% endcapture %}
+{% capture t_events_cancel_rsvp %}Anular inscrição{% endcapture %}
+{% capture t_events_change_number_of_guests %}Alterar o número de convidados a trazer{% endcapture %}
+{% capture t_events_choose_shifts %}Escolha turnos{% endcapture %}
+{% capture t_events_currency %}Moeda{% endcapture %}
+{% capture t_events_description %}Descrição, incluir as instruções{% endcapture %}
+{% capture t_events_did_host_refer_you %}Foi um anfitrião que o convidou?{% endcapture %}
+{% capture t_events_dont_publish_rsvp %}Não publicar a minha confirmação no site{% endcapture %}
+{% capture t_events_duration %}Duração do evento{% endcapture %}
+{% capture t_events_edit_your_event %}Edite o seu evento{% endcapture %}
+{% capture t_events_event %}evento{% endcapture %}
+{% capture t_events_event_contact %}Contacto do evento{% endcapture %}
+{% capture t_events_event_sold_out %}Lamentamos, mas este evento está esgotado.{% endcapture %}
+{% capture t_events_event_url %}Endereço web do evento (URL){% endcapture %}
+{% capture t_events_featured_event %}Evento em destaque{% endcapture %}
+{% capture t_events_find_events_nearby %}Encontre {{ page.calendar.event_name | pluralize | downcase }} perto de si{% endcapture %}
+{% capture t_events_google_map_directions %}Google maps e direções{% endcapture %}
+{% capture t_events_greeting_will_you_come %}Olá, {{ request.current_signup.name_or_email }}. Contamos consigo?{% endcapture %}
+{% capture t_events_hide_rsvp_page %}Mantenha a página de RSVP oculta do resto do site{% endcapture %}
+{% capture t_events_how_many_others %}Quantas pessoas traz consigo?{% endcapture %}
+{% capture t_events_i_want_to_come %}Oops, mudei de ideias! Quero participar.{% endcapture %}
+{% capture t_events_is_virtual_event %}Isto é um evento virtual{% endcapture %}
+{% capture t_events_location %}Localização{% endcapture %}
+{% capture t_events_max_capacity %}Capacidade máxima{% endcapture %}
+{% capture t_events_multi_day_date %}$start a $end{% endcapture %}
+{% capture t_events_no_events_found %}Nenhum {{ page.calendar.event_name | pluralize | downcase }} encontrado{% endcapture %}
+{% capture t_events_no_events_nearby %}<strong>Nenhum {{ page.calendar.event_name | pluralize | downcase }} encontrado por perto</strong>, tente expandir o critério da sua pesquisa.{% endcapture %}
+{% capture t_events_not_coming %}Cancelar, eu não vou.{% endcapture %}
+{% capture t_events_page_headline %}Título{% endcapture %}
+{% capture t_events_post_your_event %}Publique o seu $label{% endcapture %}
+{% capture t_events_purchase_tickets %}Comprar bilhetes{% endcapture %}
+{% capture t_events_rsvp %}Inscrição (RVSP){% endcapture %}
+{% capture t_events_rsvp_count_plural %}$count inscrições{% endcapture %}
+{% capture t_events_rsvp_count_singular %}1 inscrito{% endcapture %}
+{% capture t_events_rsvp_on_facebook %}Inscrever-me também através do <a href="$facebook_link">Facebook</a>{% endcapture %}
+{% capture t_events_rsvp_was_canceled %}A sua inscrição foi cancelada{% endcapture %}
+{% capture t_events_save_and_post %}Guardar e publicar{% endcapture %}
+{% capture t_events_search %}Procurar{% endcapture %}
+{% capture t_events_send_rsvp %}Enviar inscrição{% endcapture %}
+{% capture t_events_show_all %}Ver todos os eventos{% endcapture %}
+{% capture t_events_show_who_is_coming %}Mostrar quem vem{% endcapture %}
+{% capture t_events_showing_count_nearby %}Mostrar {{ page.calendar.events_upcoming_nearby_count }} {{ page.calendar.event_name | pluralize | downcase }} por perto.{% endcapture %}
+{% capture t_events_sold_out %}Esgotado{% endcapture %}
+{% capture t_events_thanks_for_rsvp %}Agradecemos a sua inscrição. Até breve!{% endcapture %}
+{% capture t_events_ticket_cost_is %}O bilhete custa  $amount{% endcapture %}
+{% capture t_events_ticket_price %}Preço do bilhete{% endcapture %}
+{% capture t_events_ticket_purchase_url %}Endereço web para a compra do bilhete (URL){% endcapture %}
+{% capture t_events_update_rsvp %}Atualizar inscrição{% endcapture %}
+{% capture t_events_user_events_cta %}Crie o seu evento{% endcapture %}
+{% capture t_events_user_events_cta_custom %}Crie seu próprio $event{% endcapture %}
+{% capture t_events_venue %}Local do evento{% endcapture %}
+{% capture t_events_venue_in %}<a href="$link">$venue</a> em $location{% endcapture %}
+{% capture t_events_venue_name %}Nome do local{% endcapture %}
+{% capture t_events_virtual_event %}Evento virtual{% endcapture %}
+{% capture t_events_when %}Quando é o evento?{% endcapture %}
+{% capture t_events_will_you_come %}Contamos consigo?{% endcapture %}
+
+{% comment %} Dates {% endcomment %}
+{% capture t_date_january %}Janeiro{% endcapture %}
+{% capture t_date_february %}Fevereiro{% endcapture %}
+{% capture t_date_march %}Março{% endcapture %}
+{% capture t_date_april %}Abril{% endcapture %}
+{% capture t_date_may %}Maio{% endcapture %}
+{% capture t_date_june %}Junho{% endcapture %}
+{% capture t_date_july %}Julho{% endcapture %}
+{% capture t_date_august %}Abril{% endcapture %}
+{% capture t_date_september %}Setembro{% endcapture %}
+{% capture t_date_october %}Outubro{% endcapture %}
+{% capture t_date_november %}Novembro{% endcapture %}
+{% capture t_date_december %}Dezembro{% endcapture %}
+
+{% capture t_date_jan %}Jan{% endcapture %}
+{% capture t_date_feb %}Fev{% endcapture %}
+{% capture t_date_mar %}Mar{% endcapture %}
+{% capture t_date_apr %}Abr{% endcapture %}
+{% capture t_date_may %}Maio{% endcapture %}
+{% capture t_date_jun %}Jun{% endcapture %}
+{% capture t_date_jul %}Jul{% endcapture %}
+{% capture t_date_aug %}Ago{% endcapture %}
+{% capture t_date_sep %}Set{% endcapture %}
+{% capture t_date_oct %}Out{% endcapture %}
+{% capture t_date_nov %}Nov{% endcapture %}
+{% capture t_date_dec %}Dez{% endcapture %}
+
+{% capture t_date_sunday %}Domingo{% endcapture %}
+{% capture t_date_monday %}Segunda-Feira{% endcapture %}
+{% capture t_date_tuesday %}Terça-Feira{% endcapture %}
+{% capture t_date_wednesday %}Quarta-Feira{% endcapture %}
+{% capture t_date_thursday %}Quinta-Feira{% endcapture %}
+{% capture t_date_friday %}sexta-feira{% endcapture %}
+{% capture t_date_saturday %}sábado{% endcapture %}
+
+{% capture t_date_string %}$date em $time{% endcapture %}
+
+{% comment %} Account {% endcomment %}
+{% capture t_account_edit_profile %}Edite o seu perfil{% endcapture %}
+{% capture t_account_not_you_sign_out %}Se não é {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">termine&nbsp;sessão</a>.{% endcapture %}
+{% capture t_account_signed_in %}Iniciou sessão como <b><a href="{{request.current_signup.settings_url}}">{{request.current_signup.name_or_email}}</a></b>. Não é você? <a href="{{request.current_signup.logout_url}}">termine&nbsp;sessão</a>{% endcapture %}
+{% capture t_account_simple_greeting %}Olá {{ request.current_signup.name_or_email }}.{% endcapture %}
+{% capture t_account_user_greeting %}Olá <a href="{{request.current_signup.settings_url}}">{{request.current_signup.name_or_email}}</a>. Veja o seu <a href="{{request.current_signup.profile_url}}">perfil público</a>, <a href="{{request.current_signup.settings_url}}">configurações da conta</a>, ou <a href="{{request.current_signup.logout_url}}">termine a sessão</a>.{% endcapture %}
+{% capture t_account_login_and_security %}Login e Segurança{% endcapture %}
+
+{% comment %} Followers {% endcomment %}
+{% capture t_followers_connect_facebook %}Associar Facebook{% endcapture %}
+{% capture t_followers_you_are_following %}Segue <b>{{ request.current_signup.followings_count }}</b> pessoas.{% endcapture %}
+{% capture t_followers_you_have_followers %}Tem <b>{{ request.current_signup.followers_count }}</b> seguidores.{% endcapture %}
+
+{% comment %} Suggestions {% endcomment %}
+{% capture t_add_your_suggestion %}Dê a sua sugestão{% endcapture %}
+{% capture t_how_would_you_tag_this_suggestion %}Como marcaria esta sugestão?{% endcapture %}
+{% capture t_official_response %}Resposta oficial de $official{% endcapture %}
+{% capture t_suggestion_byline %}Sugerido por $author{% endcapture %}
+{% capture t_suggestion_headline %}Título sugerido{% endcapture %}
+{% capture t_suggestion_upload_image %}Carregar imagem (600px){% endcapture %}
+
+{% comment %} Survey {% endcomment %}
+{% capture t_survey_no_published_questions %}Este questionário não tem perguntas publicadas.{% endcapture %}
+{% capture t_survey_thanks_for_answering %}Obrigado por ter respondido às nossas perguntas!{% endcapture %}
+{% capture t_survey_will_you_answer_questions %}Olá {{request.current_signup.name_or_email}}, poderá responder a algumas perguntas?{% endcapture %}
+
+{% comment %} Signup {% endcomment %}
+{% capture t_signup_will_you_join %}Olá {{ request.current_signup.name_or_email }}. Irá participar?{% endcapture %}
+
+{% comment %} Pledge {% endcomment %}
+{% capture t_pledge_has_pledged %}Você{% if page.vote_pledge.current_vote_pledge.is_no? %} não se comprometeu{% elsif page.vote_pledge.current_vote_pledge.is_unsure? %} disse que não tinha a certeza se{% elsif page.vote_pledge.current_vote_pledge.is_yes? %} comprometido{% endif %} a{% if page.vote_pledge.current_vote_pledge.could_vote? %} votar em{% else %} apoiar{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+{% capture t_pledge_i_do_not_support_name %}Eu não apoio {{ site.candidate_first_name_or_site_name }}{% endcapture %}
+{% capture t_pledge_i_support_name %}Eu apoio {{ site.candidate_first_name_or_site_name }}{% endcapture %}
+{% capture t_pledge_maybe %}Talvez{% endcapture %}
+{% capture t_pledge_no %}Não{% endcapture %}
+{% capture t_pledge_no_will_not_vote_support %}Não, não irei {% if vote_pledge.could_vote? %}votar em{% else %}apoiar{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+{% capture t_pledge_remove_pledge %}Remover compromisso{% endcapture %}
+{% capture t_pledge_support_name_tell_more %}Provavelmente irei apoiar {{ site.candidate_first_name_or_site_name }}, <a href="{{ site.full_url }}">quero saber mais</a>.{% endcapture %}
+{% capture t_pledge_will_you_support %}Irá apoior {{ site.candidate_first_name_or_site_name }}?{% endcapture %}
+{% capture t_pledge_yes %}Sim{% endcapture %}
+{% capture t_pledge_yes_will_not_vote_support %}Sim, eu vou {% if vote_pledge.could_vote? %}votar em{% else %}apoiar{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+
+{% comment %} Political Capital {% endcomment %}
+{% capture t_capital_balance %}Saldo{% endcapture %}
+{% capture t_capital_date %}Data{% endcapture %}
+{% capture t_capital_description %}Descrição{% endcapture %}
+{% capture t_capital_earned %}Ganho{% endcapture %}
+{% capture t_capital_signin_to_view_pc %}Inicie sessão para ver capital político{% endcapture %}
+{% capture t_capital_spent %}Gasto{% endcapture %}
+
+{% comment %} Petition {% endcomment %}
+{% capture t_petition_name_will_you_sign %}Olá {{ request.current_signup.name_or_email }}, irá assinar?{% endcapture %}
+{% capture t_petition_remove %}Remover{% endcapture %}
+{% capture t_petition_update %}Atualizar{% endcapture %}
+{% capture t_petition_will_you_sign %}Vai inscrever-se?{% endcapture %}
+{% capture t_petition_signed_so_far %}$count assinados. Ajude-nos a chegar ao objetivo de $goal!{% endcapture %}
+
+{% comment %} Volunteer {% endcomment %}
+{% capture t_volunteer_can_you_volunteer %}Olá {{ request.current_signup.name_or_email }}, quer ser voluntário?{% endcapture %}
+{% capture t_volunteer_save_info %}Guardar informação do voluntariado{% endcapture %}
+{% capture t_volunteer_update_info_below %}Pode atualizar as suas informações abaixo.{% endcapture %}
+{% capture t_volunteer_we_have_you_as_volunteer %}Olá {{ request.current_signup.name_or_email }}, temo-lo como voluntário.{% endcapture %}
+{% capture t_volunteer_will_you_volunteer %}Quer ser voluntário?{% endcapture %}
+
+{% comment %} Moneybomb {% endcomment %}
+{% capture t_moneybomb_add_pledge %}Adicionar compromisso{% endcapture %}
+{% capture t_moneybomb_amount_amount_goal %}{{ page.pledges_amount_format }} comprometido até ao momento. Ajude-nos a chegar a {{ page.moneybomb.amount_goal_format }}!{% endcapture %}
+{% capture t_moneybomb_amount_pledger_goal %}{{ page.pledges_count }} {% if page.pledges_count == 1 %}comprometer{% else %}comprometido{% endif %} até ao momento. Ajude-nos a chegar a {{ page.moneybomb.pledger_goal }}!{% endcapture %}
+{% capture t_moneybomb_amount_pledged_of_goal %}{{ page.pledges_count }} {% if page.pledges_count == 1 %}comprometer{% else %}comprometido{% endif %} de {{ page.moneybomb.pledger_goal }} do objetivo final{% endcapture %}
+{% capture t_moneybomb_cancel_pledge %}Anular compromisso{% endcapture %}
+{% capture t_moneybomb_change_pledge_amount %}Altere o montante comprometido{% endcapture %}
+{% capture t_moneybomb_countdown_to %}Contagem decrescente para{% endcapture %}
+{% capture t_moneybomb_hi_name_how_much_pledge %}Olá {{ request.current_signup.name_or_email }}, quanto é que se compromete a doar?{% endcapture %}
+{% capture t_moneybomb_how_much_pledge %}Quanto é que se compromete a doar?{% endcapture %}
+{% capture t_moneybomb_save_pledge %}Salvar compromiso{% endcapture %}
+{% capture t_moneybomb_thank_you_for_pledging %}Obrigado por se comprometer!{% endcapture %}
+{% capture t_moneybomb_time_left_donate %}Tempo restante para doar{% endcapture %}
+
+{% comment %} Miscellaneous {% endcomment %}
+{% capture t_add %}Adicionar{% endcapture %}
+{% capture t_alphabetical %}Alfabética{% endcapture %}
+{% capture t_annually %}anualmente{% endcapture %}
+{% capture t_bad %}Mau{% endcapture %}
+{% capture t_close %}Fechar{% endcapture %}
+{% capture t_contact %}Contacto{% endcapture %}
+{% capture t_contact_info %}Informações de contacto{% endcapture %}
+{% capture t_continue_to_site %}Prosseguir para o site{% endcapture %}
+{% capture t_copied %}Copiado{% endcapture %}
+{% capture t_copy_link %}Copie o link{% endcapture %}
+{% capture t_count_of_goal %}$count de $goal do objetivo final{% endcapture %}
+{% capture t_count_of_named_goal %}$count de $goal $name do objetivo final{% endcapture %}
+{% capture t_created_with_nationbuilder %}Criado com <a href="{{site.attribution_url}}" class="text-decoration-none" target="_blank">NationBuilder</a>{% endcapture %}
+{% capture t_date_authored %}Data de criação{% endcapture %}
+{% capture t_easy %}Fácil{% endcapture %}
+{% capture t_edit %}Editar{% endcapture %}
+{% capture t_edit_post %}Editar post{% endcapture %}
+{% capture t_flag %}Marcar{% endcapture %}
+{% capture t_flag_this_comment %}Marcar este comentário{% endcapture %}
+{% capture t_flag_this_page %}Marcar esta página{% endcapture %}
+{% capture t_flagging_comment_from %}Marcando o comentário de $user{% endcapture %}
+{% capture t_flagging_page %}Marcando a página $page_name{% endcapture %}
+{% capture t_follow %}Seguir{% endcapture %}
+{% capture t_follow_reactions %}+ Seguir reações{% endcapture %}
+{% capture t_go_to_homepage %}Ir para a Pagina Inicial{% endcapture %}
+{% capture t_good %}Bom{% endcapture %}
+{% capture t_home %}Casa{% endcapture %}
+{% capture t_important %}Importante{% endcapture %}
+{% capture t_impractical %}Pouco prático{% endcapture %}
+{% capture t_looking_for_isnt_here %}Desculpe, mas não encontrámos o que procura. Talvez tenha inserido o URL incorreto ou usado um link interrompido.{% endcapture %}
+{% capture t_monthly %}mensal{% endcapture %}
+{% capture t_most_recent %}Mais recente{% endcapture %}
+{% capture t_next %}Próximo{% endcapture %}
+{% capture t_no %}Não{% endcapture %}
+{% capture t_page_not_found %}Página não encontrada{% endcapture %}
+{% capture t_page_name %}Nome da página{% endcapture %}
+{% capture t_pages_tagged %}Páginas com o tag “$tag”{% endcapture %}
+{% capture t_posted_by %}Publicado por $author a $date{% endcapture %}
+{% capture t_prev %}Anterior{% endcapture %}
+{% capture t_profile %}Perfil{% endcapture %}
+{% capture t_rules %}Regras{% endcapture %}
+{% capture t_toggle %}Alternar{% endcapture %}
+{% capture t_unfollow %}Deixar de seguir{% endcapture %}
+{% capture t_unfollow_reactions %}- Deixar de seguir as reações{% endcapture %}
+{% capture t_website %}Site{% endcapture %}
+{% capture t_yes %}Sim{% endcapture %}
+
+{% comment %} Address {% endcomment %}
+{% capture t_address_address_2 %}Address 2{% endcapture %}
+{% capture t_address_apartment_suite_etc %}Apartamento, andar, lado, etc.{% endcapture %}
+{% capture t_address_apt_suit_etc %}Apartamento, andar, lado, etc.{% endcapture %}
+{% capture t_address_building_number_street_name %}Rua e numéro de porta/lote{% endcapture %}
+{% capture t_address_city %}Cidade{% endcapture %}
+{% capture t_address_city_suburb %}Cidade{% endcapture %}
+{% capture t_address_country %}País{% endcapture %}
+{% capture t_address_postal_code %}Código Postal{% endcapture %}
+{% capture t_address_postcode %}Código Postal{% endcapture %}
+{% capture t_address_province %}Região{% endcapture %}
+{% capture t_address_state %}Distrito{% endcapture %}
+{% capture t_address_state_region %}Concelho{% endcapture %}
+{% capture t_address_state_territory %}Freguesia{% endcapture %}
+{% capture t_address_street_address %}Rua {% endcapture %}
+{% capture t_address_street_building_number %}Rua e numéro de porta/lote{% endcapture %}
+{% capture t_address_town %}Cidade{% endcapture %}
+{% capture t_address_zip_code %}Código Postal{% endcapture %}
+
+{% comment %} Social Slider {% endcomment %}
+{% capture t_social_slider_donated_plural %}$count pessoas fizeram uma doação{% endcapture %}
+{% capture t_social_slider_donated_singular %}1 pessoa fez uma doação{% endcapture %}
+{% capture t_social_slider_endorsed_plural %}$count pessoas apoiaram{% endcapture %}
+{% capture t_social_slider_endorsed_singular %}1 pessoa apoiou{% endcapture %}
+{% capture t_social_slider_pledged_plural %}$count pessoas comprometeram-se{% endcapture %}
+{% capture t_social_slider_pledged_singular %}1 pessoa comprometeu-se{% endcapture %}
+{% capture t_social_slider_pledged_so_far_plural %}$count pessoas comprometeram-se até ao momento {% endcapture %}
+{% capture t_social_slider_pledged_so_far_singular %}1 pessoa comprometeu-se até ao momento{% endcapture %}
+{% capture t_social_slider_rsvpd_plural %}$count pessoas inscreveram-se{% endcapture %}
+{% capture t_social_slider_rsvpd_singular %}1 pessoas inscreveu-se{% endcapture %}
+{% capture t_social_slider_signed_the_petition_plural %}$count pessoas assinaram a petição{% endcapture %}
+{% capture t_social_slider_signed_the_petition_singular %}1 pessoa assinou esta petição{% endcapture %}
+{% capture t_social_slider_signed_up_plural %}$count pessoas inscreveram-se{% endcapture %}
+{% capture t_social_slider_signed_up_singular %}1 pessoa inscreveu-se{% endcapture %}
+{% capture t_social_slider_signed_up_to_volunteer_plural %}$count pessoas inscreveram-se como voluntários{% endcapture %}
+{% capture t_social_slider_signed_up_to_volunteer_singular %}1 pessoas inscreveu-se para ser voluntária{% endcapture %}
+
+{% comment %} Endorsement {% endcomment %}
+{% capture t_endorsement_add_endorsement %}Adicionar apoio{% endcapture %}
+{% capture t_endorsement_count_of_goal %}{{ page.endorsement.endorsements_count }} {% if page.endorsement.endorsements_count == 1 %}apoio{% else %}apoios{% endif %} do objetivo de {{ page.endorsement.goal }}{% endcapture %}
+{% capture t_endorsement_featured_endorsements %}Apoios em destaque{% endcapture %}
+{% capture t_endorsement_hi_name_will_org_or_you_endorse %}Olá {{ request.current_signup.name_or_email }}, a {% if page.endorsement.require_organization? %}sua organização{% else %}sua{% endif %} irá apoiar?{% endcapture %}
+{% capture t_endorsement_org_making_endorsement %}A minha organização está a fazer o apoio{% endcapture %}
+{% capture t_endorsement_remove_endorsement %}Retirar apoio{% endcapture %}
+{% capture t_endorsement_update_endorsement %}Atualizar apoio{% endcapture %}
+{% capture t_endorsement_will_org_or_you_endorse %}Irá a {% if page.endorsement.require_organization? %}sua organização{% else %}sua{% endif %} apoiar?{% endcapture %}
+
+{% comment %} Directory {% endcomment %}
+{% capture t_directory_listings %}<b>$count</b> listas de diretório{% endcapture %}
+
+{% comment %} Homepage Excerpts {% endcomment %}
+{% capture t_excerpt_pledge_your_vote %}Comprometo-me a votar{% endcapture %}
+{% capture t_excerpt_read_all_rules %}Leia todas as regras{% endcapture %}
+{% capture t_excerpt_read_more %}Leia mais{% endcapture %}
+{% capture t_excerpt_see_all_activity %}Ver toda a atividade{% endcapture %}
+{% capture t_excerpt_see_all_events %}Ver todos os eventos{% endcapture %}
+{% capture t_excerpt_see_all_faq %}Ver toda as perguntas frequentes{% endcapture %}
+{% capture t_excerpt_see_all_profiles %}Ver todos os perfis{% endcapture %}
+{% capture t_excerpt_see_all_suggestions %}Ver todas as sugestões{% endcapture %}
+{% capture t_excerpt_take_survey %}Responder ao questionário{% endcapture %}
+
+{% comment %} Invoices {% endcomment %}
+{% capture t_invoices_closed_invoices %}Faturas fechadas{% endcapture %}
+{% capture t_invoices_closed_on %}Terminado em{% endcapture %}
+{% capture t_invoices_continue_to_paypal %}Continuar para Paypal{% endcapture %}
+{% capture t_invoices_credit_card_number %}Número do Cartão de Crédito{% endcapture %}
+{% capture t_invoices_expires %}Expira{% endcapture %}
+{% capture t_invoices_invoice %}Fatura{% endcapture %}
+{% capture t_invoices_invoice_to_pay %}Faturas a pagar{% endcapture %}
+{% capture t_invoices_no_outstanding_invoices %}Não tem faturas pendentes.{% endcapture %}
+{% capture t_invoices_quantity %}Quantidade{% endcapture %}
+{% capture t_invoices_security_code %}Código de segurança{% endcapture %}
+{% capture t_invoices_testing_mode %}Modo de Teste: As transações não serão processadas. Use o seu cartão de crédtio habitual para testar, não será cobrado.{% endcapture %}
+{% capture t_invoices_total %}Total{% endcapture %}

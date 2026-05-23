@@ -1,0 +1,27 @@
+// Autogrow textareas
+// https://css-tricks.com/the-cleanest-trick-for-autogrowing-textareas/
+//
+.auto-grow {
+  display: flex;
+
+  &::after {
+    content: attr(data-replicated-value) " ";
+    width: 100%;
+    white-space: pre-wrap;
+    margin-left: -100%;
+    padding: $input-padding-y $input-padding-x;
+    z-index: 100;
+    visibility: hidden;
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    overflow: hidden;
+  }
+
+  &::after,
+  textarea {
+    font: inherit;
+  }
+}

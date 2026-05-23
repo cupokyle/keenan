@@ -1,0 +1,560 @@
+{% comment %} Forms {% endcomment %}
+{% capture t_forms_activate_account %}Aktiveeri konto{% endcapture %}
+{% capture t_forms_activate_your_account %}Aktiveeri oma konto{% endcapture %}
+{% capture t_forms_address %}Aadress{% endcapture %}
+{% capture t_forms_address_1 %}Aadressi rida 3{% endcapture %}
+{% capture t_forms_address_2 %}Aadressi rida 2{% endcapture %}
+{% capture t_forms_address_3 %}Aadressi rida 3{% endcapture %}
+{% capture t_forms_agress_to_nb_tos %}Nõustun <a href="http://nationbuilder.com/tos" target="_blank">NationBuilderi kasutustingimustega</a>{% endcapture %}
+{% capture t_forms_allow_search_engines_to_find_profile %}Luba otsingumootoritel <a href="{{ signup.profile_url }}">minu profiil</a>leida{% endcapture %}
+{% capture t_forms_amount %}Kogus{% endcapture %}
+{% capture t_forms_any_questions_we_can_answer %}Kas on küsimusi?{% endcapture %}
+{% capture t_forms_billing_address %}Arveldusaadress{% endcapture %}
+{% capture t_forms_browse %}Sirvi{% endcapture %}
+{% capture t_forms_business %}Äri{% endcapture %}
+{% capture t_forms_cancel %}Tühista{% endcapture %}
+{% capture t_forms_change_password %}Vaheta parooli{% endcapture %}
+{% capture t_forms_change_your_comment %}Muuda oma kommentaari{% endcapture %}
+{% capture t_forms_change_your_password %}Muuda oma parooli{% endcapture %}
+{% capture t_forms_choose_a_file %}Vali fail{% endcapture %}
+{% capture t_forms_choose_your_password %}Vali oma parool{% endcapture %}
+{% capture t_forms_choose_your_url %}Vali oma URL{% endcapture %}
+{% capture t_forms_city %}Linn{% endcapture %}
+{% capture t_forms_clear_order %}Kustuta tellimus{% endcapture %}
+{% capture t_forms_clear_search %}Kustuta otsing{% endcapture %}
+{% capture t_forms_click_here_to_create_one %}Pole kontot? Klõpsake siia, et see luua.{% endcapture %}
+{% capture t_forms_comments %}Kommentaarid{% endcapture %}
+{% capture t_forms_comments_other_ideas %}Kommentaarid, muud ideed, jne.{% endcapture %}
+{% capture t_forms_commitment_to_fundraising %}Pühendun rahakogumisele:{% endcapture %}
+{% capture t_forms_confirm_true_and_accurate %}Kinnitan, et ülalpool toodud väited on tõesed ja täpsed.{% endcapture %}
+{% capture t_forms_contribution_from_business %}See on äriettevõtte rahaline toetus.{% endcapture %}
+{% capture t_forms_contribution_rules %}Rahalise toetamise reeglid{% endcapture %}
+{% capture t_forms_contributions_not_tax_deductible %}Rahalised toetused ei ole maksustatud.{% endcapture %}
+{% capture t_forms_contributions_tax_deductible %}Rahalised toetused on maksudest maha arvestatavad.{% endcapture %}
+{% capture t_forms_country %}Riik{% endcapture %}
+{% capture t_forms_cover_the_processing_fee %}Maksan käsitlemise tasu - lisage see mu annetusele.{% endcapture %}
+{% capture t_forms_create_site_account %}Loo veebisaidi {{ site.name }} konto{% endcapture %}
+{% capture t_forms_credit_card_billed_monthly %}Teie krediitkaardilt võetakse raha automaatselt iga kuu{% endcapture %}
+{% capture t_forms_crop %}Kärbi kujutist{% endcapture %}
+{% capture t_forms_crop_your_image %}Kärbi oma kujutist{% endcapture %}
+{% capture t_forms_default_time_zone %}Vaikimisi ajavöönd{% endcapture %}
+{% capture t_forms_democracy_engine %}Saan aru, et minu makse läheb Democracy Engine'ile, kes nõustub vastutusega raha minu määratud saaja(te)le jagada. Minu kaardi- või pangaväljavõte näitab makset Democracy Engine'ile ja kui seal on maksega probleeme või erinevusi, või kui ma soovin makset tühistada, võin ma Democracy Engine'iga ühendust võtta veebiaadressil <a href="mailto:support@democracyengine.com">support@democracyengine.com</a>.{% endcapture %}
+{% capture t_forms_do_not_contact_me %}Ära võta minuga ühendust{% endcapture %}
+{% capture t_forms_do_not_have_employer %}Mul pole tööandjat{% endcapture %}
+{% capture t_forms_donate %}Anneta{% endcapture %}
+{% capture t_forms_donate_now %}Anneta kohe{% endcapture %}
+{% capture t_forms_dont_post_publicly %}Ära postita seda avalikult{% endcapture %}
+{% capture t_forms_dont_publish_donation %}Ära avalda minu annetust veebisaidil.{% endcapture %}
+{% capture t_forms_dont_publish_email %}Ära avalda minu meiliaadressi{% endcapture %}
+{% capture t_forms_dont_publish_my_profile %}Ära avalda <a href="{{ signup.profile_url }}">minu profiili</a> veebisaidil{% endcapture %}
+{% capture t_forms_dont_publish_phone %}Ära avalda minu telefoninumbrit{% endcapture %}
+{% capture t_forms_dont_publish_survey_question_answers %}Ära avalda minu vastuseid küsitluse küsimustele veebisaidil{% endcapture %}
+{% capture t_forms_dont_publish_this %}Ära avalda seda veebisaidil{% endcapture %}
+{% capture t_forms_edition %}Toimetamine{% endcapture %}
+{% capture t_forms_email %}E-post{% endcapture %}
+{% capture t_forms_email_hint %}Sisselogimise e-posti muutmiseks külastage <a href="{{ settings.supporter_portal_url }}/security">Sisselogimine ja turvalisus</a>.{% endcapture %}
+{% capture t_forms_email_account_activation_instructions %}E-posti konto aktiveerimise juhendid{% endcapture %}
+{% capture t_forms_email_address %}E-posti aadress{% endcapture %}
+{% capture t_forms_employer %}Töötaja{% endcapture %}
+{% capture t_forms_enter_billing_information %}Sisesta oma arvelduse andmed{% endcapture %}
+{% capture t_forms_explanation %}Selgitus{% endcapture %}
+{% capture t_forms_first_name %}Eesnimi{% endcapture %}
+{% capture t_forms_forgot_your_password %}Kas unustasite parooli?{% endcapture %}
+{% capture t_forms_full_address %}Aadress <small class="text-muted">(tänav, linn, riik, sihtnumber)</small>{% endcapture %}
+{% capture t_forms_full_name %}Täielik nimi{% endcapture %}
+{% capture t_forms_good_time_to_call %}Millal on sobiv aeg telefonikõneks?{% endcapture %}
+{% capture t_forms_government %}Valitsus{% endcapture %}
+{% capture t_forms_headline %}Pealkiri{% endcapture %}
+{% capture t_forms_home_phone %}Kodune telefoninumber{% endcapture %}
+{% capture t_forms_im_not_sure %}Ma ei ole kindel.{% endcapture %}
+{% capture t_forms_include_in_leaderboards %}Kaasa mind edetabelitesse{% endcapture %}
+{% capture t_forms_language %}Keel{% endcapture %}
+{% capture t_forms_last_name %}Perekonnanimi{% endcapture %}
+{% capture t_forms_law_requires_employer_occupation %}Seadus nõuab, et me küsiksime teie tööandja ja ameti kohta. Kui teil ei ole tööandjat või olete pensionil, märkige ruut „Mul ei ole tööandjat“. Kui olete füüsilisest isikust ettevõtja, märkige tööandja väljale „füüsilisest isikust ettevõtja“ ja kirjeldage oma ametit.{% endcapture %}
+{% capture t_forms_mobile_phone %}Mobiiltelefoni number{% endcapture %}
+{% capture t_forms_monthly %}Igakuine{% endcapture %}
+{% capture t_forms_annual %}Iga-aastane{% endcapture %}
+{% capture t_forms_monthly_recurring_contribution %}Tehke see igakuiselt korduvaks annetuseks{% endcapture %}
+{% capture t_forms_name %}Nimi{% endcapture %}
+{% capture t_forms_new_password %}Uus parool{% endcapture %}
+{% capture t_forms_no %}Ei{% endcapture %}
+{% capture t_forms_no_payment_processor %}Puudub maksete töötleja. See leht ei tööta ilma maksete töötlejata.{% endcapture %}
+{% capture t_forms_nonprofit %}Mittetulunduslik{% endcapture %}
+{% capture t_forms_occupation %}Elukutse{% endcapture %}
+{% capture t_forms_one_time %}Ühekordne{% endcapture %}
+{% capture t_forms_orangiazation_or_company %}Organisatsioon / Ettevõte{% endcapture %}
+{% capture t_forms_other %}Muu{% endcapture %}
+{% capture t_forms_paid_annually %}iga-aastane makse{% endcapture %}
+{% capture t_forms_paid_monthly %}igakuine makse{% endcapture %}
+{% capture t_forms_password %}Parool{% endcapture %}
+{% capture t_forms_payment_details %}Makse üksikasjad{% endcapture %}
+{% capture t_forms_payment_installments %}Osamaksed{% endcapture %}
+{% capture t_forms_phone %}Telefon{% endcapture %}
+{% capture t_forms_phone_country_code %}Telefoni asukohariigi kood{% endcapture %}
+{% capture t_forms_plan %}Plaan{% endcapture %}
+{% capture t_forms_political %}Poliitiline{% endcapture %}
+{% capture t_forms_post %}Postita{% endcapture %}
+{% capture t_forms_post_in %}Postita{% endcapture %}
+{% capture t_forms_post_your_comment %}Postita oma kommentaar{% endcapture %}
+{% capture t_forms_postal_code %}Sihtnumber{% endcapture %}
+{% capture t_forms_process_payment %}Teosta makse{% endcapture %}
+{% capture t_forms_profile_headline %}Pealkiri sinu profiilile{% endcapture %}
+{% capture t_forms_profile_image %}Profiili pilt{% endcapture %}
+{% capture t_forms_remember_me %}Jäta mind meelde{% endcapture %}
+{% capture t_forms_repeat_password %}Korda parooli{% endcapture %}
+{% capture t_forms_reset_my_password %}Lähtesta mu parool{% endcapture %}
+{% capture t_forms_reset_password %}Lähtesta oma parool{% endcapture %}
+{% capture t_forms_save %}Salvesta{% endcapture %}
+{% capture t_forms_save_and_update %}Salvesta ja uuenda{% endcapture %}
+{% capture t_forms_save_settings %}Salvesta seaded{% endcapture %}
+{% capture t_forms_select_an_amount %}Vali kogus{% endcapture %}
+{% capture t_forms_please_select_or_enter_amount %}Palun vali või sisesta kogus{% endcapture %}
+{% capture t_forms_send_account_activation_link %}Saada konto aktiveerimise link{% endcapture %}
+{% capture t_forms_send_activation_instructions %}Saada aktiveerimise juhised{% endcapture %}
+{% capture t_forms_send_email_updates %}Saada mulle uuendustest meile{% endcapture %}
+{% capture t_forms_send_password_reset_instructions %}Saada parooli lähtestamise juhised{% endcapture %}
+{% capture t_forms_send_text_updates %}Saada mulle uuendustest tekstisõnumeid{% endcapture %}
+{% capture t_forms_settings %}Seaded{% endcapture %}
+{% capture t_forms_short_bio %}Lühielulugu{% endcapture %}
+{% capture t_forms_sign_in %}Logi sisse{% endcapture %}
+{% capture t_forms_sign_in_blog %}Logi sisse, et postitada{% endcapture %}
+{% capture t_forms_sign_in_suggestion %}Logi sisse, et oma soovitus lisada{% endcapture %}
+{% capture t_forms_sign_in_with_password %}Logi{% endcapture %}
+{% capture t_forms_sign_up %}Liitu{% endcapture %}
+{% capture t_forms_start_your_nation %}Alusta oma rahvus{% endcapture %}
+{% capture t_forms_state %}Riik{% endcapture %}
+{% capture t_forms_state_us_only %}Osariik (ainult USA){% endcapture %}
+{% capture t_forms_submit %}Esita{% endcapture %}
+{% capture t_forms_testing_mode %}<strong>Testreziim:</strong> Ülekandeid ei töödelda. Kasuta ainult <a href="https://stripe.com/docs/testing#cards">testkaarte</a> .{% endcapture %}
+{% capture t_forms_thanks_for_signing %}Täname sind allkirja eest!{% endcapture %}
+{% capture t_forms_time_zone %}Ajavöönd{% endcapture %}
+{% capture t_forms_update_info %}Uuendage infot{% endcapture %}
+{% capture t_forms_upload_picture_140 %}Laadige üles foto (140x140){% endcapture %}
+{% capture t_forms_use_case %}Kasutusümbris{% endcapture %}
+{% capture t_forms_username %}Kasutajanimi{% endcapture %}
+{% capture t_forms_verify_password %}Palun kinnitage oma parool{% endcapture %}
+{% capture t_forms_want_to_volunteer %}Soovin olla vabatahtlik{% endcapture %}
+{% capture t_forms_when_are_you_available %}Millal on sind võimalik kätte saada?{% endcapture %}
+{% capture t_forms_which_rule_was_violated %}Millist reeglit rikuti?{% endcapture %}
+{% capture t_forms_why_do_you_support %}Miks sa toetad saiti {{ site.name }}?{% endcapture %}
+{% capture t_forms_wont_be_billed_unless_open_past_free_trial %}Sulle ei esitata arvet, kui sulged konto enne oma 14-päevase tasuta prooviperioodi lõppu. Vajame sinu arveldusinfot, et vähendada pettust ja kontrollida sinu krediitkaardi kehtivust juhuks, kui oma rahvuse alles jätad. See hoiab ära iga katkestuse teenuses. Saad oma plaani igal ajal muuta või tühistada.{% endcapture %}
+{% capture t_forms_work_phone %}Töötelefon{% endcapture %}
+{% capture t_forms_your_information %}Sinu informatsioon{% endcapture %}
+{% capture t_forms_your_order %}Sinu tellimus{% endcapture %}
+{% capture t_forms_your_profile_url %}Sinu avalik profiil saab olema veebiaadressil <a href="{{ signup.profile_url }}" class="text-muted">{{ signup.full_profile_url }}</a>{% endcapture %}
+{% capture t_forms_your_profile_url_preactivation %}Sinu avalik profiil saab olema veebiaadressil {{ site.full_url }}{% if request.current_signup.has_username? %}{{ request.current_signup.username }}{% else %}username{% endif %}{% endcapture %}
+{% capture t_forms_your_title %}Sinu tiitel{% endcapture %}
+{% capture t_forms_zip_code_us_only %}ZIP-kood (ainult USA){% endcapture %}
+
+{% comment %} Donation {% endcomment %}
+{% capture t_donation_amount_billed_automatically_every_period %}$amount - arve saadetakse automaatselt iga $time $time_period{% endcapture %}
+{% capture t_donation_amount_raised_of_goal %}{{ page.donations_amount_format }} kogutud {{ page.donation_v2.amount_goal_format }} eesmärgist{% endcapture %}
+{% capture t_donation_amount_raised_so_far %}Siiani kogutud $amount. Aita meil $goal-ni jõuda!{% endcapture %}
+{% capture t_donation_count_donated_of_goal %}{{ page.donors_count }} annetatud eesmärgist {{ page.donation_v2.donor_goal }}{% endcapture %}
+{% capture t_donation_donors_so_far %}Siiani $amount annetajat. Aita meil $goal-ni jõuda!{% endcapture %}
+
+{% comment %} Leaderboard {% endcomment %}
+{% capture t_leaderboard_top %}Edetabel{% endcapture %}
+{% capture t_leaderboard_comments %}kommentaarid{% endcapture %}
+{% capture t_leaderboard_contacts %}kontaktid{% endcapture %}
+{% capture t_leaderboard_donations %}annetused{% endcapture %}
+{% capture t_leaderboard_earned_social_capital %}teenitud sotsiaalkapital{% endcapture %}
+{% capture t_leaderboard_emails_sent %}e-maili saadetud{% endcapture %}
+{% capture t_leaderboard_followers %}jälgijat{% endcapture %}
+{% capture t_leaderboard_recruited_donations %}värvatud annetust{% endcapture %}
+{% capture t_leaderboard_recruited_donors %}värvatud annetajat{% endcapture %}
+{% capture t_leaderboard_recruited_endorsements %}värvatud toetust{% endcapture %}
+{% capture t_leaderboard_recruited_feedback %}värvatud tagasisidet{% endcapture %}
+{% capture t_leaderboard_recruited_pledgers %}värvatud lubajat{% endcapture %}
+{% capture t_leaderboard_recruited_pledges %}värvatud lubadust{% endcapture %}
+{% capture t_leaderboard_recruited_rsvps %}värvatud RSVP-d{% endcapture %}
+{% capture t_leaderboard_recruited_signatures %}värvatud allkirja{% endcapture %}
+{% capture t_leaderboard_recruited_signups %}värvatud liitumist{% endcapture %}
+{% capture t_leaderboard_recruited_suggestions %}värvatud soovitust{% endcapture %}
+{% capture t_leaderboard_recruited_survey_responses %}värvatud küsitluse vastust{% endcapture %}
+{% capture t_leaderboard_recruited_volunteers %}värvatud vabatahtlikku{% endcapture %}
+{% capture t_leaderboard_social_capital %}social capital{% endcapture %}
+{% capture t_leaderboard_tweets %}säutsu{% endcapture %}
+
+{% comment %} Activity Feed {% endcomment %}
+{% capture t_activity_be_first_comment %}Kommenteeri esimesena{% endcapture %}
+{% capture t_activity_leave_comment %}Jäta kommentaar{% endcapture %}
+{% capture t_activity_recent_responses %}Hiljutised vastused{% endcapture %}
+{% capture t_activity_sigin_in_to_comment %}Kommenteerimiseks logi sisse{% endcapture %}
+{% capture t_activity_write_response %}Kirjuta oma vastus...{% endcapture %}
+
+{% comment %} CP Nav {% endcomment %}
+{% capture t_cp_nav_control_panel %}Juhtpaneel{% endcapture %}
+{% capture t_cp_nav_edit_blog_post %}Redigeeri seda blogi postitust{% endcapture %}
+{% capture t_cp_nav_edit_event %}Muuda seda sündmust{% endcapture %}
+{% capture t_cp_nav_edit_page %}Muuda seda lehekülge{% endcapture %}
+{% capture t_cp_nav_edit_person %}Muuda selle isiku andmeid{% endcapture %}
+{% capture t_cp_nav_edit_question %}Muuda seda küsimust{% endcapture %}
+{% capture t_cp_nav_edit_questions %}Muuda küsimusi{% endcapture %}
+{% capture t_cp_nav_edit_suggestion %}Muuda seda ettepanekut{% endcapture %}
+{% capture t_cp_nav_live_page %}Vaata lehte{% endcapture %}
+{% capture t_cp_nav_new_blog_post %}Uus blogi postitus{% endcapture %}
+{% capture t_cp_nav_new_event %}Uus sündmus{% endcapture %}
+{% capture t_cp_nav_new_suggestion %}Uus ettepanek{% endcapture %}
+{% capture t_cp_nav_preview_page %}Selle lehe eelvaaade{% endcapture %}
+{% capture t_cp_nav_preview_post %}Selle postituse eelvaade{% endcapture %}
+
+{% comment %} Recruiting {% endcomment %}
+{% capture t_recruiting_anyone_referred_through %}Kõik, kes on suunatud läbi sinu isikliku jälgimislingi või alumiste nuppude, lähevad sinu alla.{% endcapture %}
+{% capture t_recruiting_could_vote %}Võiksin hääletada{% endcapture %}
+{% capture t_recruiting_donor %}Annetaja{% endcapture %}
+{% capture t_recruiting_non_tracking_link %}Mittejälgimise link{% endcapture %}
+{% capture t_recruiting_personal_tracking_link %}Sinu isiklik jälgimise link{% endcapture %}
+{% capture t_recruiting_supporter %}Toetaja{% endcapture %}
+{% capture t_recruiting_volunteer %}Vabatahtlik{% endcapture %}
+{% capture t_recruiting_would_vote %}Hääletan{% endcapture %}
+
+{% comment %} Social {% endcomment %}
+{% capture t_social_add_to_calendar %}Lisa see sündmus oma kalendrisse{% endcapture %}
+{% capture t_social_checking_facebook_joined %}Liitunud inimeste kontrollimine Facebookis...{% endcapture %}
+{% capture t_social_checking_twitter_joined %}Liitunud inimeste kontrollimine Twitteris...{% endcapture %}
+{% capture t_social_connected_your_facebook_account  %}Oled ühendatud oma Facebooki kontoga{% endcapture %}
+{% capture t_social_connected_your_facebook_permission %}Oled ühendatud oma Facebooki kontoga, kuid vajame <a href="/users/facebook/connect?scope=user_friends">sinu luba</a>, et leida, kes sinu Facebooki sõpradest on liitunud.{% endcapture %}
+{% capture t_social_connected_your_twitter_account  %}Olete ühendatud oma Twitteri kontoga{% endcapture %}
+{% capture t_social_email %}Meili{% endcapture %}
+{% capture t_social_facebook_friends_have_joined %}<strong>{{ request.current_signup.followings_count_from_facebook }}</strong> sinu Facebooki sõpra on liitunud.<br/>Sa jälgid neid automaatselt ja vastupidi.{% endcapture %}
+{% capture t_social_including %}Kaasa arvatud...{% endcapture %}
+{% capture t_social_link_copied %}Link on kopeeritud!{% endcapture %}
+{% capture t_social_message %}Oma mõju suurendamiseks jaga nüüd teistega! Lisatakse link{% endcapture %}
+{% capture t_social_no_thanks %}Ei, tänan{% endcapture %}
+{% capture t_social_none_facebook_friends_have_joined_yet %}Keegi sinu Facebooki sõpradest ei ole veel liitunud.{% endcapture %}
+{% capture t_social_none_twitter_friends_have_joined_yet %}Keegi sinu Twitteri sõpradest ei ole veel liitunud.{% endcapture %}
+{% capture t_social_not_connected_your_facebook_account  %}Sa ei ole oma Facebooki kontoga ühendatud. {% endcapture %}
+{% capture t_social_not_connected_your_twitter_account  %}Sa ei ole oma Twitteri kontoga ühendatud.{% endcapture %}
+{% capture t_social_post_to_facebook %}Postita Facebookis{% endcapture %}
+{% capture t_social_recruit_your_friends %}Värba oma sõpru!{% endcapture %}
+{% capture t_social_share_on_facebook %}Jaga Facebookis{% endcapture %}
+{% capture t_social_share_on_linkedin %}Jaga LinkedInis{% endcapture %}
+{% capture t_social_share_on_twitter %}Jaga Twitteris{% endcapture %}
+{% capture t_social_share_on_whatsapp %}Jaga WhatsAppis{% endcapture %}
+{% capture t_social_sign_in_with_facebook %}Logi sisse Facebookiga{% endcapture %}
+{% capture t_social_sign_in_with_twitter %}Logi sisse Twitteriga{% endcapture %}
+{% capture t_social_sign_up_with_facebook %}Liitu Facebookiga{% endcapture %}
+{% capture t_social_sign_up_with_twitter %}Liitu Twitteriga{% endcapture %}
+{% capture t_social_tweet %}Tweet{% endcapture %}
+{% capture t_social_twitter_friends_have_joined %}<strong>{{ request.current_signup.followings_count_from_twitter }}</strong> of your Twitter friends have joined.<br/>You are automatically following them, and vice versa.{% endcapture %}
+
+{% comment %} Navigation {% endcomment %}
+{% capture t_nav_followers %}Järgijad{% endcapture %}
+{% capture t_nav_following %}Järgin{% endcapture %}
+{% capture t_nav_menu %}Menüü{% endcapture %}
+{% capture t_nav_more %}Veel{% endcapture %}
+{% capture t_nav_public_profile %}Avalik profiil{% endcapture %}
+{% capture t_nav_settings %}Seadistused{% endcapture %}
+{% capture t_nav_sign_out %}Logi välja{% endcapture %}
+{% capture t_nav_toggle_nav %}Navigeerimise sisse{% endcapture %}
+{% capture t_nav_your_pages %}Sinu leheküljed{% endcapture %}
+
+{% comment %} Blog {% endcomment %}
+{% capture t_blog_byline %}Kirjutanud $author{% endcapture %}
+{% capture t_blog_post_headline %}Blogi postituse pealkiri{% endcapture %}
+{% capture t_blog_public_post_cta %}Loo oma postitus{% endcapture %}
+{% capture t_blog_show_all_posts %}Vaata kõiki postitusi{% endcapture %}
+
+{% comment %} Calendar & Events {% endcomment %}
+{% capture t_event_distance_plural %}miilid{% endcapture %}
+{% capture t_event_distance_singlular %}miil{% endcapture %}
+{% capture t_events_address_or_postal_code %}Address or postal code{% endcapture %}
+{% capture t_events_after_rsvp_purchase_ticket %}Peale RSVP-d peate ka pileti ostma.{% endcapture %}
+{% capture t_events_allow_guests %}Lubatud inimestel võtta kaasa külalisi (+1){% endcapture %}
+{% capture t_events_allow_rsvp %}ALuba inimestel RSVP-le vastata{% endcapture %}
+{% capture t_events_attendees %}Osalejad{% endcapture %}
+{% capture t_events_buy_tickets %}Osta piletid{% endcapture %}
+{% capture t_events_cancel_rsvp %}Tühista RSVP{% endcapture %}
+{% capture t_events_change_number_of_guests %}Muutke teie poolt toodavate külaliste arvu{% endcapture %}
+{% capture t_events_choose_shifts %}Valige vahetused{% endcapture %}
+{% capture t_events_currency %}Valuuta{% endcapture %}
+{% capture t_events_description %}Kirjeldus, lisa juhised{% endcapture %}
+{% capture t_events_did_host_refer_you %}Kas ürituse korraldaja kutsus sind?{% endcapture %}
+{% capture t_events_dont_publish_rsvp %}Ärge avaldage minu RSVP-d veebisaidil{% endcapture %}
+{% capture t_events_duration %}Ürituse kestus{% endcapture %}
+{% capture t_events_edit_your_event %}Muutke oma üritust{% endcapture %}
+{% capture t_events_event %}urituse{% endcapture %}
+{% capture t_events_event_contact %}Ürituse kontaktisik{% endcapture %}
+{% capture t_events_event_sold_out %}Vabandust, see üritus on välja müüdud{% endcapture %}
+{% capture t_events_event_url %}Ürituse URL{% endcapture %}
+{% capture t_events_featured_event %}Ärge avaldage minu RSPV-d veebisaidil{% endcapture %}
+{% capture t_events_find_events_nearby %}Leia {{ page.calendar.event_name | pluralize | downcase }} enda lähedal raadiuses{% endcapture %}
+{% capture t_events_google_map_directions %}Google'i kaart juhistega{% endcapture %}
+{% capture t_events_greeting_will_you_come %}Tere {{ request.current_signup.name_or_email }}, kas sa tuled?{% endcapture %}
+{% capture t_events_hide_rsvp_page %}Peitke saidi RSVP leht{% endcapture %}
+{% capture t_events_how_many_others %}Kui palju inimesi sa kaasa võtad?{% endcapture %}
+{% capture t_events_i_want_to_come %}Oi, ära pane tähele! Ma tõesti soovin osaleda.{% endcapture %}
+{% capture t_events_is_virtual_event %}See on virtuaalne üritus{% endcapture %}
+{% capture t_events_location %}Asukoht{% endcapture %}
+{% capture t_events_max_capacity %}Maksimaalne mahutavus{% endcapture %}
+{% capture t_events_multi_day_date %}$start kuni $end{% endcapture %}
+{% capture t_events_no_events_found %}Ei {{ page.calendar.event_name | pluralize | downcase }}  üritusi{% endcapture %}
+{% capture t_events_no_events_nearby %}<strong>Läheduses {{ page.calendar.event_name | pluralize | downcase }} ei leidnud,</strong> proovi oma otsingut laiendada.{% endcapture %}
+{% capture t_events_not_coming %}Tühistan, ma ei tule.{% endcapture %}
+{% capture t_events_page_headline %}Pealkiri{% endcapture %}
+{% capture t_events_post_your_event %}Postita oma üritus $label{% endcapture %}
+{% capture t_events_purchase_tickets %}Osta piletid{% endcapture %}
+{% capture t_events_rsvp %}RSVP{% endcapture %}
+{% capture t_events_rsvp_count_plural %}$count RSVP-d{% endcapture %}
+{% capture t_events_rsvp_count_singular %}1 RSVP{% endcapture %}
+{% capture t_events_rsvp_on_facebook %}Samuti RSVP <a href="$facebook_link">Facebookis</a>{% endcapture %}
+{% capture t_events_rsvp_was_canceled %}Sinu RSVP on tühistatud{% endcapture %}
+{% capture t_events_save_and_post %}Salvesta ja postita{% endcapture %}
+{% capture t_events_search %}Otsi{% endcapture %}
+{% capture t_events_send_rsvp %}Saada RSVP{% endcapture %}
+{% capture t_events_show_all %}Vaata kõiki üritusi{% endcapture %}
+{% capture t_events_show_who_is_coming %}Näita kes osalevad{% endcapture %}
+{% capture t_events_showing_count_nearby %}Näidatud {{ page.calendar.events_upcoming_nearby_count }} {{ page.calendar.event_name | pluralize | downcase }} läheduses.{% endcapture %}
+{% capture t_events_sold_out %}Välja müüdud{% endcapture %}
+{% capture t_events_thanks_for_rsvp %}Täname Teie RSVP eest. Näeme seal!{% endcapture %}
+{% capture t_events_ticket_cost_is %}Pileti hind on $amount{% endcapture %}
+{% capture t_events_ticket_price %}Pileti hind{% endcapture %}
+{% capture t_events_ticket_purchase_url %}Pileti ostmise URL{% endcapture %}
+{% capture t_events_update_rsvp %}Värskenda RSVP-d{% endcapture %}
+{% capture t_events_user_events_cta %}Loo oma üritus{% endcapture %}
+{% capture t_events_user_events_cta_custom %}Loo oma $event{% endcapture %}
+{% capture t_events_venue %}Toimumiskoht{% endcapture %}
+{% capture t_events_venue_in %}<a href="$link">$venue</a> asukohaga $location{% endcapture %}
+{% capture t_events_venue_name %}Toimumiskoha nimi{% endcapture %}
+{% capture t_events_virtual_event %}Virtuaalne üritus{% endcapture %}
+{% capture t_events_when %}Millal üritus toimub?{% endcapture %}
+{% capture t_events_will_you_come %}Kas sa tuled?{% endcapture %}
+
+{% comment %} Dates {% endcomment %}
+{% capture t_date_january %}jaanuar{% endcapture %}
+{% capture t_date_february %}veebruar{% endcapture %}
+{% capture t_date_march %}märts{% endcapture %}
+{% capture t_date_april %}aprill{% endcapture %}
+{% capture t_date_may %}mai{% endcapture %}
+{% capture t_date_june %}juuni{% endcapture %}
+{% capture t_date_july %}juuli{% endcapture %}
+{% capture t_date_august %}august{% endcapture %}
+{% capture t_date_september %}september{% endcapture %}
+{% capture t_date_october %}oktoober{% endcapture %}
+{% capture t_date_november %}november{% endcapture %}
+{% capture t_date_december %}detsember{% endcapture %}
+
+{% capture t_date_jan %}jaan{% endcapture %}
+{% capture t_date_feb %}veeb{% endcapture %}
+{% capture t_date_mar %}mär{% endcapture %}
+{% capture t_date_apr %}apr{% endcapture %}
+{% capture t_date_may %}mai{% endcapture %}
+{% capture t_date_jun %}juun{% endcapture %}
+{% capture t_date_jul %}juul{% endcapture %}
+{% capture t_date_aug %}aug{% endcapture %}
+{% capture t_date_sep %}sept{% endcapture %}
+{% capture t_date_oct %}okt{% endcapture %}
+{% capture t_date_nov %}nov{% endcapture %}
+{% capture t_date_dec %}dets{% endcapture %}
+
+{% capture t_date_sunday %}pühapäev{% endcapture %}
+{% capture t_date_monday %}esmaspäev{% endcapture %}
+{% capture t_date_tuesday %}teisipäev{% endcapture %}
+{% capture t_date_wednesday %}kolmapäev{% endcapture %}
+{% capture t_date_thursday %}neljapäev{% endcapture %}
+{% capture t_date_friday %}reede{% endcapture %}
+{% capture t_date_saturday %}laupäev{% endcapture %}
+
+{% capture t_date_string %}$date at $time{% endcapture %}
+
+{% comment %} Account {% endcomment %}
+{% capture t_account_edit_profile %}Muuda oma profiili{% endcapture %}
+{% capture t_account_not_you_sign_out %}Kui sa ei ole {{ request.current_signup.name_or_email }}, <a href="{{ request.current_signup.logout_url }}">logi&nbsp;välja</a>.{% endcapture %}
+{% capture t_account_signed_in %}Oled sisse logitud kui <b><a href="{{request.current_signup.settings_url}}">{{request.current_signup.name_or_email}}</a></b>. Pole sina? <a href="{{request.current_signup.logout_url}}">Logi välja</a>{% endcapture %}
+{% capture t_account_simple_greeting %}Tere {{ request.current_signup.name_or_email }}.{% endcapture %}
+{% capture t_account_user_greeting %}Tere, <a href="{{request.current_signup.settings_url}}">{{request.current_signup.name_or_email}}</a>. Vaata üle oma <a href="{{request.current_signup.profile_url}}">avalik profiil</a>, <a href="{{request.current_signup.settings_url}}">konto seaded</a>, või <a href="{{request.current_signup.logout_url}}">logi välja</a>.{% endcapture %}
+{% capture t_account_login_and_security %}Sisselogimine ja turvalisus{% endcapture %}
+
+{% comment %} Followers {% endcomment %}
+{% capture t_followers_connect_facebook %}Ühenda Facebook{% endcapture %}
+{% capture t_followers_you_are_following %}Sa jälgid <b>{{ request.current_signup.followings_count }}</b> inimest.{% endcapture %}
+{% capture t_followers_you_have_followers %}Sul on <b>{{ request.current_signup.followers_count }}</b> jälgijat.{% endcapture %}
+
+{% comment %} Suggestions {% endcomment %}
+{% capture t_add_your_suggestion %}Lisa oma ettepanek{% endcapture %}
+{% capture t_how_would_you_tag_this_suggestion %}Kuidas sa selle nõuande sildistad?{% endcapture %}
+{% capture t_official_response %}Ametlik vastus kasutajalt $official{% endcapture %}
+{% capture t_suggestion_byline %}Soovitas $author{% endcapture %}
+{% capture t_suggestion_headline %}Soovituse pealkiri{% endcapture %}
+{% capture t_suggestion_upload_image %}Laadi üles pilt (600 pikslit lai){% endcapture %}
+
+{% comment %} Survey {% endcomment %}
+{% capture t_survey_no_published_questions %}Sellel küsitlusel ei ole avaldatud küsimusi.{% endcapture %}
+{% capture t_survey_thanks_for_answering %}Täname kõigile meie küsimustele vastamise eest!{% endcapture %}
+{% capture t_survey_will_you_answer_questions %}Tere {{request.current_signup.name_or_email}}, kas sa vastad mõnele küsimusele?{% endcapture %}
+
+{% comment %} Signup {% endcomment %}
+{% capture t_signup_will_you_join %}Tere {{ request.current_signup.name_or_email }}, kas sa liitud?{% endcapture %}
+
+{% comment %} Pledge {% endcomment %}
+{% capture t_pledge_has_pledged %}Sa{% if page.vote_pledge.current_vote_pledge.is_no? %} ei lubanud{% elsif page.vote_pledge.current_vote_pledge.is_unsure? %} ütlesid, et ei ole kindel, kas{% elsif page.vote_pledge.current_vote_pledge.is_yes? %} lubasid{% endif %} juurde{% if page.vote_pledge.current_vote_pledge.could_vote? %} valida{% else %} toetada{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+{% capture t_pledge_i_do_not_support_name %}Ma ei toeta kandidaati {{ site.candidate_first_name_or_site_name }}{% endcapture %}
+{% capture t_pledge_i_support_name %}Ma toetan kandidaati {{ site.candidate_first_name_or_site_name }}{% endcapture %}
+{% capture t_pledge_maybe %}Võib-olla{% endcapture %}
+{% capture t_pledge_no %}No{% endcapture %}
+{% capture t_pledge_no_will_not_vote_support %}Ei, ma ei {% if vote_pledge.could_vote? %}vali{% else %}toeta{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+{% capture t_pledge_remove_pledge %}Eemalda lubadus{% endcapture %}
+{% capture t_pledge_support_name_tell_more %}Ma võin toetada kandidaati {{ site.candidate_first_name_or_site_name }}, <a href="{{ site.full_url }}">räägi temast veel</a>.{% endcapture %}
+{% capture t_pledge_will_you_support %}Kas toetad nime {{ site.candidate_first_name_or_site_name }}?{% endcapture %}
+{% capture t_pledge_yes %}Yes{% endcapture %}
+{% capture t_pledge_yes_will_not_vote_support %}Jah, ma {% if vote_pledge.could_vote? %}valin{% else %}toetan{% endif %} {{ site.candidate_first_name_or_site_name }}.{% endcapture %}
+
+{% comment %} Political Capital {% endcomment %}
+{% capture t_capital_balance %}Tasakaal{% endcapture %}
+{% capture t_capital_date %}Kuupäev{% endcapture %}
+{% capture t_capital_description %}Kirjeldus{% endcapture %}
+{% capture t_capital_earned %}Teenitud{% endcapture %}
+{% capture t_capital_signin_to_view_pc %}Poliitilise kapitali vaatamiseks logi sisse{% endcapture %}
+{% capture t_capital_spent %}kulutatud{% endcapture %}
+
+{% comment %} Petition {% endcomment %}
+{% capture t_petition_name_will_you_sign %}Tere {{ request.current_signup.name_or_email }}, kas kirjutad alla?{% endcapture %}
+{% capture t_petition_remove %}Eemalda{% endcapture %}
+{% capture t_petition_update %}Uuenda{% endcapture %}
+{% capture t_petition_will_you_sign %}Kas allakirjastad?{% endcapture %}
+{% capture t_petition_signed_so_far %}$count  siiani allakirjutanud. Aita meil jõuda $goal-ni!{% endcapture %}
+
+{% comment %} Volunteer {% endcomment %}
+{% capture t_volunteer_can_you_volunteer %}Tere {{ request.current_signup.name_or_email }}, kas sa saad vabatahtlikuna osaleda?{% endcapture %}
+{% capture t_volunteer_save_info %}Salvesta vabatahtliku info{% endcapture %}
+{% capture t_volunteer_update_info_below %}Saad oma teavet värskendada allpool.{% endcapture %}
+{% capture t_volunteer_we_have_you_as_volunteer %}Tere {{ request.current_signup.name_or_email }}, oled meil vabatahtlikuna kirjas.{% endcapture %}
+{% capture t_volunteer_will_you_volunteer %}Kas osaled vabatahtlikuna?{% endcapture %}
+
+{% comment %} Moneybomb {% endcomment %}
+{% capture t_moneybomb_add_pledge %}Lisa lubadus{% endcapture %}
+{% capture t_moneybomb_amount_amount_goal %} Siiani lubatud{{ page.pledges_amount_format }}. Aita meil jõuda {{ page.moneybomb.amount_goal_format }}-ni!{% endcapture %}
+{% capture t_moneybomb_amount_pledger_goal %}{{ page.pledges_count }} {% if page.pledges_count == 1 %}pledger{% else %}pledgers{% endif %} Aita meil jõuda {{ page.moneybomb.pledger_goal }}-ni!{% endcapture %}
+{% capture t_moneybomb_amount_pledged_of_goal %}{{ page.pledges_count }} {% if page.pledges_count == 1 %}lubadus{% else %}pledged{% endif %} eesmärgist {{ page.moneybomb.pledger_goal }}{% endcapture %}
+{% capture t_moneybomb_cancel_pledge %}Tühista lubadus{% endcapture %}
+{% capture t_moneybomb_change_pledge_amount %}Muuda oma lubaduse määra{% endcapture %}
+{% capture t_moneybomb_countdown_to %}Loendamine kuni{% endcapture %}
+{% capture t_moneybomb_hi_name_how_much_pledge %}Tere {{ request.current_signup.name_or_email }}, kui palju sa lubad annetada?{% endcapture %}
+{% capture t_moneybomb_how_much_pledge %}Kui palju sa lubad annetada?{% endcapture %}
+{% capture t_moneybomb_save_pledge %}Salvesta lubadus{% endcapture %}
+{% capture t_moneybomb_thank_you_for_pledging %}Täname lubaduse eest!{% endcapture %}
+{% capture t_moneybomb_time_left_donate %}Annetamiseks on aega jäänud{% endcapture %}
+
+{% comment %} Miscellaneous {% endcomment %}
+{% capture t_add %}Lisama{% endcapture %}
+{% capture t_alphabetical %}Tähestikuline{% endcapture %}
+{% capture t_annually %}aastas{% endcapture %}
+{% capture t_bad %}Halb{% endcapture %}
+{% capture t_close %}Sulge{% endcapture %}
+{% capture t_contact %}Võta ühendust{% endcapture %}
+{% capture t_contact_info %}Kontaktandmed{% endcapture %}
+{% capture t_continue_to_site %}Mine leheküljele{% endcapture %}
+{% capture t_copied %}Kopeeritud{% endcapture %}
+{% capture t_copy_link %}Kopeeri link{% endcapture %}
+{% capture t_count_of_goal %}$count-st eesmärgist $goal goal{% endcapture %}
+{% capture t_count_of_named_goal %}$count-st eesmärgist $goal $name goal{% endcapture %}
+{% capture t_created_with_nationbuilder %}Loodud <a href="{{site.attribution_url}}" class="text-decoration-none" target="_blank">NationBuilderiga</a>{% endcapture %}
+{% capture t_date_authored %}Loomise kuupäev{% endcapture %}
+{% capture t_easy %}Lihtne{% endcapture %}
+{% capture t_edit %}Muuda{% endcapture %}
+{% capture t_edit_post %}Edit post{% endcapture %}
+{% capture t_flag %}Lipp{% endcapture %}
+{% capture t_flag_this_comment %}Märgista see kommentaar lipuga{% endcapture %}
+{% capture t_flag_this_page %}Märgista see lehekülg lipuga{% endcapture %}
+{% capture t_flagging_comment_from %}Märgistan lipuga kommentaari, mille on teinud $user{% endcapture %}
+{% capture t_flagging_page %}Märgistan lipuga lehekülje $page_name{% endcapture %}
+{% capture t_follow %}Jälgi{% endcapture %}
+{% capture t_follow_reactions %}+ Jälgi reaktsioone{% endcapture %}
+{% capture t_go_to_homepage %}Mine koduleheküljele{% endcapture %}
+{% capture t_good %}Hea{% endcapture %}
+{% capture t_home %}Kodu{% endcapture %}
+{% capture t_important %}Tähtis{% endcapture %}
+{% capture t_impractical %}Ebapraktiline{% endcapture %}
+{% capture t_looking_for_isnt_here %}Vabandust, aga see, mida otsid, ei asu siin. Võib-olla sisestasid vale URLi või klõpsasid vigasele lingile.{% endcapture %}
+{% capture t_monthly %}monthly{% endcapture %}
+{% capture t_most_recent %}Kõige viimane{% endcapture %}
+{% capture t_next %}Järgmine{% endcapture %}
+{% capture t_no %}Ei{% endcapture %}
+{% capture t_page_not_found %}Lehekülge ei leitud{% endcapture %}
+{% capture t_page_name %}Lehekülje nimi{% endcapture %}
+{% capture t_pages_tagged %}Lehed märkega “$tag”{% endcapture %}
+{% capture t_posted_by %}Postitas $author $date{% endcapture %}
+{% capture t_prev %}Eelmine{% endcapture %}
+{% capture t_profile %}Profiil{% endcapture %}
+{% capture t_rules %}Reeglid{% endcapture %}
+{% capture t_toggle %}Lülita sisse/välja{% endcapture %}
+{% capture t_unfollow %}Ära jälgi{% endcapture %}
+{% capture t_unfollow_reactions %}- Ära jälgi reaktsioone{% endcapture %}
+{% capture t_website %}Veebisait{% endcapture %}
+{% capture t_yes %}Jah{% endcapture %}
+
+{% comment %} Address {% endcomment %}
+{% capture t_address_address_2 %}Aadress 2{% endcapture %}
+{% capture t_address_apartment_suite_etc %}Korter, sviit, jne.{% endcapture %}
+{% capture t_address_apt_suit_etc %}Krt., sviit, jne.{% endcapture %}
+{% capture t_address_building_number_street_name %}Maja number ja tänava nimi{% endcapture %}
+{% capture t_address_city %}Linn{% endcapture %}
+{% capture t_address_city_suburb %}Äärelinn{% endcapture %}
+{% capture t_address_country %}Riik{% endcapture %}
+{% capture t_address_postal_code %}PSihtnumber{% endcapture %}
+{% capture t_address_postcode %}Sihtnumber{% endcapture %}
+{% capture t_address_province %}Provints{% endcapture %}
+{% capture t_address_state %}Osariik{% endcapture %}
+{% capture t_address_state_region %}Osariik/piirkond{% endcapture %}
+{% capture t_address_state_territory %}Osariik/territoorium{% endcapture %}
+{% capture t_address_street_address %}Tänava aadress{% endcapture %}
+{% capture t_address_street_building_number %}Tänav ja maja number{% endcapture %}
+{% capture t_address_town %}Linn{% endcapture %}
+{% capture t_address_zip_code %}Sihtnumber{% endcapture %}
+
+{% comment %} Social Slider {% endcomment %}
+{% capture t_social_slider_donated_plural %}$count inimest on annetanud{% endcapture %}
+{% capture t_social_slider_donated_singular %}1 inimene on annetanud{% endcapture %}
+{% capture t_social_slider_endorsed_plural %}$count inimest on toetanud{% endcapture %}
+{% capture t_social_slider_endorsed_singular %}1 inimene on toetanud{% endcapture %}
+{% capture t_social_slider_pledged_plural %}$count inimest on lubanud{% endcapture %}
+{% capture t_social_slider_pledged_singular %}1 inimene on lubanud{% endcapture %}
+{% capture t_social_slider_pledged_so_far_plural %}Siiani on lubanud $count inimest{% endcapture %}
+{% capture t_social_slider_pledged_so_far_singular %}Siiani on lubanud 1 inimene{% endcapture %}
+{% capture t_social_slider_rsvpd_plural %}$count inimest on RSVP-le vastanud{% endcapture %}
+{% capture t_social_slider_rsvpd_singular %}1 inimene on RSVP-le vastanud {% endcapture %}
+{% capture t_social_slider_signed_the_petition_plural %}$count inimest on petitsioonile alla kirjutanud{% endcapture %}
+{% capture t_social_slider_signed_the_petition_singular %}1 inimene on petitsioonile alla kirjutanud {% endcapture %}
+{% capture t_social_slider_signed_up_plural %}$count inimest on liitunud{% endcapture %}
+{% capture t_social_slider_signed_up_singular %}1 inimene on liitunud{% endcapture %}
+{% capture t_social_slider_signed_up_to_volunteer_plural %}$count inimest on vabatahtlikuna liitunud{% endcapture %}
+{% capture t_social_slider_signed_up_to_volunteer_singular %}1 inimene on vabatahtlikuna liitunud{% endcapture %}
+
+{% comment %} Endorsement {% endcomment %}
+{% capture t_endorsement_add_endorsement %}Lisa toetus{% endcapture %}
+{% capture t_endorsement_count_of_goal %}{{ page.endorsement.endorsements_count }} {% if page.endorsement.endorsements_count == 1 %}toetus{% else %}toetust{% endif %} eesmärgist {{ page.endorsement.goal }} goal{% endcapture %}
+{% capture t_endorsement_featured_endorsements %}Esile toodud toetused{% endcapture %}
+{% capture t_endorsement_hi_name_will_org_or_you_endorse %}Tere {{ request.current_signup.name_or_email }}, kas me saame {% if page.endorsement.require_organization? %}sinu organisatsiooni{% else %}sinu{% endif %} toetuse?{% endcapture %}
+{% capture t_endorsement_org_making_endorsement %}Minu organisatsioon teeb toetuse{% endcapture %}
+{% capture t_endorsement_remove_endorsement %}Eemalda toetus{% endcapture %}
+{% capture t_endorsement_update_endorsement %}Uuenda toetust{% endcapture %}
+{% capture t_endorsement_will_org_or_you_endorse %}Kas me saame {% if page.endorsement.require_organization? %}sinu organisatsiooni{% else %}sinu{% endif %} toetuse?{% endcapture %}
+
+{% comment %} Directory {% endcomment %}
+{% capture t_directory_listings %}<b>$count</b> kataloogi nimekirja{% endcapture %}
+
+{% comment %} Homepage Excerpts {% endcomment %}
+{% capture t_excerpt_pledge_your_vote %}Kinnita oma hääl{% endcapture %}
+{% capture t_excerpt_read_all_rules %}Loe kõiki reegleid{% endcapture %}
+{% capture t_excerpt_read_more %}Loe veel{% endcapture %}
+{% capture t_excerpt_see_all_activity %}Vaata kõiki tegevusi{% endcapture %}
+{% capture t_excerpt_see_all_events %}Vaata kõiki üritusi{% endcapture %}
+{% capture t_excerpt_see_all_faq %}Vaata kõiki korduma kippuvaid küsimusi{% endcapture %}
+{% capture t_excerpt_see_all_profiles %}Vaata kõiki profiile{% endcapture %}
+{% capture t_excerpt_see_all_suggestions %}Vaata kõiki soovitusi{% endcapture %}
+{% capture t_excerpt_take_survey %}Võta osa küsitlusest8{% endcapture %}
+
+{% comment %} Invoices {% endcomment %}
+{% capture t_invoices_closed_invoices %}Lõpetatud arved{% endcapture %}
+{% capture t_invoices_closed_on %}Lõpetatud{% endcapture %}
+{% capture t_invoices_continue_to_paypal %}Jätka PayPal'iga{% endcapture %}
+{% capture t_invoices_credit_card_number %}Krediitkaardi number{% endcapture %}
+{% capture t_invoices_expires %}Aegub{% endcapture %}
+{% capture t_invoices_invoice %}Arve{% endcapture %}
+{% capture t_invoices_invoice_to_pay %}Arve maksmiseks{% endcapture %}
+{% capture t_invoices_no_outstanding_invoices %}Sul ei ole tasumata arveid.{% endcapture %}
+{% capture t_invoices_quantity %}Hulk{% endcapture %}
+{% capture t_invoices_security_code %}Turvakood{% endcapture %}
+{% capture t_invoices_testing_mode %}Testreziim. Ülekandeid ei töödelda. Kasuta oma tavalist krediitkaarti testimiseks, teilt ei võeta tasu.{% endcapture %}
+{% capture t_invoices_total %}Kõik kokku{% endcapture %}

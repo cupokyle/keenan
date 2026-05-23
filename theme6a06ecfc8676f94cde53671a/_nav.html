@@ -1,0 +1,14 @@
+{% include 'translation' %}
+<button
+  class="navbar-toggler"
+  type="button"
+  data-toggle="collapse"
+  data-target="#mobileNav"
+  aria-controls="mobileNav"
+  aria-expanded="false"
+  aria-label="{{ t_nav_toggle_nav}}">
+  {{ t_nav_menu }}
+  <span class="navbar-toggler-icon"></span>
+</button>
+{% include "nav_mobile" %}
+{% include "nav_desktop" %}

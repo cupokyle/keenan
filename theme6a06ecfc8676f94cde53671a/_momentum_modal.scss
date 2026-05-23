@@ -1,0 +1,20 @@
+.modal {
+
+  .close {
+    margin: 1rem;
+    width: 2.25rem;
+    height: 2.25rem;
+    background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18 31.5C25.4558 31.5 31.5 25.4558 31.5 18C31.5 10.5442 25.4558 4.5 18 4.5C10.5442 4.5 4.5 10.5442 4.5 18C4.5 25.4558 10.5442 31.5 18 31.5Z' stroke='%238E8E9D' stroke-width='2' stroke-miterlimit='10'/%3E%3Cpath d='M22.5 13.5L13.5 22.5' stroke='%238E8E9D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M22.5 22.5L13.5 13.5' stroke='%238E8E9D' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 1.6875rem;
+  }
+
+  hr {
+    border-color: rgba(#E3E4E6, .4);
+  }
+
+  small a {
+    color: $white;
+  }
+}

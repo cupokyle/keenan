@@ -1,0 +1,12 @@
+{% assign wide = wide | default: false %}
+<div class="form-row">
+  <div class="form-group {% if wide %}col-auto{% else %}col-6{% endif %}">
+    <a href="{{ request.facebook_connect_url }}" class="btn btn-primary btn-sm login-button-facebook{% if wide == false %} btn-block{% endif %}">
+      {% if action == "Sign up" %}
+        {{ t_social_sign_up_with_facebook }}
+      {% else %}
+        {{ t_social_sign_in_with_facebook }}
+      {% endif %}
+    </a>
+  </div>
+</div>

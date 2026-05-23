@@ -1,0 +1,9 @@
+.tag {
+  font-family: $font-family-monospace;
+  font-size: 0.875rem;
+  color: $gray-700;
+
+  &:before {
+    content: '#';
+  }
+}

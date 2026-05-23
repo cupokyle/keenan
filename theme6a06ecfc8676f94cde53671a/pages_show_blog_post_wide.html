@@ -1,0 +1,64 @@
+{% assign featured_header = false %}
+{% assign use_fcs = false %}
+{% if page.features_count > 0 %}
+  {% assign use_fcs = true %}
+  {% assign featured_header = true %}
+{% endif %}
+{% if page.has_meta_image? %}
+  {% assign featured_header = true %}
+{% endif %}
+
+{% if featured_header %}
+  {% capture featured_breadcrumb_classes %}{% if site.has_background_image? %}mt-2 pt-2 text-white{% else %}mt-0 text-white{% endif %}{% endcapture %}
+  <div class="blog-post-features">
+    <div class="page">
+      <div class="page-inner bg-dark mb-0 rounded-bottom-0 border-bottom-0">
+        {% include "breadcrumbs" class:featured_breadcrumb_classes, link_class:'text-white' %}
+        {% include "features--blog_post" features:use_fcs %}
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+<div class="position-relative">
+
+  {% include "social_share_widget" %}
+
+  <div class="page">
+    <div class="page-inner">
+      {% unless featured_header %}
+        <div class="row">
+          <div class="col">
+            {% include "breadcrumbs" %}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col col-lg-9 mx-auto">
+            <header>
+              <h2 class="mb-0">{{ page.headline }}</h2>
+              {% if page.has_author? %}
+                <div class="mt-4">{% include "page_byline" %}</div>
+              {% endif %}
+            </header>
+          </div>
+        </div>
+      {% endunless %}
+      <div class="row pt-5">
+        <div class="col col-lg-9 mx-auto">
+          <div id="content" class="post-content">
+            {{ page.blog_post.content_full }}
+          </div>
+
+          {% include "page_tags" with page %}
+
+          {% if page.show_stream? %}
+            <div class="mt-4">
+              {% include "page_stream" %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

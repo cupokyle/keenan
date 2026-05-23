@@ -1,0 +1,28 @@
+{% include "translation" %}
+
+<section class="homepage-excerpt-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="h3 m-0">{{ page.headline }}</h2>
+        {% endif %}
+        {% if page.question.content.size > 0 or page.question.answer.size > 0 %}
+          <div class="mt-4">
+            {% if page.question.content.size > 0 %}
+              <div class="text-black-75 lead">
+                {{ page.question.content | truncatewords: 40 }}
+              </div>
+            {% endif %}
+            {% if page.question.answer.size > 0 %}
+              {{ page.question.answer | truncatewords: 80 }}
+            {% endif %}
+          </div>
+        {% endif %}
+        <div class="mt-3">
+          <a href="{{ page.url }}">{{ t_excerpt_read_more }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

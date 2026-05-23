@@ -1,0 +1,7 @@
+<ul class="list-inline mb-0">
+  {% for item in tag.most_recent_updated_pages_no_pagination %}
+    <li class="list-inline-item mx-3 px-2">
+      <a href="{{ item.url }}" class="text-bold text-decoration-none">{{ item.name }}</a>
+    </li>
+  {% endfor %}
+</ul>

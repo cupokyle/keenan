@@ -1,0 +1,55 @@
+{% include "translation" %}
+
+<div class="modal fade" id="addSuggestionModal-{{ page.id }}" {% if page.suggestion_box.is_image? %}data-backdrop="static" data-keyboard="false" {% endif %}tabindex="-1" aria-labelledby="addSuggestionModalLabel" aria-hidden="true">
+  <button type="button" class="close" data-dismiss="modal" aria-label="{{ t_close }}"></button>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="addSuggestionModalLabel">{{ t_add_your_suggestion }}</h5>
+      </div>
+      <div class="modal-body">
+        {% form_for suggestion_page %}
+          <div class="form-errors">{% error_messages_for suggestion_page %}</div>
+
+          <div class="form-group">
+            <div class="float-label">
+              <label for="">{{ t_suggestion_headline }}</label>
+              {% text_field "page_headline", class:"form-control text", placeholder: t_suggestion_headline %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="auto-grow">
+              {% text_area "content_editable", class: "form-control" %}
+            </div>
+          </div>
+
+          {% if page.suggestion_box.is_image? %}
+            <div class="form-group">
+              <div class="custom-file">
+                {% file_field "image", class:"custom-file-input file img-cropper inline" %}
+                <label class="custom-file-label" for="suggestion_page_image" data-crop-preview="suggestionImgPreview" data-browse="{{ t_forms_browse }}">{{ t_suggestion_upload_image }}</label>
+              </div>
+              <div class="inline-cropper mt-3 hide">
+                <div class="img-container mb-3">
+                  <img id="image" class="img-cropper__placeholder invisible" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs%3D" width="640" height="480" />
+                </div>
+                <button type="button" class="btn btn-sm btn-primary img-cropper__submit-btn">{{ t_forms_crop }}</button>
+                <button type="button" class="btn btn-sm btn-secondary" data-crop-cancel>{{ t_forms_cancel }}</button>
+              </div>
+              <div id="suggestionImgPreview" data-hidden-on-crop></div>
+            </div>
+          {% endif %}
+
+          {% if page.suggestion_box.is_image? %}<div data-hidden-on-crop>{% endif %}
+            {% if page.show_consent_form? %}
+              {% include "consent_form" %}
+            {% endif %}
+
+            {% include "form_submit_tag", label: t_forms_post %}
+          {% if page.suggestion_box.is_image? %}</div>{% endif %}
+        {% endform_for %}
+      </div>
+    </div>
+  </div>
+</div>

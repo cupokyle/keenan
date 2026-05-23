@@ -1,0 +1,26 @@
+{% include "translation" %}
+
+<div class="card mb-4">
+  {% if page_excerpt.has_meta_image? %}
+    <a href="{{ page_excerpt.url }}"><img src="{{ page_excerpt.meta_image_url }}" class="card-img-top" /></a>
+  {% endif %}
+  <div class="card-body">
+    <h3 class="h4 mb-0"><a href="{{ page_excerpt.url }}">{{ page_excerpt.headline }}</a></h3>
+    {% case page_excerpt.type_name %}
+      {% when 'Blog Post' %}
+        {% if page_excerpt.blog_post.content.size > 0 %}
+          <div class="mt-2">{{ page_excerpt.blog_post.content }}</div>
+        {% endif %}
+      {% else %}
+        {% if page_excerpt.excerpt.size > 0 %}
+          <p class="mt-2">{{ page_excerpt.excerpt }}</p>
+        {% endif %}
+    {% endcase %}
+  </div>
+  {% case page_excerpt.type_name %}
+    {% when "Blog Post" or "Press Release" %}
+      <div class="card-footer">
+        {% include 'page_byline' page:page_excerpt, author:page_excerpt.author, published_at:page_excerpt.published_at %}
+      </div>
+  {% endcase %}
+</div>

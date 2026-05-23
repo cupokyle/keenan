@@ -1,0 +1,94 @@
+{% include "translation" %}
+
+<p class="font-weight-semi-bold">{{ t_forms_im_not_sure }}</p>
+
+{% if page.vote_pledge.unsure_content.size > 0 %}
+  {{ page.vote_pledge.unsure_content }}
+{% endif %}
+
+{% form_for vote_pledge %}
+  {% hidden_field_tag "vote_pledge[will_vote_status]", 0 %}
+  <div class="form-errors">{% error_messages_for vote_pledge %}</div>
+
+  <div class="form-group">
+    <div class="float-label">
+      <label for="vote_pledge_content">{{ t_forms_any_questions_we_can_answer }}</label>
+      <div class="auto-grow">
+        {% text_area "content", class:"form-control" %}
+      </div>
+    </div>
+  </div>
+
+  {% if request.sorta_logged_in? == false or request.current_signup.has_name? == false %}
+    <div class="form-row">
+      <div class="form-group col-12 col-md">
+        <div class="float-label">
+          <label for="vote_pledge_first_name">{{ t_forms_first_name }}</label>
+          {% text_field "first_name", class:"form-control" %}
+        </div>
+      </div>
+
+      <div class="form-group col-12 col-md">
+        <div class="float-label">
+          <label for="vote_pledge_last_name">{{ t_forms_last_name }}</label>
+          {% text_field "last_name", class:"form-control" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
+    {% if request.is_sidebar? %}
+      {% assign wide = false %}
+    {% else %}
+      {% assign wide = true %}
+    {% endif %}
+    {% include "page_address_inputs" wide: wide %}
+  {% endif %}
+
+  {% if request.sorta_logged_in? == false %}
+    <div class="form-row">
+      <div class="form-group col-12 col-md">
+        <div class="float-label">
+          <label for="vote_pledge_email">{{ t_forms_email }}</label>
+          {% email_field "email", class:"form-control" %}
+        </div>
+      </div>
+
+      {% if site.ask_for_mobiles? %}
+        <div class="form-group col-12 col-md">
+          <div class="float-label">
+            <label for="vote_pledge_mobile_number">{{ t_forms_mobile_phone }}</label>
+            {% phone_field "mobile_number", class:"form-control" %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% unless page.show_consent_form? %}
+      <div class="form-group">
+        <div class="custom-control custom-checkbox">
+          {% check_box "email_opt_in", class:"custom-control-input" %}
+          <label class="custom-control-label" for="vote_pledge_email_opt_in">{{ t_forms_send_email_updates }}</label>
+        </div>
+      </div>
+
+      {% if site.ask_for_mobiles? %}
+        <div class="form-group">
+          <div class="custom-control custom-checkbox">
+            {% check_box "mobile_opt_in", class:"custom-control-input" %}
+            <label class="custom-control-label" for="vote_pledge_mobile_opt_in">{{ t_forms_send_text_updates }}</label>
+          </div>
+        </div>
+      {% endif %}
+    {% endunless %}
+  {% endif %}
+
+
+  {% if page.show_consent_form? %}
+    {% include "consent_form" %}
+  {% endif %}
+
+  {% include "form_submit_tag", label: t_forms_save %}
+
+{% endform_for %}

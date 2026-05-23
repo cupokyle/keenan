@@ -1,0 +1,54 @@
+<link href="actionbutton-basic-template.scss" rel="stylesheet">
+
+{% for attachment in page.attachments %}
+  {% if attachment.file_name contains "actionbutton-background" %}
+    {% assign background_url = attachment.url %}
+  {% endif %}
+{% endfor %}
+
+{% if background_url %}
+<style>
+  section#actionbutton-basic-template {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0.28%, rgba(0, 0, 0, 0.3) 97.09%), url('{{ background_url }}');
+  }
+  section#actionbutton-basic-template .page-content {
+    color: #fff;
+  }
+</style>
+{% else %}
+<style>
+  section#actionbutton-basic-template {
+    background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0.28%, rgba(0, 0, 0, 0.3) 97.09%), url('{{ theme["actionbutton-background.jpg"] }}');
+  }
+  section#actionbutton-basic-template .page-content {
+    color: #fff;
+  }
+</style>
+{% endif %}
+
+{% if ignore_ab_background %}
+<style>
+  section#actionbutton-basic-template {
+    background-image: none;
+  }
+  section#actionbutton-basic-template .page-content {
+    color: #000;
+  }
+</style>
+{% endif %}
+
+<section id="actionbutton-basic-template">
+  <div class="page-content">
+    {% if site.has_meta_image? %}
+      <img src="{{ site.meta_image_url }}" class="brand-logo" alt="{{ site.long_name }}"/>
+    {% else %}
+      <span>{{ site.long_name }}</span>
+    {% endif %}
+    {% if page.headline.size > 0 %}
+      <h1 class="page-headline">{{ page.headline }}</h1>
+    {% endif %}
+    {{ page.basic.content }}
+  </div>
+</section>
+
+<script src="actionbutton-basic-template.js"></script>

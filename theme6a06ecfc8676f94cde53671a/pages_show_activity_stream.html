@@ -1,0 +1,30 @@
+{% include "translation" %}
+
+<div class="page">
+  <div class="page-inner">
+    {% include "breadcrumbs" %}
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        {% if page.headline.size > 0 %}
+          <h2 class="mb-3 h3">{{ page.headline }}</h2>
+        {% endif %}
+
+        {% if request.logged_in? %}
+          <div class="page-stream bg-light rounded-xl mx-n4 mx-md-auto">
+            <div id="reactions" class="py-5 px-4 px-sm-5">
+              <div class="mb-4 d-flex flex-wrap align-items-center justify-content-between">
+                <h3 class="my-0 mr-4 text-serif h4 font-weight-medium">{{ t_activity_recent_responses }}</h3>
+              </div>
+              <ul id="page-stream" class="list-unstyled space-y-4">
+                {% for activity in page.activity_stream.activities_following %}
+                  {% include "activity_show" i18n:current_language, activity_stream:true %}
+                {% endfor %}
+              </ul>
+              {{ page.activity_stream.activities_following | paginate prev_label: t_prev next_label: t_next }}
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>

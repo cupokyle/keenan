@@ -1,0 +1,55 @@
+{% assign headerColor = false %}
+{% unless site.has_background_image? %}
+  {% if page.features_count > 0 %}
+    {% unless page.type_slug == "blog" and first_page == false %}
+      {% assign headerColor = true %}
+    {% endunless %}
+  {% endif %}
+  {% if page.type_slug == "blog_post" and page.has_meta_image? %}
+    {% assign headerColor = true %}
+  {% endif %}
+{% endunless %}
+{% assign splash = splash | default: false %}
+
+<div class="header-wrapper{% if headerColor %} bg-dark{% endif %}">
+  <div class="header-img-wrap pb-4 pt-lg-4">
+    <header id="header" class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="/">
+        {% if site.has_meta_image? %}
+          <img src="{{ site.meta_image_url }}" class="navbar-brand-img mw-100" alt="{{ site.long_name }}"/>
+        {% else %}
+          {{ site.long_name }}
+        {% endif %}
+      </a>
+      {% if splash %}
+        <div class="ml-auto mr-4">
+          <a href="/" id="splash-btn" class="submit-button d-inline-flex align-items-center">{{ t_continue_to_site }}<svg aria-hidden="true" focusable="false" class="ml-1" width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.625 2.813L10.313 7.5l-4.688 4.688" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+      {% else %}
+        {% unless page.type_slug == "donation_v2" %}
+          {% include "nav" %}
+        {% endunless %}
+      {% endif %}
+    </header>
+  </div>
+  {% case page.type_slug %}
+    {% when "blog_post" or "event" %}
+    {% when "blog" %}
+      {% if first_page %}
+        {% include "features" %}
+      {% endif %}
+    {% else %}
+      {% include "features" %}
+  {% endcase %}
+</div>
+
+{% if site.has_header_image? %}
+  <style>
+    .header-img-wrap {
+      background-image: url({{ site.header_image_url_1026 }});
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  </style>
+{% endif %}

@@ -1,0 +1,38 @@
+{% include "translation" %}
+
+<div class="page">
+  <div class="page-inner">
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+        <h2 class="page-headline">{{ t_nav_your_pages }}</h2>
+
+        <div class="card mt-5">
+          <div class="table-responsive">
+            <table class="table table-striped table-borderless mb-0">
+              <thead>
+                <tr>
+                  <th><span class="sr-only">{{ t_edit }}</span></th>
+                  <th style="min-width: 300px;">{{ t_page_name }}</th>
+                  <th><div class="text-nowrap">{{ t_date_authored }}</div></th>
+                </tr>
+              </thead>
+              {% if current_signup.authored_pages.size > 0 %}
+                <tbody>
+                  {% for authored_page in current_signup.authored_pages %}
+                    <tr>
+                      <td><a href="{{ authored_page.edit_url }}">{{ t_edit }}</a></td>
+                      <td>{% if authored_page.has_parent? %}<a href="{{ authored_page.parent.url }}">{{ authored_page.parent.name }}</a> /{% endif %} <a href="{{ authored_page.url }}" class="mr-1">{{ authored_page.name }}</a></td>
+                      <td class="text-nowrap">{{ authored_page.published_at | date_to_string }}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              {% endif %}
+            </table>
+          </div>
+        </div>
+
+        {{ current_signup.authored_pages | paginate }}
+      </div>
+    </div>
+  </div>
+</div>

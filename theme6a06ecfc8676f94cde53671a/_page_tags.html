@@ -1,0 +1,13 @@
+{% if page_tags.tags_count > 0 %}
+  <div id="page-tags" class="page-tags">
+    <ul class="list-inline">
+      {% for tag in page_tags.tags %}
+        {% unless tag.name contains "footer_nav" or tag.name contains "homepage" or tag.name contains "lang_en" or tag.name contains "lang_es" or tag.name contains "lang_fr" or tag.name contains "ignore ab template" or tag.name contains "ignore ab background" %}
+          <li class="list-inline-item">
+            <a href="{{ tag.url }}" class="tag">{{ tag.name }}</a>{% if forloop.last == false %},{% endif %}
+          </li>
+        {% endunless %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}
