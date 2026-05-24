@@ -1,19 +1,19 @@
 $white: #f9f3e7 !default;
-$primary: #006793 !default;
-$primary-lighten: #006793 !default;
-$primary-lighten-more: #006793 !default;
-$primary-darken: #006793 !default;
-$primary-dark: #006793 !default;
-$primary-darken-more: #006793 !default;
+$primary: #ed2b08 !default;
+$primary-lighten: #ed2b08 !default;
+$primary-lighten-more: #ed2b08 !default;
+$primary-darken: #ed2b08 !default;
+$primary-dark: #ed2b08 !default;
+$primary-darken-more: #ed2b08 !default;
 
-$secondary: #ed2b08 !default;
+$secondary: #006793 !default;
 $accent: #ffb700 !default;
 
 $dark: $primary-dark !default;
 $light: $primary-lighten-more !default;
 $gray-700: darken($primary, 8%) !default;
 $info: $accent !default;
-$red: #ed2b08 !default;
+$red: #006793 !default;
 
 // Text system - keep text colors within the brand palette
 $body-color: $primary-dark !default;
