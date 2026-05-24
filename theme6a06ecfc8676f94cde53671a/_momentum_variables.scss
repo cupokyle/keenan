@@ -1,20 +1,33 @@
-$primary: #4C56DD !default; // hsl(236, 68, 58)
-$primary-lighten: lighten($primary, 38%) !default;
-$primary-lighten-more: lighten($primary, 40%) !default;
-$primary-darken: darken($primary, 10%) !default;
-$primary-dark: darken(desaturate($primary, 28%), 41%) !default; // hsl(236, 27, 30)
-$primary-darken-more: darken(desaturate($primary, 20%), 45%) !default; // hsl(236, 48, 13)
+$white: #f9f3e7 !default;
+$primary: #006793 !default;
+$primary-lighten: #006793 !default;
+$primary-lighten-more: #006793 !default;
+$primary-darken: #006793 !default;
+$primary-dark: #006793 !default;
+$primary-darken-more: #006793 !default;
 
-$secondary: lighten($primary, 39%) !default;
+$secondary: #ed2b08 !default;
+$accent: #ffb700 !default;
 
 $dark: $primary-dark !default;
 $light: $primary-lighten-more !default;
-$gray-700: #474849 !default;
-$info: $primary-lighten !default;
-$red: #DD4C4C !default;
+$gray-700: darken($primary, 8%) !default;
+$info: $accent !default;
+$red: #ed2b08 !default;
+
+// Text system - keep text colors within the brand palette
+$body-color: $primary-dark !default;
+$headings-color: $primary !default;
+$link-color: $secondary !default;
+$link-hover-color: darken($secondary, 10%) !default;
+$text-muted: mix($primary, $white, 55%) !default;
+$component-active-color: $white !default;
 
 $theme-colors: (
   "black": #000,
+  "white": #f9f3e7,
+  "text-light": $light,
+  "primary": #006793
 );
 
 $spacer: 0.9375rem;
@@ -34,10 +47,10 @@ $container-max-widths: (
   xl: 1200px
 ) !default;
 
-$font-family-sans-serif: 'Source Sans Pro', Helvetica, Arial, sans-serif;
-$font-family-serif: 'Lora', serif;
+$font-family-sans-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-family-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif;
 $font-family-monospace: 'Source Code Pro', monospace;
-$headings-font-family: $font-family-serif;
+$headings-font-family: $font-family-sans-serif;
 $font-size-base: 1.25rem; // 20px
 $font-size-lg: $font-size-base * 1.1; // 22px
 $h1-font-size: $font-size-base * 2.8; // 56px

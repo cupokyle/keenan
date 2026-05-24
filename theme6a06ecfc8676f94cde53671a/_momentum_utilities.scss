@@ -12,6 +12,7 @@
 .h1 {
   @include font-size($h1-font-size, true);
   line-height: 1.2;
+  color: $accent;
 }
 .h2 { @include font-size($h2-font-size, true); }
 .h3 { @include font-size($h3-font-size, true); }
