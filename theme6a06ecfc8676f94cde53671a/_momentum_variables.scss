@@ -51,6 +51,10 @@ $font-family-sans-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, 
 $font-family-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif;
 $font-family-monospace: 'Source Code Pro', monospace;
 $headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 700;
+$headings-line-height: 1.1;
+$font-weight-base: 500;
+$lead-font-weight: 500;
 $font-size-base: 1.25rem; // 20px
 $font-size-lg: $font-size-base * 1.1; // 22px
 $h1-font-size: $font-size-base * 2.8; // 56px
@@ -115,6 +119,7 @@ $input-group-addon-font-weight: 700;
 
 // Buttons
 $btn-font-weight: 700;
+$input-font-weight: 500;
 $btn-disabled-opacity: 0.4;
 
 // Breadcrumbs
@@ -131,7 +136,7 @@ $dropdown-item-padding-x: 1.5rem;
 $dropdown-divider-margin-y: 0;
 $dropdown-font-size: 1rem;
 $dropdown-font-weight: 600;
-$dropdown-link-color: #4B4B4B;
+$dropdown-link-color: $secondary;
 
 // Custom forms
 $custom-control-indicator-size: 1.25rem;

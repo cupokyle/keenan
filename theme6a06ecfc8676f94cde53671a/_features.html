@@ -25,8 +25,8 @@
 
     {% if site.has_background_image? %}<div class="page-features-container container">{% endif %}
 
-    <div id="fcs" data-ride="carousel" data-interval="8000" class="page-features carousel slide{% if fcs_image_only %} page-features--img-only mt-n4 mt-lg-0{% else %} py-3 py-lg-5{% endif %}{% if site.has_background_image? %} mx-auto rounded-top bg-dark{% endif %}">
-      <div class="carousel-inner bg-dark{% if site.has_background_image? %} rounded-top{% endif %}">
+    <div id="fcs" data-ride="carousel" data-interval="8000" class="page-features carousel slide{% if fcs_image_only %} page-features--img-only mt-n4 mt-lg-0{% else %} py-3 py-lg-5{% endif %}{% if site.has_background_image? %} mx-auto rounded-top bg-white{% endif %}">
+      <div class="carousel-inner bg-white{% if site.has_background_image? %} rounded-top{% endif %}">
         {% if fcs_image_only %}
           {% for feature in page.features %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">

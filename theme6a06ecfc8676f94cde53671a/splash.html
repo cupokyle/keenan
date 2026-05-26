@@ -8,7 +8,7 @@ momentum-theme v3-theme js {{ page.page_class_name }} page-{{ request.template |
 {% if page.features_count > 0 %} featured-content{% endif %}
 {% case page.type_slug %}
 {% when "blog" or "suggestion_box" or "calendar" %} bg-light
-{% when "event" %} bg-dark
+{% when "event" %} bg-white
 {% endcase %}
 {% if tag_list contains "fixed_header" %} fixed-header{% endif %}
 {% endcapture %}

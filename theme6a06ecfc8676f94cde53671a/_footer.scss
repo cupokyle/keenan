@@ -2,15 +2,16 @@
 -----------------------------------------------*/
 footer {
   a {
-    @extend .text-white;
+    color: $secondary;
     &:hover {
-      opacity: 0.6;
+      opacity: 0.9;
     }
   }
 }
 
 .footer-nav {
-  background-color: $primary-darken-more;
+  // Retro theme override: keep footer-nav cream for now (was red).
+  background-color: $white;
   li {
     font-size: 1rem;
   }
@@ -18,5 +19,5 @@ footer {
 
 #created-with-nb {
   @extend .small;
-  opacity: 0.6;
+  opacity: 0.9;
 }
