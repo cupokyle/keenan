@@ -194,6 +194,8 @@ iframe {
 
 body {
   overflow-x: hidden;
+    background-color: $white;
+  color: $primary;
 }
 
 main#content {
@@ -291,7 +293,7 @@ main#content {
   }
 
   &:before {
-    background: white;
+    background: $white;
     border: 1px solid $card-border-color;
     border-left: none;
     border-bottom: none;
@@ -352,7 +354,7 @@ main#content {
 
   &-month {
     background-color: $danger;
-    color: white;
+    color: $white;
     text-transform: uppercase;
     font-size: 0.375em;
   }
@@ -830,7 +832,7 @@ label.floating-donation-label {
   top: 0;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  background-color: #ffffff;
+  background-color: $white;
   font-weight: 700;
   font-size: .875rem;
 }

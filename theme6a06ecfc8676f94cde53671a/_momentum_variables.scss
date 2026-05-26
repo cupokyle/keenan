@@ -86,7 +86,7 @@ $badge-padding-x: 0.5rem;
 
 // Navbar
 $navbar-nav-link-padding-x: 0.9375rem;
-$navbar-light-color: #000000;
+$navbar-light-color: $secondary;
 $navbar-light-toggler-border-color: transparent;
 $navbar-toggler-font-size: 18px;
 $navbar-light-toggler-icon-bg: str-replace(url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 8h11M2.5 4h11M2.5 12h11' stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"), "#", "%23");
@@ -106,9 +106,9 @@ $input-btn-padding-y-lg: 1.375rem;
 $input-btn-padding-x-lg: 1.5625rem;
 $input-btn-padding-y-sm: 0.75rem;
 $input-btn-padding-x-sm: 0.9375rem;
-$input-bg: #EEEFF4;
+$input-bg: $white;
 $input-disabled-bg: $input-bg;
-$input-focus-bg: #FFFFFF;
+$input-focus-bg: $white;
 $input-border-color: $input-bg;
 $input-group-addon-bg: $secondary;
 $input-group-addon-font-weight: 700;
@@ -136,7 +136,7 @@ $dropdown-link-color: #4B4B4B;
 // Custom forms
 $custom-control-indicator-size: 1.25rem;
 $custom-control-indicator-border-color: #CBCCD3;
-$custom-control-indicator-bg: #FFFFFF;
+$custom-control-indicator-bg: $white;
 $custom-control-indicator-disabled-bg: $custom-control-indicator-border-color;
 $custom-control-label-disabled-color: #ABABAB;
 $custom-control-indicator-focus-border-color: $primary;
@@ -148,16 +148,16 @@ $custom-checkbox-indicator-icon-indeterminate: url("data:image/svg+xml,%3Csvg wi
 $custom-radio-indicator-icon-checked: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='5' cy='5' r='5' fill='white'/%3E%3C/svg%3E%0A");
 $custom-select-indicator: url("data:image/svg+xml,%3Csvg width='14' height='28' viewBox='0 0 14 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.625 8.75L7 4.375L11.375 8.75' stroke='%23474849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.375 19.25L7 23.625L2.625 19.25' stroke='%23474849' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
 $custom-select-bg-size: 0.875rem 1.75rem;
-$custom-select-focus-bg: #FFFFFF;
+$custom-select-focus-bg: $white;
 $custom-select-indicator-padding: 1.75rem;
 $custom-file-button-color: $primary;
 $custom-file-button-font-weight: 700;
-$custom-file-focus-bg: #FFFFFF;
+$custom-file-focus-bg: $white;
 $custom-select-disabled-color: $gray-700;
 $custom-select-disabled-bg: $input-bg;
 
 // Cards
-$card-bg: #FFFFFF;
+$card-bg: $white;
 $card-border-color: rgba(#000, 0.05);
 $card-spacer-x: 1.5625rem;
 $card-spacer-y: 1.5625rem;
