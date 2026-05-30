@@ -1,5 +1,33 @@
 /*! Momentum: style_red */
- $primary: #ed2b08;
+// Theme-level brand defaults are declared here as well as in
+// _momentum_variables.scss so NationBuilder can compile theme.scss even when it
+// validates this file before refreshing imported partials.
+$brand-cream: #f9f3e7 !default;
+$brand-red: #ed2b08 !default;
+$brand-blue: #006793 !default;
+$brand-yellow: #ffb700 !default;
+$brand-black: #000000 !default;
+
+$white: $brand-cream !default;
+$black: $brand-black !default;
+$primary: $brand-red !default;
+$primary-lighten: lighten($primary, 38%) !default;
+$primary-lighten-more: $brand-cream !default;
+$primary-darken: darken($primary, 8%) !default;
+$primary-dark: darken($primary, 12%) !default;
+$primary-darken-more: darken($primary, 16%) !default;
+$secondary: $brand-blue !default;
+$accent: $brand-yellow !default;
+$body-color: $primary-dark !default;
+$headings-color: $primary !default;
+$link-color: $secondary !default;
+$link-hover-color: darken($secondary, 10%) !default;
+$text-muted: mix($primary, $white, 55%) !default;
+$text-color-on-primary: $white !default;
+$font-family-sans-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
+$font-family-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
+$font-family-monospace: 'Source Code Pro', monospace !default;
+
 /*-----------------------------------------------
   MOMENTUM by NationBuilder
   https://momentum-theme.nationbuilder.com
