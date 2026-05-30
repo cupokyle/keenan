@@ -12,7 +12,7 @@
     background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0.28%, rgba(0, 0, 0, 0.3) 97.09%), url('{{ background_url }}');
   }
   section#actionbutton-basic-template .page-content {
-    color: #fff;
+    color: var(--theme-text-on-primary, #f9f3e7);
   }
 </style>
 {% else %}
@@ -21,7 +21,7 @@
     background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.80) 0.28%, rgba(0, 0, 0, 0.3) 97.09%), url('{{ theme["actionbutton-background.jpg"] }}');
   }
   section#actionbutton-basic-template .page-content {
-    color: #fff;
+    color: var(--theme-text-on-primary, #f9f3e7);
   }
 </style>
 {% endif %}
@@ -32,7 +32,7 @@
     background-image: none;
   }
   section#actionbutton-basic-template .page-content {
-    color: #000;
+    color: var(--theme-text-base, #c52407);
   }
 </style>
 {% endif %}
