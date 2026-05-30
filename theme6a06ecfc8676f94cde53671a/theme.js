@@ -8,18 +8,29 @@
 
   /**
    * Custom stylesheet guard
-   * @description NationBuilder preview can append stock theme styles after the
-   * custom theme on scroll/click. Keep theme.scss as the last stylesheet in
-   * the head so our brand variables and overrides remain authoritative.
+   * @description NationBuilder preview can append or mutate stock theme styles
+   * after clicks in the preview frame. Keep theme.scss as the last stylesheet
+   * for the full page lifetime so our brand variables and overrides remain
+   * authoritative.
    */
   var keepThemeStylesheetLast = function () {
     var head = document.head;
-    if (!head) return;
+    if (!head || head.dataset.themeStylesheetGuard === 'active') return;
 
-    var themeStylesheet = head.querySelector('link[data-theme-stylesheet="custom"]') || head.querySelector('link[href*="theme.scss"]');
-    if (!themeStylesheet) return;
+    head.dataset.themeStylesheetGuard = 'active';
+    var queued = false;
+
+    function getThemeStylesheet() {
+      return head.querySelector('link[data-theme-stylesheet="custom"]') ||
+        head.querySelector('link[rel~="stylesheet"][href*="theme.scss"]') ||
+        head.querySelector('link[rel~="stylesheet"][href*="theme.css"]');
+    }
 
     function moveThemeStylesheetLast() {
+      queued = false;
+      var themeStylesheet = getThemeStylesheet();
+      if (!themeStylesheet) return;
+
       var stylesheets = Array.prototype.slice.call(head.querySelectorAll('link[rel~="stylesheet"], style'));
       var lastStylesheet = stylesheets[stylesheets.length - 1];
 
@@ -28,20 +39,34 @@
       }
     }
 
+    function queueMoveThemeStylesheetLast() {
+      if (queued) return;
+      queued = true;
+      (window.requestAnimationFrame || window.setTimeout)(moveThemeStylesheetLast);
+    }
+
+    function queueMoveAfterPreviewUpdate() {
+      queueMoveThemeStylesheetLast();
+      window.setTimeout(queueMoveThemeStylesheetLast, 100);
+      window.setTimeout(queueMoveThemeStylesheetLast, 1000);
+      window.setTimeout(queueMoveThemeStylesheetLast, 2500);
+    }
+
     moveThemeStylesheetLast();
 
-    if (!window.MutationObserver) return;
+    if (window.MutationObserver) {
+      var observer = new MutationObserver(queueMoveThemeStylesheetLast);
+      observer.observe(head, {
+        attributes: true,
+        attributeFilter: ['href', 'rel', 'media', 'disabled'],
+        childList: true,
+        subtree: true
+      });
+    }
 
-    var observer = new MutationObserver(function () {
-      (window.requestAnimationFrame || window.setTimeout)(moveThemeStylesheetLast);
+    ['click', 'pointerup', 'keyup', 'scroll', 'pageshow'].forEach(function (eventName) {
+      window.addEventListener(eventName, queueMoveAfterPreviewUpdate, true);
     });
-
-    observer.observe(head, { childList: true });
-
-    window.setTimeout(function () {
-      observer.disconnect();
-      moveThemeStylesheetLast();
-    }, 10000);
   }
 
   ////////////////////////////////////////////////////////////////////////////////

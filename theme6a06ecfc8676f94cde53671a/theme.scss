@@ -911,6 +911,7 @@ small,
    or when preview UI events fire. Keep core palette, text colors, and fonts
    represented as variables and re-apply them from the custom stylesheet. */
 :root,
+body,
 body.momentum-theme {
   --theme-color-cream: #{$white};
   --theme-color-primary: #{$primary};
@@ -929,10 +930,11 @@ body.momentum-theme {
   --theme-font-mono: #{$font-family-monospace};
 }
 
+html body,
 html body.momentum-theme {
-  background-color: var(--theme-color-cream);
-  color: var(--theme-text-base);
-  font-family: var(--theme-font-sans);
+  background-color: var(--theme-color-cream) !important;
+  color: var(--theme-text-base) !important;
+  font-family: var(--theme-font-sans) !important;
 }
 
 body.momentum-theme h1,
@@ -948,23 +950,24 @@ body.momentum-theme .h4,
 body.momentum-theme .h5,
 body.momentum-theme .h6,
 body.momentum-theme .page-headline {
-  color: var(--theme-text-heading);
-  font-family: var(--theme-font-sans);
+  color: var(--theme-text-heading) !important;
+  font-family: var(--theme-font-sans) !important;
 }
 
+body a,
 body.momentum-theme a {
-  color: var(--theme-text-link);
+  color: var(--theme-text-link) !important;
 }
 
 body.momentum-theme a:hover,
 body.momentum-theme a:focus {
-  color: var(--theme-text-link-hover);
+  color: var(--theme-text-link-hover) !important;
 }
 
 body.momentum-theme .text-muted,
 body.momentum-theme small,
 body.momentum-theme .small {
-  color: var(--theme-text-muted);
+  color: var(--theme-text-muted) !important;
 }
 
 body.momentum-theme #header,
@@ -976,30 +979,30 @@ body.momentum-theme .modal-body,
 body.momentum-theme .dropdown-menu,
 body.momentum-theme .navbar-more-inner,
 body.momentum-theme .homepage-excerpt-item:nth-child(odd) {
-  background-color: var(--theme-color-cream);
+  background-color: var(--theme-color-cream) !important;
 }
 
 body.momentum-theme .btn-primary,
 body.momentum-theme .submit-button,
 body.momentum-theme .bg-primary,
 body.momentum-theme #cc-request-button button {
-  background-color: var(--theme-color-primary);
-  border-color: var(--theme-color-primary);
-  color: var(--theme-text-on-primary);
+  background-color: var(--theme-color-primary) !important;
+  border-color: var(--theme-color-primary) !important;
+  color: var(--theme-text-on-primary) !important;
 }
 
 body.momentum-theme .btn-secondary,
 body.momentum-theme .bg-secondary {
-  background-color: var(--theme-color-secondary);
-  border-color: var(--theme-color-secondary);
-  color: var(--theme-text-on-primary);
+  background-color: var(--theme-color-secondary) !important;
+  border-color: var(--theme-color-secondary) !important;
+  color: var(--theme-text-on-primary) !important;
 }
 
 body.momentum-theme .navbar-light .navbar-nav .nav-link,
 body.momentum-theme #mobileNav .nav-link,
 body.momentum-theme .navbar-more-item {
-  color: var(--theme-color-secondary);
-  font-family: var(--theme-font-sans);
+  color: var(--theme-color-secondary) !important;
+  font-family: var(--theme-font-sans) !important;
 }
 
 body.momentum-theme .navbar-light .navbar-nav .nav-link:hover,
@@ -1008,5 +1011,5 @@ body.momentum-theme #mobileNav .nav-link:hover,
 body.momentum-theme #mobileNav .nav-link:focus,
 body.momentum-theme .navbar-more-item:hover,
 body.momentum-theme .navbar-more-item:focus {
-  color: var(--theme-color-primary);
+  color: var(--theme-color-primary) !important;
 }
