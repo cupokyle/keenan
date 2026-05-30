@@ -5,6 +5,46 @@
    */
   NB.loadingIndicator = '<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 0a2.521 2.521 0 00-2.527 2.527v4.21A2.52 2.52 0 0016 9.262a2.52 2.52 0 002.527-2.525v-4.21C18.527 1.127 17.4 0 16 0zM6.473 3.944a2.52 2.52 0 00-1.787.742c-.99.99-.99 2.584 0 3.573l2.978 2.977c.99.99 2.582.99 3.572 0a2.52 2.52 0 000-3.572L8.259 4.686a2.517 2.517 0 00-1.786-.742zm19.054 0c-.646 0-1.292.247-1.786.742l-2.977 2.978a2.52 2.52 0 000 3.572c.99.99 2.582.99 3.572 0l2.978-2.977c.99-.99.99-2.583 0-3.573a2.521 2.521 0 00-1.787-.742zm-23 9.53A2.521 2.521 0 000 16c0 1.4 1.127 2.527 2.527 2.527h4.21A2.52 2.52 0 009.262 16a2.52 2.52 0 00-2.525-2.527h-4.21zm22.735 0A2.52 2.52 0 0022.738 16a2.52 2.52 0 002.524 2.527h4.211C30.873 18.527 32 17.4 32 16c0-1.4-1.127-2.527-2.527-2.527h-4.21zM9.45 20.021c-.646 0-1.291.247-1.786.742l-2.978 2.977c-.99.99-.99 2.583 0 3.573.99.99 2.584.99 3.573 0l2.977-2.978a2.52 2.52 0 000-3.572 2.517 2.517 0 00-1.786-.742zm13.1 0c-.646 0-1.291.247-1.786.742a2.52 2.52 0 000 3.572l2.977 2.978c.99.99 2.583.99 3.573 0 .99-.99.99-2.584 0-3.573l-2.978-2.977a2.517 2.517 0 00-1.786-.742zM16 22.738a2.52 2.52 0 00-2.527 2.524v4.211C13.473 30.873 14.6 32 16 32c1.4 0 2.527-1.127 2.527-2.527v-4.21A2.52 2.52 0 0016 22.736z" fill="#fff" fill-opacity=".8"/></svg>'
 
+
+  /**
+   * Custom stylesheet guard
+   * @description NationBuilder preview can append stock theme styles after the
+   * custom theme on scroll/click. Keep theme.scss as the last stylesheet in
+   * the head so our brand variables and overrides remain authoritative.
+   */
+  var keepThemeStylesheetLast = function () {
+    var head = document.head;
+    if (!head) return;
+
+    var themeStylesheet = head.querySelector('link[data-theme-stylesheet="custom"]') || head.querySelector('link[href*="theme.scss"]');
+    if (!themeStylesheet) return;
+
+    function moveThemeStylesheetLast() {
+      var stylesheets = Array.prototype.slice.call(head.querySelectorAll('link[rel~="stylesheet"], style'));
+      var lastStylesheet = stylesheets[stylesheets.length - 1];
+
+      if (lastStylesheet && lastStylesheet !== themeStylesheet) {
+        head.appendChild(themeStylesheet);
+      }
+    }
+
+    moveThemeStylesheetLast();
+
+    if (!window.MutationObserver) return;
+
+    var observer = new MutationObserver(function () {
+      (window.requestAnimationFrame || window.setTimeout)(moveThemeStylesheetLast);
+    });
+
+    observer.observe(head, { childList: true });
+
+    window.setTimeout(function () {
+      observer.disconnect();
+      moveThemeStylesheetLast();
+    }, 10000);
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////
   /**
    * Bootstrap breakpoints
    */
@@ -827,6 +867,7 @@
    * Initalize plugins
    */
   var init = function () {
+    keepThemeStylesheetLast();
     addressInputs();
     autoGrow();
     commentForm();

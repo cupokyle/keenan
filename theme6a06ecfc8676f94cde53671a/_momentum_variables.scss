@@ -1,33 +1,53 @@
-$white: #f9f3e7 !default;
-$primary: #ed2b08 !default;
-$primary-lighten: #ed2b08 !default;
-$primary-lighten-more: #ed2b08 !default;
-$primary-darken: #ed2b08 !default;
-$primary-dark: #ed2b08 !default;
-$primary-darken-more: #ed2b08 !default;
+// Custom brand system
+// Keep the palette and typography in one place so NationBuilder-injected
+// preview styles cannot drift individual components back to the stock Momentum look.
+$brand-cream: #f9f3e7 !default;
+$brand-red: #ed2b08 !default;
+$brand-blue: #006793 !default;
+$brand-yellow: #ffb700 !default;
+$brand-black: #000000 !default;
 
-$secondary: #006793 !default;
-$accent: #ffb700 !default;
+$white: $brand-cream !default;
+$black: $brand-black !default;
+$primary: $brand-red !default;
+$primary-lighten: lighten($primary, 38%) !default;
+$primary-lighten-more: $brand-cream !default;
+$primary-darken: darken($primary, 8%) !default;
+$primary-dark: darken($primary, 12%) !default;
+$primary-darken-more: darken($primary, 16%) !default;
+
+$secondary: $brand-blue !default;
+$accent: $brand-yellow !default;
 
 $dark: $primary-dark !default;
 $light: $primary-lighten-more !default;
-$gray-700: darken($primary, 8%) !default;
+$gray-700: mix($primary-dark, $black, 82%) !default;
 $info: $accent !default;
-$red: #006793 !default;
+$red: $primary !default;
 
-// Text system - keep text colors within the brand palette
-$body-color: $primary-dark !default;
-$headings-color: $primary !default;
-$link-color: $secondary !default;
-$link-hover-color: darken($secondary, 10%) !default;
-$text-muted: mix($primary, $white, 55%) !default;
-$component-active-color: $white !default;
+// Text system - use named variables instead of hard-coded component colors.
+$text-color-base: $primary-dark !default;
+$text-color-heading: $primary !default;
+$text-color-link: $secondary !default;
+$text-color-link-hover: darken($secondary, 10%) !default;
+$text-color-muted: mix($primary, $white, 55%) !default;
+$text-color-on-primary: $white !default;
+$text-color-on-secondary: $white !default;
+
+$body-color: $text-color-base !default;
+$headings-color: $text-color-heading !default;
+$link-color: $text-color-link !default;
+$link-hover-color: $text-color-link-hover !default;
+$text-muted: $text-color-muted !default;
+$component-active-color: $text-color-on-primary !default;
 
 $theme-colors: (
-  "black": #000,
-  "white": #f9f3e7,
+  "black": $black,
+  "white": $white,
   "text-light": $light,
-  "primary": #006793
+  "primary": $primary,
+  "secondary": $secondary,
+  "accent": $accent
 );
 
 $spacer: 0.9375rem;

@@ -195,7 +195,7 @@ iframe {
 body {
   overflow-x: hidden;
   background-color: $white;
-  color: $primary;
+  color: $body-color;
 }
 
 main#content {
@@ -875,4 +875,110 @@ small,
 .custom-select,
 .form-control {
   font-weight: 600;
+}
+
+/* Brand cascade guard
+-----------------------------------------------
+   NationBuilder preview can inject stock Momentum styles after content_for_header
+   or when preview UI events fire. Keep core palette, text colors, and fonts
+   represented as variables and re-apply them from the custom stylesheet. */
+:root,
+body.momentum-theme {
+  --theme-color-cream: #{$white};
+  --theme-color-primary: #{$primary};
+  --theme-color-primary-dark: #{$primary-dark};
+  --theme-color-secondary: #{$secondary};
+  --theme-color-accent: #{$accent};
+  --theme-color-black: #{$black};
+  --theme-text-base: #{$body-color};
+  --theme-text-heading: #{$headings-color};
+  --theme-text-link: #{$link-color};
+  --theme-text-link-hover: #{$link-hover-color};
+  --theme-text-muted: #{$text-muted};
+  --theme-text-on-primary: #{$text-color-on-primary};
+  --theme-font-sans: #{$font-family-sans-serif};
+  --theme-font-serif: #{$font-family-serif};
+  --theme-font-mono: #{$font-family-monospace};
+}
+
+html body.momentum-theme {
+  background-color: var(--theme-color-cream);
+  color: var(--theme-text-base);
+  font-family: var(--theme-font-sans);
+}
+
+body.momentum-theme h1,
+body.momentum-theme h2,
+body.momentum-theme h3,
+body.momentum-theme h4,
+body.momentum-theme h5,
+body.momentum-theme h6,
+body.momentum-theme .h1,
+body.momentum-theme .h2,
+body.momentum-theme .h3,
+body.momentum-theme .h4,
+body.momentum-theme .h5,
+body.momentum-theme .h6,
+body.momentum-theme .page-headline {
+  color: var(--theme-text-heading);
+  font-family: var(--theme-font-sans);
+}
+
+body.momentum-theme a {
+  color: var(--theme-text-link);
+}
+
+body.momentum-theme a:hover,
+body.momentum-theme a:focus {
+  color: var(--theme-text-link-hover);
+}
+
+body.momentum-theme .text-muted,
+body.momentum-theme small,
+body.momentum-theme .small {
+  color: var(--theme-text-muted);
+}
+
+body.momentum-theme #header,
+body.momentum-theme #mobileNav,
+body.momentum-theme .page,
+body.momentum-theme .page-inner,
+body.momentum-theme .card,
+body.momentum-theme .modal-body,
+body.momentum-theme .dropdown-menu,
+body.momentum-theme .navbar-more-inner,
+body.momentum-theme .homepage-excerpt-item:nth-child(odd) {
+  background-color: var(--theme-color-cream);
+}
+
+body.momentum-theme .btn-primary,
+body.momentum-theme .submit-button,
+body.momentum-theme .bg-primary,
+body.momentum-theme #cc-request-button button {
+  background-color: var(--theme-color-primary);
+  border-color: var(--theme-color-primary);
+  color: var(--theme-text-on-primary);
+}
+
+body.momentum-theme .btn-secondary,
+body.momentum-theme .bg-secondary {
+  background-color: var(--theme-color-secondary);
+  border-color: var(--theme-color-secondary);
+  color: var(--theme-text-on-primary);
+}
+
+body.momentum-theme .navbar-light .navbar-nav .nav-link,
+body.momentum-theme #mobileNav .nav-link,
+body.momentum-theme .navbar-more-item {
+  color: var(--theme-color-secondary);
+  font-family: var(--theme-font-sans);
+}
+
+body.momentum-theme .navbar-light .navbar-nav .nav-link:hover,
+body.momentum-theme .navbar-light .navbar-nav .nav-link:focus,
+body.momentum-theme #mobileNav .nav-link:hover,
+body.momentum-theme #mobileNav .nav-link:focus,
+body.momentum-theme .navbar-more-item:hover,
+body.momentum-theme .navbar-more-item:focus {
+  color: var(--theme-color-primary);
 }

@@ -24,10 +24,10 @@ momentum-theme v3-theme js {{ page.page_class_name }} page-{{ request.template |
     <title>{{ page_title }}</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;700&family=Source+Code+Pro:wght@400;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link href="theme.scss" rel="stylesheet" />
     <!-- start of content_for_header -->
     {{ content_for_header }}
     <!-- end of content_for_header -->
+    <link href="theme.scss" rel="stylesheet" data-theme-stylesheet="custom" />
     <script type="text/javascript">
       NB.appConfig.userIsLoggedIn = {{ request.logged_in? }};
     </script>
