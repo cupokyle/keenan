@@ -219,10 +219,11 @@ main#content {
   }
 }
 
+// Retro theme override: keep homepage excerpt banding cream for now (was $primary-lighten-more / red).
 .homepage-excerpt-item:nth-child(odd) {
   background-color: $primary-lighten-more;
+  background-color: $white;
 }
-
 .homepage-excerpt-section {
   @extend .py-5;
 }
@@ -836,6 +837,7 @@ label.floating-donation-label {
   font-weight: 700;
   font-size: .875rem;
 }
+
 
 // Retro typography tuning
 .navbar-nav .nav-link,
