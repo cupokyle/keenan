@@ -1013,3 +1013,316 @@ body.momentum-theme .navbar-more-item:hover,
 body.momentum-theme .navbar-more-item:focus {
   color: var(--theme-color-primary) !important;
 }
+
+/* Universal brand lock
+-----------------------------------------------
+   This block intentionally covers broad desktop and mobile selectors because
+   NationBuilder preview can re-apply stock Momentum classes after interaction. */
+html,
+body,
+body.momentum-theme,
+body[class*="page-"] {
+  background-color: var(--theme-color-cream) !important;
+  color: var(--theme-text-base) !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+body,
+body *:not(svg):not(path):not(use) {
+  font-family: var(--theme-font-sans) !important;
+}
+
+body code,
+body kbd,
+body pre,
+body samp,
+body .text-monospace,
+body .badge,
+body .small,
+body small {
+  font-family: var(--theme-font-mono) !important;
+}
+
+body .text-serif {
+  font-family: var(--theme-font-serif) !important;
+}
+
+body h1,
+body h2,
+body h3,
+body h4,
+body h5,
+body h6,
+body .h1,
+body .h2,
+body .h3,
+body .h4,
+body .h5,
+body .h6,
+body .page-headline,
+body .headline,
+body .title {
+  color: var(--theme-text-heading) !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+body p,
+body li,
+body dd,
+body dt,
+body label,
+body legend,
+body table,
+body .page-content,
+body .page-intro,
+body .card-body,
+body .media-body,
+body .form-group,
+body .custom-control-label {
+  color: var(--theme-text-base) !important;
+}
+
+body a,
+body .text-primary,
+body .page-link,
+body .breadcrumb a,
+body .dropdown-item,
+body .list-group-item-action {
+  color: var(--theme-text-link) !important;
+}
+
+body a:hover,
+body a:focus,
+body .page-link:hover,
+body .page-link:focus,
+body .dropdown-item:hover,
+body .dropdown-item:focus,
+body .list-group-item-action:hover,
+body .list-group-item-action:focus {
+  color: var(--theme-text-link-hover) !important;
+}
+
+body .text-muted,
+body .byline,
+body .form-text,
+body .help-block,
+body .metadata,
+body .meta,
+body .small,
+body small {
+  color: var(--theme-text-muted) !important;
+}
+
+body .page,
+body .page-inner,
+body .main,
+body .content,
+body .site,
+body .card,
+body .card-body,
+body .modal-content,
+body .modal-body,
+body .dropdown-menu,
+body .list-group-item,
+body .popover,
+body .toast,
+body #header,
+body #mobileNav,
+body .navbar-collapse,
+body .navbar-more-inner,
+body .homepage-excerpt-item,
+body .homepage-excerpt-item:nth-child(odd),
+body .homepage-excerpt-item:nth-child(even),
+body .bg-light,
+body .bg-white {
+  background-color: var(--theme-color-cream) !important;
+}
+
+body .bg-dark,
+body .modal-backdrop,
+body .jumbotron.bg-dark,
+body .page-features.bg-dark {
+  background-color: var(--theme-color-primary-dark) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .bg-primary,
+body .badge-primary,
+body .progress-bar,
+body .custom-control-input:checked ~ .custom-control-label::before,
+body .custom-checkbox .custom-control-input:indeterminate ~ .custom-control-label::before {
+  background-color: var(--theme-color-primary) !important;
+  border-color: var(--theme-color-primary) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .bg-secondary,
+body .badge-secondary {
+  background-color: var(--theme-color-secondary) !important;
+  border-color: var(--theme-color-secondary) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .bg-info,
+body .badge-info,
+body .alert-info,
+body .alert-warning,
+body .alert-notice,
+body .alert-share,
+body .bg-accent {
+  background-color: var(--theme-color-accent) !important;
+  border-color: var(--theme-color-accent) !important;
+  color: var(--theme-color-black) !important;
+}
+
+body .btn,
+body .submit-button,
+body button,
+body input[type="submit"],
+body input[type="button"] {
+  font-family: var(--theme-font-sans) !important;
+}
+
+body .btn-primary,
+body .submit-button,
+body input[type="submit"],
+body #cc-request-button button,
+body .button.primary,
+body .button-primary {
+  background-color: var(--theme-color-primary) !important;
+  border-color: var(--theme-color-primary) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .btn-primary:hover,
+body .btn-primary:focus,
+body .submit-button:hover,
+body .submit-button:focus,
+body input[type="submit"]:hover,
+body input[type="submit"]:focus {
+  background-color: var(--theme-color-primary-dark) !important;
+  border-color: var(--theme-color-primary-dark) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .btn-secondary,
+body .button.secondary,
+body .button-secondary {
+  background-color: var(--theme-color-secondary) !important;
+  border-color: var(--theme-color-secondary) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .btn-outline-primary,
+body .btn-link {
+  background-color: transparent !important;
+  border-color: var(--theme-color-primary) !important;
+  color: var(--theme-color-primary) !important;
+}
+
+body .btn-outline-primary:hover,
+body .btn-outline-primary:focus,
+body .btn-link:hover,
+body .btn-link:focus {
+  background-color: var(--theme-color-primary) !important;
+  color: var(--theme-text-on-primary) !important;
+}
+
+body .navbar-light .navbar-nav .nav-link,
+body .navbar-brand,
+body #mobileNav .nav-link,
+body .navbar-more-item,
+body .nav-link,
+body .nav-tabs .nav-link {
+  color: var(--theme-color-secondary) !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+body .navbar-light .navbar-nav .nav-link:hover,
+body .navbar-light .navbar-nav .nav-link:focus,
+body .navbar-brand:hover,
+body .navbar-brand:focus,
+body #mobileNav .nav-link:hover,
+body #mobileNav .nav-link:focus,
+body .navbar-more-item:hover,
+body .navbar-more-item:focus,
+body .nav-link:hover,
+body .nav-link:focus,
+body .nav-tabs .nav-link.active {
+  color: var(--theme-color-primary) !important;
+}
+
+body .form-control,
+body .custom-select,
+body .custom-file-label,
+body .input-group-text,
+body textarea,
+body select,
+body input[type="text"],
+body input[type="email"],
+body input[type="tel"],
+body input[type="url"],
+body input[type="password"],
+body input[type="number"] {
+  background-color: var(--theme-color-cream) !important;
+  border-color: var(--theme-color-cream) !important;
+  color: var(--theme-text-base) !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+body .form-control:focus,
+body .custom-select:focus,
+body textarea:focus,
+body select:focus,
+body input:focus {
+  border-color: var(--theme-color-primary) !important;
+  box-shadow: 0 0 0 0.25rem rgba($primary, 0.25) !important;
+}
+
+body table,
+body .table,
+body .table th,
+body .table td {
+  color: var(--theme-text-base) !important;
+  border-color: rgba($black, 0.12) !important;
+}
+
+body .table-striped tbody tr:nth-of-type(odd),
+body .table-hover tbody tr:hover {
+  background-color: rgba($primary, 0.08) !important;
+}
+
+body section#actionbutton-basic-template {
+  background-color: var(--theme-color-primary-dark) !important;
+}
+
+body section#actionbutton-basic-template .page-content {
+  color: var(--theme-text-on-primary) !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+body section#actionbutton-basic-template .page-content *:not(svg):not(path):not(use) {
+  color: inherit !important;
+  font-family: var(--theme-font-sans) !important;
+}
+
+@media (max-width: 991.98px) {
+  body,
+  body.momentum-theme,
+  body #mobileNav,
+  body .navbar-collapse,
+  body .navbar-more-inner,
+  body .mobile-nav,
+  body .navbar-nav,
+  body .dropdown-menu {
+    background-color: var(--theme-color-cream) !important;
+    color: var(--theme-text-base) !important;
+    font-family: var(--theme-font-sans) !important;
+  }
+
+  body .navbar-light .navbar-toggler,
+  body .navbar-toggler {
+    border-color: transparent !important;
+    color: var(--theme-color-secondary) !important;
+  }
+}

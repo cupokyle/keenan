@@ -1,4 +1,7 @@
 section#actionbutton-basic-template {
+  background-color: var(--theme-color-primary-dark, #c52407);
+  color: var(--theme-text-on-primary, #f9f3e7);
+  font-family: var(--theme-font-sans, 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -8,11 +11,15 @@ section#actionbutton-basic-template {
 
   .page-headline {
     font-size: 2.8125rem;
+    color: var(--theme-text-on-primary, #f9f3e7);
+    font-family: var(--theme-font-sans, 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif);
     font-weight: 700;
     margin: 0 0 24px;
   }
 
   p {
+    color: inherit;
+    font-family: var(--theme-font-sans, 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif);
     font-size: 1.125rem;
     line-height: 1.389;
     margin: 0;
@@ -23,6 +30,8 @@ section#actionbutton-basic-template {
   }
 
   span {
+    color: inherit;
+    font-family: var(--theme-font-sans, 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif);
     font-size: 1rem;
   }
 
@@ -56,6 +65,8 @@ section#actionbutton-basic-template {
     margin: 128px 32px;
     max-width: 1312px;
     min-height: 100vh;
+    color: inherit;
+    font-family: var(--theme-font-sans, 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif);
     width: 100%;
 
     @media (min-width: 992px) {
