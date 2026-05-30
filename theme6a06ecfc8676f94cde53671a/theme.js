@@ -87,12 +87,11 @@
       var container = lastStyleContainer();
       var orderedStyles = Array.prototype.slice.call(document.querySelectorAll('link[rel~="stylesheet"], style'));
       var lastStyle = orderedStyles[orderedStyles.length - 1];
-      var nextToLastStyle = orderedStyles[orderedStyles.length - 2];
 
-      if (lastStyle === guard && (!themeStylesheet || nextToLastStyle === themeStylesheet)) return;
+      if (lastStyle === guard) return;
 
-      if (themeStylesheet) {
-        container.appendChild(themeStylesheet);
+      if (themeStylesheet && document.head) {
+        document.head.appendChild(themeStylesheet);
       }
       container.appendChild(guard);
     }

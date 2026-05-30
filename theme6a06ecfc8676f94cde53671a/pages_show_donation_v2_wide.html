@@ -396,8 +396,12 @@
   NB.payments.elementOptions = {
     style: {
       base: {
-        fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
-        fontSize: '16px'
+        fontFamily: '"Hanken Grotesk", "Source Sans Pro", Helvetica, Arial, sans-serif',
+        fontSize: '16px',
+        color: '#c52407'
+      },
+      invalid: {
+        color: '#ed2b08'
       }
     }
   };
@@ -406,3 +410,4 @@
 {% if site.has_background_image? %}
 <style>body { background-image: none !important; }</style>
 {% endif %}
+{% include "brand_guard" %}
