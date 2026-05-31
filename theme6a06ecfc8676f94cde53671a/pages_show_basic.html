@@ -41,8 +41,12 @@
           {% endif %}
 
           {% if page.basic.content.size > 0 %}
+            {% assign homepage_content_with_wordmark = page.basic.content %}
+            {% if page.is_homepage? %}
+              {% include "homepage_logo_quote_replacement" %}
+            {% endif %}
             <div class="page-content">
-              {{ page.basic.content }}
+              {{ homepage_content_with_wordmark }}
             </div>
           {% endif %}
 

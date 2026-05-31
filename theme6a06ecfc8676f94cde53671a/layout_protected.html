@@ -60,6 +60,8 @@ momentum-theme v3-theme js {{ page.page_class_name }} page-{{ request.template |
 
       {% include "content" %}
 
+      {% include "homepage_logo_quote_replacement" %}
+      
       {% unless
         page.type_slug == "donation_v2" or
         page.type_slug == "donation"
