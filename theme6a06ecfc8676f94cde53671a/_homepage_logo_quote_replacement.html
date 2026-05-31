@@ -40,6 +40,19 @@
     width: min(100%, 12rem);
   }
 
+
+  /* Donation pages with a right-side portrait need this fallback wordmark
+     centered over the form half, not the full viewport, on tablet/desktop. */
+  @media (min-width: 768px) {
+    body.page-type-donation .keenan-homepage-wordmark-wrapper,
+    body.page-type-donation-v2 .keenan-homepage-wordmark-wrapper {
+      margin-left: 0;
+      margin-right: 0;
+      max-width: 50vw;
+      width: 50vw;
+    }
+  }
+
   /* Hero treatment: preserve the larger lockup in the homepage feature area. */
   .page-features .keenan-homepage-wordmark-wrapper {
     justify-content: flex-start;
