@@ -8,7 +8,7 @@
   padding: 0;
   box-shadow: 0px 2px 6px rgba(#000, 0.25);
   border-bottom: 1px solid rgba(#000, 0.06);
-  background-color: $white;
+  background-color: $secondary;
   z-index: 100; // ensures this is above the featured content slider
   transition: all ease-in-out 0.15s;
 
@@ -59,7 +59,7 @@
     padding: 2.5rem 1.875rem;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-    color: color-yiq($primary);
+    color: $accent;
   }
 
   .nav-item-login .nav-link {
@@ -74,7 +74,7 @@
   width: 100%;
   border-top: 1px solid rgba($secondary, 0.2);
   border-bottom: 1px solid rgba($secondary, 0.2);
-  background: $white;
+  background: $secondary;
 
   &::before {
     content: '';
@@ -94,7 +94,7 @@
   .nav-item {
 
     &.show {
-      background-color: rgba($secondary, 0.08);
+      background-color: rgba($accent, 0.12);
     }
 
     &.nav-item-bordered {
@@ -112,7 +112,7 @@
 
     &:hover,
     &:focus {
-      background-color: rgba($secondary, 0.08);
+      background-color: rgba($accent, 0.12);
     }
   }
 
@@ -130,7 +130,7 @@
 
     &:hover,
     &:focus {
-      background-color: rgba($secondary, 0.08);
+      background-color: rgba($accent, 0.12);
     }
   }
 }
