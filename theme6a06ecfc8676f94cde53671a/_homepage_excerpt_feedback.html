@@ -1,23 +1,32 @@
 {% include "translation" %}
 
-<section class="homepage-excerpt-section">
+<section class="homepage-excerpt-section homepage-excerpt-feedback">
   <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-9">
+    <div class="row">
+      <div class="col-lg-6">
         {% if page.headline.size > 0 %}
-          <h2 class="h3 m-0">{{ page.headline }}</h2>
+          <h2 class="page-headline">{{ page.headline }}</h2>
         {% endif %}
-        {% if page.endorsement.intro.size > 0 %}
-          <div class="mt-3 lead">
-            {{ page.endorsement.intro }}
+
+        {% if page.feedback.content.size > 0 %}
+          <div class="page-content">
+            {{ page.feedback.content }}
           </div>
         {% endif %}
-        <div class="card card-lg{% if page.headline.size > 0 or page.endorsement.intro.size > 0 %} mt-5{% endif %}">
+      </div>
+
+      <div class="col-lg-6">
+        <div class="card card-md">
           <div class="card-body">
             <div class="form-wrap">
               <div class="form">
                 {% if request.sorta_logged_in? %}
-                  <h3 class="mb-4 h4 text-serif font-weight-medium">{{ t_account_simple_greeting }}</h3>
+                  <div class="mb-4">
+                    <h3 class="mb-0 h4">{{ t_account_simple_greeting }}</h3>
+                    {% if request.logged_in? == false %}
+                      <p>{{ t_account_not_you_sign_out  }}</p>
+                    {% endif %}
+                  </div>
                 {% endif %}
 
                 {% form_for feedback %}
@@ -55,27 +64,25 @@
                 {% endif %}
 
                 {% if request.sorta_logged_in? == false or request.current_signup.has_mobile? == false %}
-                  <div class="form-row">
-                    <div class="form-group col-12 col-md">
+                  <div class="form-group">
+                    <div class="float-label">
+                      <label for="feedback_email">{{ t_forms_email }}</label>
+                      {% email_field "email", class:"form-control text" %}
+                    </div>
+                  </div>
+
+                  {% if site.ask_for_mobiles? %}
+                    <div class="form-group">
                       <div class="float-label">
-                        <label for="feedback_email">{{ t_forms_email }}</label>
-                        {% email_field "email", class:"form-control text" %}
+                        <label for="feedback_mobile_number">{{ t_forms_mobile_phone }}</label>
+                        {% phone_field "mobile_number", class:"form-control text" %}
                       </div>
                     </div>
-
-                    {% if site.ask_for_mobiles? %}
-                      <div class="form-group col-12 col-md">
-                        <div class="float-label">
-                          <label for="feedback_mobile_number">{{ t_forms_mobile_phone }}</label>
-                          {% phone_field "mobile_number", class:"form-control text" %}
-                        </div>
-                      </div>
-                    {% endif %}
-                  </div>
+                  {% endif %}
                 {% endif %}
 
                 {% if request.sorta_logged_in? == false or request.current_signup.has_full_address? == false %}
-                  {% include "page_address_inputs" wide: true %}
+                  {% include "page_address_inputs" %}
                 {% endif %}
 
                 {% if page.feedback.is_volunteers? and site.ask_for_volunteers? %}
