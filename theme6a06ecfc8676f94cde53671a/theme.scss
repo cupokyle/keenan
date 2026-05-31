@@ -1127,6 +1127,7 @@ body .list-group-item,
 body .popover,
 body .toast,
 body #header,
+body #header.navbar,
 body #mobileNav,
 body .navbar-collapse,
 body .navbar-more-inner,
@@ -1325,4 +1326,156 @@ body section#actionbutton-basic-template .page-content *:not(svg):not(path):not(
     border-color: transparent !important;
     color: var(--theme-color-secondary) !important;
   }
+}
+
+/* Header and navbar brand lock
+-----------------------------------------------
+   Keep every header/navbar variation on secondary blue with accent-yellow text,
+   even when NationBuilder preview re-applies stock Momentum styles. */
+body #header,
+body #header.navbar,
+body #mobileNav,
+body #primaryNav,
+body .header-mini,
+body .header-mini .card-body,
+body #header > .navbar-brand,
+body .navbar-more-inner,
+body #header .dropdown-menu,
+body #mobileNav .dropdown-menu,
+body #header .navbar-nav,
+body #mobileNav .navbar-nav {
+  background-color: var(--theme-color-secondary) !important;
+  color: var(--theme-color-accent) !important;
+}
+
+body #header > .navbar-brand {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+}
+
+body #header .navbar-brand,
+body #header .navbar-toggler,
+body #header .navbar-text,
+body #header .btn,
+body #header .nav-link,
+body #header .dropdown-item,
+body #mobileNav .nav-link,
+body #mobileNav .dropdown-item,
+body #mobileNav .btn,
+body .navbar-more-item,
+body .header-mini .navbar-brand {
+  color: var(--theme-color-accent) !important;
+}
+
+body #header .navbar-brand:hover,
+body #header .navbar-brand:focus,
+body #header .navbar-toggler:hover,
+body #header .navbar-toggler:focus,
+body #header .btn:hover,
+body #header .btn:focus,
+body #header .nav-link:hover,
+body #header .nav-link:focus,
+body #header .dropdown-item:hover,
+body #header .dropdown-item:focus,
+body #mobileNav .nav-link:hover,
+body #mobileNav .nav-link:focus,
+body #mobileNav .dropdown-item:hover,
+body #mobileNav .dropdown-item:focus,
+body #mobileNav .btn:hover,
+body #mobileNav .btn:focus,
+body .navbar-more-item:hover,
+body .navbar-more-item:focus,
+body .header-mini .navbar-brand:hover,
+body .header-mini .navbar-brand:focus {
+  color: var(--theme-color-accent) !important;
+}
+
+body #header .dropdown-item,
+body #header .navbar-more-item,
+body #mobileNav .dropdown-item {
+  background-color: transparent !important;
+}
+
+body #header .dropdown-item:hover,
+body #header .dropdown-item:focus,
+body #header .navbar-more-item:hover,
+body #header .navbar-more-item:focus,
+body #mobileNav .dropdown-item:hover,
+body #mobileNav .dropdown-item:focus,
+body #mobileNav .nav-link:hover,
+body #mobileNav .nav-link:focus {
+  background-color: rgba(255, 183, 0, 0.12) !important;
+}
+
+@media (max-width: 991.98px) {
+  body #header,
+  body #header.navbar,
+  body #mobileNav,
+  body #primaryNav,
+  body .navbar-collapse,
+  body .navbar-more-inner,
+  body #header .dropdown-menu,
+  body #mobileNav .dropdown-menu,
+  body .mobile-nav,
+  body #header .navbar-nav,
+  body #mobileNav .navbar-nav {
+    background-color: var(--theme-color-secondary) !important;
+    color: var(--theme-color-accent) !important;
+  }
+
+  body .navbar-light .navbar-toggler,
+  body .navbar-toggler {
+    border-color: transparent !important;
+    color: var(--theme-color-accent) !important;
+  }
+}
+
+/* Homepage donation card brand treatment
+-----------------------------------------------
+   Match the header palette: secondary blue card, accent yellow copy, and cream
+   amount buttons with primary-red labels. */
+body .homepage-donation-card,
+body .homepage-donation-card .card-body {
+  background-color: var(--theme-color-secondary) !important;
+  color: var(--theme-color-accent) !important;
+}
+
+body .homepage-donation-card h1,
+body .homepage-donation-card h2,
+body .homepage-donation-card h3,
+body .homepage-donation-card h4,
+body .homepage-donation-card h5,
+body .homepage-donation-card h6,
+body .homepage-donation-card .h1,
+body .homepage-donation-card .h2,
+body .homepage-donation-card .h3,
+body .homepage-donation-card .h4,
+body .homepage-donation-card .h5,
+body .homepage-donation-card .h6,
+body .homepage-donation-card .page-headline,
+body .homepage-donation-card .headline,
+body .homepage-donation-card .title,
+body .homepage-donation-card p,
+body .homepage-donation-card .text-black-75,
+body .homepage-donation-card .text-muted,
+body .homepage-donation-card .small,
+body .homepage-donation-card small {
+  color: var(--theme-color-accent) !important;
+}
+
+body .homepage-donation-card .homepage-donation-amount,
+body .homepage-donation-card .btn-secondary {
+  background-color: var(--theme-color-cream) !important;
+  border-color: var(--theme-color-cream) !important;
+  color: var(--theme-color-primary) !important;
+}
+
+body .homepage-donation-card .homepage-donation-amount:hover,
+body .homepage-donation-card .homepage-donation-amount:focus,
+body .homepage-donation-card .btn-secondary:hover,
+body .homepage-donation-card .btn-secondary:focus {
+  background-color: var(--theme-color-cream) !important;
+  border-color: var(--theme-color-accent) !important;
+  color: var(--theme-color-primary) !important;
 }
