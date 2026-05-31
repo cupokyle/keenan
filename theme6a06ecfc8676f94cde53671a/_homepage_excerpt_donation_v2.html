@@ -1,10 +1,10 @@
 {% include "translation" %}
 
-<section class="homepage-excerpt-section">
+<section class="homepage-excerpt-section homepage-donation-excerpt">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-9">
-        <div class="card card-lg">
+        <div class="card card-lg homepage-donation-card">
           <div class="card-body">
             {% if page.headline.size > 0 %}
               <h2 class="m-0 mb-3 h3">{{ page.headline }}</h2>
@@ -13,7 +13,7 @@
             <div class="form-row">
               {% for amount in page.donation_v2.amounts %}
                 <div class="form-group col-sm-6 col-lg-4">
-                  <a href="{{ page.url }}?amount={{ amount }}" class="btn btn-secondary btn-lg btn-block">{{ page.donation_v2.currency_symbol }}{{ amount }}</a>
+                  <a href="{{ page.url }}?amount={{ amount }}" class="btn btn-secondary btn-lg btn-block homepage-donation-amount">{{ page.donation_v2.currency_symbol }}{{ amount }}</a>
                 </div>
               {% endfor %}
             </div>

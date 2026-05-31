@@ -364,4 +364,45 @@
     }
   }
 
+
+  /* Homepage donation card brand treatment
+  -----------------------------------------------
+     Match the header palette: secondary blue card, accent yellow copy, and cream
+     amount buttons with primary-red labels. */
+  body .homepage-donation-card,
+  body .homepage-donation-card .card-body {
+    background-color: var(--theme-color-secondary) !important;
+    color: var(--theme-color-accent) !important;
+  }
+
+  body .homepage-donation-card h1,
+  body .homepage-donation-card h2,
+  body .homepage-donation-card h3,
+  body .homepage-donation-card h4,
+  body .homepage-donation-card h5,
+  body .homepage-donation-card h6,
+  body .homepage-donation-card p,
+  body .homepage-donation-card .text-black-75,
+  body .homepage-donation-card .text-muted,
+  body .homepage-donation-card .small,
+  body .homepage-donation-card small {
+    color: var(--theme-color-accent) !important;
+  }
+
+  body .homepage-donation-card .homepage-donation-amount,
+  body .homepage-donation-card .btn-secondary {
+    background-color: var(--theme-color-cream) !important;
+    border-color: var(--theme-color-cream) !important;
+    color: var(--theme-color-primary) !important;
+  }
+
+  body .homepage-donation-card .homepage-donation-amount:hover,
+  body .homepage-donation-card .homepage-donation-amount:focus,
+  body .homepage-donation-card .btn-secondary:hover,
+  body .homepage-donation-card .btn-secondary:focus {
+    background-color: var(--theme-color-cream) !important;
+    border-color: var(--theme-color-accent) !important;
+    color: var(--theme-color-primary) !important;
+  }
+
 </style>
