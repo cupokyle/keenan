@@ -919,6 +919,8 @@ body.momentum-theme {
   --theme-color-secondary: #{$secondary};
   --theme-color-accent: #{$accent};
   --theme-color-black: #{$black};
+  --theme-color-input-bg: #ffffff;
+  --theme-color-input-border: rgba(237, 43, 8, 0.22);
   --theme-text-base: #{$body-color};
   --theme-text-heading: #{$headings-color};
   --theme-text-link: #{$link-color};
@@ -1265,9 +1267,9 @@ body input[type="tel"],
 body input[type="url"],
 body input[type="password"],
 body input[type="number"] {
-  background-color: var(--theme-color-cream) !important;
-  border-color: var(--theme-color-cream) !important;
-  color: var(--theme-text-base) !important;
+  background-color: var(--theme-color-input-bg) !important;
+  border-color: var(--theme-color-input-border) !important;
+  color: var(--theme-color-primary) !important;
   font-family: var(--theme-font-sans) !important;
 }
 
@@ -1431,6 +1433,256 @@ body #mobileNav .nav-link:focus {
   }
 }
 
+
+/* Donation page polish
+-----------------------------------------------
+   Keep donation pages warm and readable while making fields, choices, and
+   interactive states visibly distinct from the cream page background. */
+body.page-type-donation,
+body.page-type-donation-v2 {
+  color: var(--theme-color-primary) !important;
+}
+
+body.page-type-donation .wrapper-donation-v2,
+body.page-type-donation-v2 .wrapper-donation-v2,
+body.page-type-donation .wrapper-donation-v2::before,
+body.page-type-donation-v2 .wrapper-donation-v2::before {
+  background: linear-gradient(180deg, rgba(237, 43, 8, 0.08), rgba(249, 243, 231, 0) 190px) !important;
+}
+
+body.page-type-donation .card,
+body.page-type-donation-v2 .card,
+body.page-type-donation .card-body,
+body.page-type-donation-v2 .card-body {
+  border: 1px solid rgba(237, 43, 8, 0.12) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.10) !important;
+}
+
+body.page-type-donation .card-body,
+body.page-type-donation-v2 .card-body {
+  padding: clamp(1.5rem, 4vw, 3rem) !important;
+}
+
+body.page-type-donation h1,
+body.page-type-donation h2,
+body.page-type-donation h3,
+body.page-type-donation h4,
+body.page-type-donation h5,
+body.page-type-donation h6,
+body.page-type-donation .h1,
+body.page-type-donation .h2,
+body.page-type-donation .h3,
+body.page-type-donation .h4,
+body.page-type-donation .h5,
+body.page-type-donation .h6,
+body.page-type-donation p,
+body.page-type-donation label,
+body.page-type-donation legend,
+body.page-type-donation .text-danger,
+body.page-type-donation .text-black-75,
+body.page-type-donation .text-muted,
+body.page-type-donation small,
+body.page-type-donation-v2 h1,
+body.page-type-donation-v2 h2,
+body.page-type-donation-v2 h3,
+body.page-type-donation-v2 h4,
+body.page-type-donation-v2 h5,
+body.page-type-donation-v2 h6,
+body.page-type-donation-v2 .h1,
+body.page-type-donation-v2 .h2,
+body.page-type-donation-v2 .h3,
+body.page-type-donation-v2 .h4,
+body.page-type-donation-v2 .h5,
+body.page-type-donation-v2 .h6,
+body.page-type-donation-v2 p,
+body.page-type-donation-v2 label,
+body.page-type-donation-v2 legend,
+body.page-type-donation-v2 .text-danger,
+body.page-type-donation-v2 .text-black-75,
+body.page-type-donation-v2 .text-muted,
+body.page-type-donation-v2 small {
+  color: var(--theme-color-primary) !important;
+}
+
+body.page-type-donation .form-control,
+body.page-type-donation .custom-select,
+body.page-type-donation .input-group-text,
+body.page-type-donation textarea,
+body.page-type-donation select,
+body.page-type-donation input[type="text"],
+body.page-type-donation input[type="email"],
+body.page-type-donation input[type="tel"],
+body.page-type-donation input[type="url"],
+body.page-type-donation input[type="password"],
+body.page-type-donation input[type="number"],
+body.page-type-donation-v2 .form-control,
+body.page-type-donation-v2 .custom-select,
+body.page-type-donation-v2 .input-group-text,
+body.page-type-donation-v2 textarea,
+body.page-type-donation-v2 select,
+body.page-type-donation-v2 input[type="text"],
+body.page-type-donation-v2 input[type="email"],
+body.page-type-donation-v2 input[type="tel"],
+body.page-type-donation-v2 input[type="url"],
+body.page-type-donation-v2 input[type="password"],
+body.page-type-donation-v2 input[type="number"] {
+  background-color: var(--theme-color-input-bg) !important;
+  border-color: var(--theme-color-input-border) !important;
+  border-radius: 0.85rem !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 0.35rem 1rem rgba(0, 0, 0, 0.04) !important;
+  color: var(--theme-color-primary) !important;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease !important;
+}
+
+body.page-type-donation .form-control:hover,
+body.page-type-donation .custom-select:hover,
+body.page-type-donation-v2 .form-control:hover,
+body.page-type-donation-v2 .custom-select:hover {
+  border-color: rgba(237, 43, 8, 0.42) !important;
+}
+
+body.page-type-donation .form-control:focus,
+body.page-type-donation .custom-select:focus,
+body.page-type-donation textarea:focus,
+body.page-type-donation select:focus,
+body.page-type-donation input:focus,
+body.page-type-donation-v2 .form-control:focus,
+body.page-type-donation-v2 .custom-select:focus,
+body.page-type-donation-v2 textarea:focus,
+body.page-type-donation-v2 select:focus,
+body.page-type-donation-v2 input:focus {
+  border-color: var(--theme-color-primary) !important;
+  box-shadow: 0 0 0 0.22rem rgba(237, 43, 8, 0.18), 0 0.5rem 1.35rem rgba(0, 0, 0, 0.07) !important;
+}
+
+body.page-type-donation .btn,
+body.page-type-donation .submit-button,
+body.page-type-donation button,
+body.page-type-donation input[type="submit"],
+body.page-type-donation-v2 .btn,
+body.page-type-donation-v2 .submit-button,
+body.page-type-donation-v2 button,
+body.page-type-donation-v2 input[type="submit"],
+body.page-type-donation .donation-v2-amounts .custom-control-label,
+body.page-type-donation .form-amount-options .custom-control-label,
+body.page-type-donation-v2 .donation-v2-amounts .custom-control-label,
+body.page-type-donation-v2 .form-amount-options .custom-control-label {
+  border-radius: 0.85rem !important;
+  transition: background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease, transform 160ms ease !important;
+}
+
+body.page-type-donation .donation-v2-amounts .custom-control-label,
+body.page-type-donation .form-amount-options .custom-control-label,
+body.page-type-donation-v2 .donation-v2-amounts .custom-control-label,
+body.page-type-donation-v2 .form-amount-options .custom-control-label {
+  background-color: var(--theme-color-secondary) !important;
+  border: 2px solid transparent !important;
+  color: var(--theme-text-on-primary) !important;
+  box-shadow: 0 0.65rem 1.25rem rgba(0, 103, 147, 0.16) !important;
+}
+
+body.page-type-donation .donation-v2-amounts .custom-control-label:hover,
+body.page-type-donation .donation-v2-amounts .custom-control-label:focus,
+body.page-type-donation .form-amount-options .custom-control-label:hover,
+body.page-type-donation .form-amount-options .custom-control-label:focus,
+body.page-type-donation-v2 .donation-v2-amounts .custom-control-label:hover,
+body.page-type-donation-v2 .donation-v2-amounts .custom-control-label:focus,
+body.page-type-donation-v2 .form-amount-options .custom-control-label:hover,
+body.page-type-donation-v2 .form-amount-options .custom-control-label:focus {
+  background-color: #00577d !important;
+  border-color: var(--theme-color-accent) !important;
+  box-shadow: 0 0.85rem 1.5rem rgba(0, 103, 147, 0.24) !important;
+  transform: translateY(-2px) !important;
+}
+
+body.page-type-donation .donation-v2-amounts .custom-control-input:checked ~ .custom-control-label,
+body.page-type-donation .form-amount-options .custom-control-input:checked ~ .custom-control-label,
+body.page-type-donation-v2 .donation-v2-amounts .custom-control-input:checked ~ .custom-control-label,
+body.page-type-donation-v2 .form-amount-options .custom-control-input:checked ~ .custom-control-label {
+  background-color: var(--theme-color-primary) !important;
+  border-color: var(--theme-color-accent) !important;
+  color: var(--theme-text-on-primary) !important;
+  box-shadow: 0 0.85rem 1.5rem rgba(237, 43, 8, 0.24) !important;
+}
+
+body.page-type-donation .btn-primary:hover,
+body.page-type-donation .btn-primary:focus,
+body.page-type-donation .submit-button:hover,
+body.page-type-donation .submit-button:focus,
+body.page-type-donation input[type="submit"]:hover,
+body.page-type-donation input[type="submit"]:focus,
+body.page-type-donation-v2 .btn-primary:hover,
+body.page-type-donation-v2 .btn-primary:focus,
+body.page-type-donation-v2 .submit-button:hover,
+body.page-type-donation-v2 .submit-button:focus,
+body.page-type-donation-v2 input[type="submit"]:hover,
+body.page-type-donation-v2 input[type="submit"]:focus {
+  box-shadow: 0 0.85rem 1.5rem rgba(237, 43, 8, 0.22) !important;
+  transform: translateY(-2px) !important;
+}
+
+body #header .nav-link,
+body #header .btn,
+body #mobileNav .nav-link,
+body #mobileNav .btn,
+body .navbar-more-item {
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease !important;
+}
+
+body #header .nav-link:hover,
+body #header .nav-link:focus,
+body #header .btn:hover,
+body #header .btn:focus,
+body #mobileNav .nav-link:hover,
+body #mobileNav .nav-link:focus,
+body #mobileNav .btn:hover,
+body #mobileNav .btn:focus,
+body .navbar-more-item:hover,
+body .navbar-more-item:focus {
+  transform: translateY(-1px) !important;
+}
+
+
+/* Homepage/basic-page contact comment panel
+-----------------------------------------------
+   Avoid using accent yellow as a large background; use the same secondary-blue
+   brand surface as the header/donation card with warm accent copy instead. */
+body.page-type-basic .page-stream > .bg-info,
+body.homepage .page-stream > .bg-info {
+  background-color: var(--theme-color-secondary) !important;
+  border: 1px solid rgba(0, 103, 147, 0.18) !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 1.25rem 3rem rgba(0, 0, 0, 0.10) !important;
+  color: var(--theme-color-accent) !important;
+}
+
+body.page-type-basic .page-stream > .bg-info h1,
+body.page-type-basic .page-stream > .bg-info h2,
+body.page-type-basic .page-stream > .bg-info h3,
+body.page-type-basic .page-stream > .bg-info h4,
+body.page-type-basic .page-stream > .bg-info h5,
+body.page-type-basic .page-stream > .bg-info h6,
+body.page-type-basic .page-stream > .bg-info p,
+body.page-type-basic .page-stream > .bg-info small,
+body.page-type-basic .page-stream > .bg-info a,
+body.homepage .page-stream > .bg-info h1,
+body.homepage .page-stream > .bg-info h2,
+body.homepage .page-stream > .bg-info h3,
+body.homepage .page-stream > .bg-info h4,
+body.homepage .page-stream > .bg-info h5,
+body.homepage .page-stream > .bg-info h6,
+body.homepage .page-stream > .bg-info p,
+body.homepage .page-stream > .bg-info small,
+body.homepage .page-stream > .bg-info a {
+  color: var(--theme-color-accent) !important;
+}
+
+body.page-type-basic .page-stream > .bg-info hr,
+body.homepage .page-stream > .bg-info hr {
+  border-color: rgba(255, 183, 0, 0.22) !important;
+}
+
 /* Homepage donation card brand treatment
 -----------------------------------------------
    Match the header palette: secondary blue card, accent yellow copy, and cream
@@ -1438,7 +1690,9 @@ body #mobileNav .nav-link:focus {
 body .homepage-donation-card,
 body .homepage-donation-card .card-body {
   background-color: var(--theme-color-secondary) !important;
+  border-radius: 1.25rem !important;
   color: var(--theme-color-accent) !important;
+  overflow: hidden !important;
 }
 
 body .homepage-donation-card h1,
