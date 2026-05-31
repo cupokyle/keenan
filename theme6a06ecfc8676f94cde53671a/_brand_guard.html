@@ -5,7 +5,8 @@
   body.momentum-theme {
     --theme-color-cream: #f9f3e7;
     --theme-color-primary: #ed2b08;
-    --theme-color-primary-dark: #c52407;
+    /* --theme-color-primary-dark: #c52407; */
+    --theme-color-primary-dark: #f9f3e7;
     --theme-color-secondary: #006793;
     --theme-color-accent: #ffb700;
     --theme-color-black: #000000;
@@ -26,6 +27,10 @@
     background-color: var(--theme-color-cream) !important;
     color: var(--theme-text-base) !important;
     font-family: var(--theme-font-sans) !important;
+  }
+
+  body #header .nav-link {
+    color: var(--theme-color-accent) !important;
   }
 
   body,
@@ -122,7 +127,6 @@
   body .list-group-item,
   body .popover,
   body .toast,
-  body #header,
   body #mobileNav,
   body .navbar-collapse,
   body .navbar-more-inner,
@@ -170,7 +174,8 @@
   body .btn-secondary,
   body .donation-v2-amounts .custom-control-label,
   body .form-amount-options .custom-control-label,
-  body .bg-secondary {
+  body .bg-secondary, 
+   body header {
     background-color: var(--theme-color-secondary) !important;
     border-color: var(--theme-color-secondary) !important;
     color: var(--theme-text-on-primary) !important;
