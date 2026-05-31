@@ -44,7 +44,13 @@
                   <div class="container text-light position-relative">
                     <div class="page-features__content">
                       <div class="row align-items-center flex-column-reverse flex-md-row">
-                        <div class="col-md-6 h1 mb-4">{{ feature.headline }}</div>
+                                                <div class="col-md-6 h1 mb-4">
+                          {% if page.is_homepage? and forloop.first %}
+                            {% include "homepage_logo_quote_replacement" %}
+                          {% else %}
+                            {{ feature.headline }}
+                          {% endif %}
+                        </div>
                         <div class="col-md-6 mb-4 fcs-img-shadow">
                           <div class="position-relative">
                             <img class="mw-100 mh-100 h-auto" width="540" height="430" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAhwAAAGuCAQAAABxHRcUAAAD+ElEQVR42u3UIQEAAAzDsM+/6WsYGkkkFDQHUIoEgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxiEBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAGAdgHIBxAMYBGAeAcQDGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBYByAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHgHEAxgEYB2AcgHEAxgFgHIBxAMYBGAdgHADGARgHYByAcQDGAWAcgHEAxgEYB2AcAMYBGAdgHIBxAMYBGAeAcQDGARgHYByAcQAYB2AcgHEAxgEYB4BxAMYBGAdgHIBxABgHYByAcQDGARgHYBwAxgEYB2AcgHEAxgFgHIBxADsP7iABr3S8NqYAAAAASUVORK5CYII=" alt=""/>

@@ -1,0 +1,81 @@
+{% comment %}
+  Homepage feature wordmark. This intentionally replaces the feature headline
+  element in _features.html rather than trying to find/replace placeholder text
+  after NationBuilder renders the page.
+{% endcomment %}
+
+<figure class="keenan-homepage-wordmark-wrapper" aria-label="Keenan Courts campaign wordmark">
+  <img
+    class="keenan-homepage-wordmark"
+    src="{{ theme["keenan-courts-wordmark.png"] }}"
+    alt="Keenan Courts, University—Rosedale City Councillor"
+    width="864"
+    height="608"
+    loading="eager"
+  />
+</figure>
+
+<style>
+  /*
+    Default/fallback treatment: if NationBuilder renders this wordmark anywhere
+    outside the homepage feature hero, keep it small and centered instead of
+    letting the image display at its intrinsic 864px width.
+  */
+  .keenan-homepage-wordmark-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem auto;
+    max-width: 12rem;
+    width: 100%;
+  }
+
+  .keenan-homepage-wordmark,
+  img[src*="keenan-courts-wordmark"] {
+    display: block;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 12rem;
+    width: min(100%, 12rem);
+  }
+
+  /* Hero treatment: preserve the larger lockup in the homepage feature area. */
+  .page-features .keenan-homepage-wordmark-wrapper {
+    justify-content: flex-start;
+    margin: 0;
+    max-width: none;
+  }
+
+  .page-features .keenan-homepage-wordmark,
+  .page-features img[src*="keenan-courts-wordmark"] {
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 34rem;
+    width: min(100%, 34rem);
+  }
+
+  @media (max-width: 991.98px) {
+    .page-features .keenan-homepage-wordmark-wrapper {
+      justify-content: center;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .page-features .keenan-homepage-wordmark,
+    .page-features img[src*="keenan-courts-wordmark"] {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 28rem;
+      width: min(100%, 28rem);
+    }
+  }
+
+  @media (max-width: 575.98px) {
+    .page-features .keenan-homepage-wordmark,
+    .page-features img[src*="keenan-courts-wordmark"] {
+      max-width: 20rem;
+      width: min(100%, 20rem);
+    }
+  }
+</style>
