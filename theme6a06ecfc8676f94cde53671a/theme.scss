@@ -24,16 +24,45 @@ $link-color: $secondary !default;
 $link-hover-color: darken($secondary, 10%) !default;
 $text-muted: mix($primary, $white, 55%) !default;
 $text-color-on-primary: $white !default;
-$font-family-sans-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
-$font-family-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
-$font-family-monospace: 'Source Code Pro', monospace !default;
+$font-family-sans-serif: 'Graphik', Helvetica, Arial, sans-serif !default;
+$font-family-serif: 'Graphik', Helvetica, Arial, sans-serif !default;
+$font-family-monospace: 'Graphik', Helvetica, Arial, sans-serif !default;
+
+// Graphik is self-hosted in NationBuilder theme files. Upload every .otf
+// listed here to Website > Theme > Current custom theme > Files.
+@mixin graphik-font-face($file, $weight, $style: normal) {
+  @font-face {
+    font-family: 'Graphik';
+    src: url('#{$file}.otf') format('opentype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@include graphik-font-face('Graphik-Thin', 100);
+@include graphik-font-face('Graphik-ThinItalic', 100, italic);
+@include graphik-font-face('Graphik-Extralight', 200);
+@include graphik-font-face('Graphik-ExtralightItalic', 200, italic);
+@include graphik-font-face('Graphik-Light', 300);
+@include graphik-font-face('Graphik-LightItalic', 300, italic);
+@include graphik-font-face('Graphik-Regular', 400);
+@include graphik-font-face('Graphik-RegularItalic', 400, italic);
+@include graphik-font-face('Graphik-Medium', 500);
+@include graphik-font-face('Graphik-MediumItalic', 500, italic);
+@include graphik-font-face('Graphik-Semibold', 600);
+@include graphik-font-face('Graphik-SemiboldItalic', 600, italic);
+@include graphik-font-face('Graphik-Bold', 700);
+@include graphik-font-face('Graphik-BoldItalic', 700, italic);
+@include graphik-font-face('Graphik-Black', 800);
+@include graphik-font-face('Graphik-BlackItalic', 800, italic);
+@include graphik-font-face('Graphik-Super', 900);
+@include graphik-font-face('Graphik-SuperItalic', 900, italic);
 
 /*-----------------------------------------------
   MOMENTUM by NationBuilder
   https://momentum-theme.nationbuilder.com
 -----------------------------------------------*/
-
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import 'functions';
 @import 'momentum_variables';
@@ -1206,6 +1235,36 @@ body input[type="submit"]:focus {
   background-color: var(--theme-color-primary-dark) !important;
   border-color: var(--theme-color-primary-dark) !important;
   color: var(--theme-text-on-primary) !important;
+}
+
+
+body #header .navbar-donate-btn,
+body #mobileNav .navbar-donate-btn {
+  align-items: center;
+  background: linear-gradient(135deg, var(--theme-color-accent) 0%, #ffd76a 100%) !important;
+  border: 2px solid rgba(249, 243, 231, 0.92) !important;
+  border-radius: 999px !important;
+  box-shadow: 0 0.55rem 1.25rem rgba(255, 183, 0, 0.26), 0 0 0 0.18rem rgba(255, 183, 0, 0.12) !important;
+  color: var(--theme-color-primary) !important;
+  display: inline-flex;
+  font-weight: 800 !important;
+  justify-content: center;
+  letter-spacing: 0.035em;
+  padding-left: 1.35rem !important;
+  padding-right: 1.35rem !important;
+  text-transform: uppercase;
+}
+
+body #header .navbar-donate-btn:hover,
+body #header .navbar-donate-btn:focus,
+body #mobileNav .navbar-donate-btn:hover,
+body #mobileNav .navbar-donate-btn:focus {
+  background: linear-gradient(135deg, #ffd76a 0%, var(--theme-color-accent) 100%) !important;
+  border-color: var(--theme-color-cream) !important;
+  box-shadow: 0 0.85rem 1.65rem rgba(255, 183, 0, 0.36), 0 0 0 0.22rem rgba(237, 43, 8, 0.16) !important;
+  color: var(--theme-color-primary-dark) !important;
+  text-decoration: none !important;
+  transform: translateY(-2px) !important;
 }
 
 body .btn-secondary,
