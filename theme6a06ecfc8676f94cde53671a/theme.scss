@@ -33,7 +33,7 @@ $font-family-monospace: 'Graphik', Helvetica, Arial, sans-serif !default;
 @mixin graphik-font-face($file, $weight, $style: normal) {
   @font-face {
     font-family: 'Graphik';
-    src: url('/assets/#{$file}.otf') format('opentype');
+    src: url('#{$file}.otf') format('opentype');
     font-weight: $weight;
     font-style: $style;
     font-display: swap;
