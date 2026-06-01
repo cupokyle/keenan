@@ -41,10 +41,27 @@ After uploading the font files and the updated theme files, publish the custom t
 
 Open the live page, then use browser DevTools:
 
-1. Go to the **Network** tab and filter by `Graphik` or `font`.
+1. Go to the **Network** tab, enable **Disable cache**, reload the page, and filter by `Graphik` or `font`.
 2. Confirm the needed `.otf` files return `200` responses, not `404`.
-3. Inspect body text and headings and confirm the computed `font-family` starts with `Graphik`.
-4. Check a donation page if Stripe fields are used; their style configuration now also requests Graphik.
+3. In the **Elements** panel, select real page text, open the **Computed** tab, and check the **Rendered Fonts** section. It should list Graphik as the rendered font, not just as a fallback in `font-family`.
+4. In the **Console**, run this after the page finishes loading:
+
+   ```js
+   await document.fonts.ready;
+   [...document.fonts]
+     .filter((font) => font.family === 'Graphik')
+     .map((font) => ({ weight: font.weight, style: font.style, status: font.status }));
+   ```
+
+   Every Graphik face the browser needed on that page should show `status: "loaded"`.
+5. For the selected text element in DevTools, run this Console check:
+
+   ```js
+   getComputedStyle($0).fontFamily
+   ```
+
+   The value should begin with `Graphik`. Use this together with **Rendered Fonts** and the `document.fonts` check above; the eye test alone is not enough.
+6. Check a donation page if Stripe fields are used; their style configuration now also requests Graphik.
 
 ## 4. Troubleshooting
 
