@@ -24,16 +24,45 @@ $link-color: $secondary !default;
 $link-hover-color: darken($secondary, 10%) !default;
 $text-muted: mix($primary, $white, 55%) !default;
 $text-color-on-primary: $white !default;
-$font-family-sans-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
-$font-family-serif: 'Hanken Grotesk', 'Source Sans Pro', Helvetica, Arial, sans-serif !default;
-$font-family-monospace: 'Source Code Pro', monospace !default;
+$font-family-sans-serif: 'Graphik', Helvetica, Arial, sans-serif !default;
+$font-family-serif: 'Graphik', Helvetica, Arial, sans-serif !default;
+$font-family-monospace: 'Graphik', Helvetica, Arial, sans-serif !default;
+
+// Graphik is self-hosted in NationBuilder theme files. Upload every .otf
+// listed here to Website > Theme > Current custom theme > Files.
+@mixin graphik-font-face($file, $weight, $style: normal) {
+  @font-face {
+    font-family: 'Graphik';
+    src: url('/assets/#{$file}.otf') format('opentype');
+    font-weight: $weight;
+    font-style: $style;
+    font-display: swap;
+  }
+}
+
+@include graphik-font-face('Graphik-Thin', 100);
+@include graphik-font-face('Graphik-ThinItalic', 100, italic);
+@include graphik-font-face('Graphik-Extralight', 200);
+@include graphik-font-face('Graphik-ExtralightItalic', 200, italic);
+@include graphik-font-face('Graphik-Light', 300);
+@include graphik-font-face('Graphik-LightItalic', 300, italic);
+@include graphik-font-face('Graphik-Regular', 400);
+@include graphik-font-face('Graphik-RegularItalic', 400, italic);
+@include graphik-font-face('Graphik-Medium', 500);
+@include graphik-font-face('Graphik-MediumItalic', 500, italic);
+@include graphik-font-face('Graphik-Semibold', 600);
+@include graphik-font-face('Graphik-SemiboldItalic', 600, italic);
+@include graphik-font-face('Graphik-Bold', 700);
+@include graphik-font-face('Graphik-BoldItalic', 700, italic);
+@include graphik-font-face('Graphik-Black', 800);
+@include graphik-font-face('Graphik-BlackItalic', 800, italic);
+@include graphik-font-face('Graphik-Super', 900);
+@include graphik-font-face('Graphik-SuperItalic', 900, italic);
 
 /*-----------------------------------------------
   MOMENTUM by NationBuilder
   https://momentum-theme.nationbuilder.com
 -----------------------------------------------*/
-
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import 'functions';
 @import 'momentum_variables';
